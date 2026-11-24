@@ -1,0 +1,6 @@
+{
+  "name": "JanurCraft",
+  "description": "An interactive digital cultural museum and educational platform exploring the art, history, techniques, and heritage of traditional Indonesian janur (young coconut leaf) crafts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
