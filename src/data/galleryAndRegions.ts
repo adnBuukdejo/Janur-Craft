@@ -4,123 +4,123 @@ import { JANUR_IMAGES } from './images';
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'ketupat-bawang',
-    accessionNumber: 'JC-2026-01',
+    accessionNumber: 'JC-01',
     title: 'Ketupat Bawang (Diamond Rice Pouch)',
     indonesianName: 'Ketupat Bawang / Kupat',
     category: 'Culinary',
     region: 'Java, Sumatra, Kalimantan & Sulawesi',
-    medium: 'Two stripped young coconut leaf blades (Cocos nucifera)',
-    occasion: 'Eid al-Fitr (Bakda Kupat), festive gatherings, traditional street cuisine',
+    medium: 'Two stripped young coconut leaf blades',
+    occasion: 'Eid al-Fitr (Bakda Kupat), family feasts, traditional street food',
     imageUrl: JANUR_IMAGES.ketupatWoven,
     description:
-      'A classic six-cornered woven casing whose rounded diamond geometry seals tightly around uncooked rice grains while allowing boiling water to circulate evenly through its natural weave.',
+      'A classic six-cornered woven leaf pouch. Its tight criss-cross weave holds uncooked rice securely while letting hot water cook the rice evenly inside.',
     culturalBackground:
-      'In Javanese cultural tradition, ketupat (kupat) is associated with "ngaku lepat" (acknowledging mistakes) and is widely served during Bakda Kupat, one week after Eid al-Fitr. Regional variations in weaving tightness and corner geometry exist across Sumatra, Kalimantan, and Sulawesi.',
+      'In Javanese tradition, ketupat (kupat) is linked to "ngaku lepat" (saying sorry and forgiving others) and is widely shared during Bakda Kupat, one week after Eid al-Fitr. Across Sumatra, Kalimantan, and Sulawesi, local cooks also weave ketupat year-round.',
   },
   {
     id: 'penjor-galungan',
-    accessionNumber: 'JC-2026-02',
+    accessionNumber: 'JC-02',
     title: 'Balinese Penjor Archway & Sampian',
     indonesianName: 'Penjor Galungan',
     category: 'Ceremonial',
     region: 'Bali',
-    medium: 'Curved bamboo pole, young coconut leaves (busung), agricultural produce',
-    occasion: 'Galungan & Kuningan religious festivals, temple ceremonies',
+    medium: 'Curved bamboo pole, young coconut leaves (busung), farm produce',
+    occasion: 'Galungan & Kuningan festivals, temple celebrations',
     imageUrl: JANUR_IMAGES.penjorBali,
     description:
-      'Towering curved bamboo poles erected along village lanes before Galungan, draped with lacy notched janur runners, pleated sampian crowns, and hanging floral palm tassels.',
+      'Tall curved bamboo poles placed along Balinese village roads before Galungan, decorated with lacy cut janur runners, pleated crowns, and hanging tassels.',
     culturalBackground:
-      'In Balinese Hindu tradition, the penjor expresses gratitude to Sang Hyang Widhi Wasa for earth’s abundance and symbolizes Mount Agung, with its curved peak representing spiritual prosperity and reverence.',
+      'In Balinese Hindu culture, the penjor thanks God for earth’s gifts and harvest abundance, with its tall curved top reminding people of Mount Agung.',
   },
   {
     id: 'kembar-mayang',
-    accessionNumber: 'JC-2026-03',
+    accessionNumber: 'JC-03',
     title: 'Kembar Mayang Wedding Arrangement',
     indonesianName: 'Kembar Mayang (Gagar Mayang)',
     category: 'Ceremonial',
     region: 'Central Java & Yogyakarta',
-    medium: 'Young coconut leaves, banana stem base (gedebog), beringin & puring foliage',
-    occasion: 'Javanese traditional wedding processions (Panggih & Midodareni)',
+    medium: 'Young coconut leaves, banana stem base, garden greenery',
+    occasion: 'Javanese traditional weddings',
     imageUrl: JANUR_IMAGES.kembarMayang,
     description:
-      'A matched pair of sculptural botanical bouquets crowned with woven janur motifs—stylized keris daggers, pleated fans, whips, and symbolic birds—standing inside carved vessels.',
+      'A matched pair of sculpted leaf bouquets decorated with woven janur daggers (keris), pleated fans, and tiny birds standing in traditional brass pots.',
     culturalBackground:
-      'Carried during Javanese wedding rituals, Kembar Mayang ("twin blossoms") conveys blessings of wisdom, unity, and protection as the couple enters married life. Each folded janur component carries a traditional Javanese moral metaphor.',
+      'Carried during traditional Javanese wedding ceremonies, Kembar Mayang ("twin blossoms") brings wishes of wisdom, harmony, and strength to the bride and groom.',
   },
   {
     id: 'canang-sari-sampian',
-    accessionNumber: 'JC-2026-04',
+    accessionNumber: 'JC-04',
     title: 'Canang Sari & Sampian Rosettes',
     indonesianName: 'Canang Sari & Sampian Uras',
     category: 'Offerings',
     region: 'Bali',
     medium: 'Young coconut leaves (busung), bamboo pins (semat), tropical flowers',
-    occasion: 'Daily Balinese Hindu devotional offerings',
+    occasion: 'Daily Balinese Hindu prayer offerings',
     imageUrl: JANUR_IMAGES.canangOfferings,
     description:
-      'Square woven coconut-leaf trays (ceper) topped with radially pleated janur rosettes (sampian) and arranged seasonal petals representing balance and daily gratitude.',
+      'Small square woven coconut-leaf trays topped with flower-shaped pleated leaf rosettes (sampian) and colorful frangipani and marigold petals.',
     culturalBackground:
-      'Crafted primarily by Balinese households through the traditional metanding and mejejaitan arts, Canang Sari serves as a daily symbol of selflessness, harmony (Tri Hita Karana), and reverence.',
+      'Made by Balinese families every day, Canang Sari reflects gratitude, peace, and balance between people, nature, and the spiritual world.',
   },
   {
     id: 'janur-lidi-prep',
-    accessionNumber: 'JC-2026-05',
-    title: 'Menyeset — Stripping the Midrib (Lidi)',
+    accessionNumber: 'JC-05',
+    title: 'Menyeset — Stripping the Center Stick (Lidi)',
     indonesianName: 'Proses Menyeset Janur',
     category: 'Technique',
-    region: 'Archipelago-wide',
-    medium: 'Fresh pale-yellow coconut frond & small paring blade (pisau raut)',
-    occasion: 'Foundational leaf preparation prior to weaving',
+    region: 'Across Indonesia',
+    medium: 'Fresh pale-yellow coconut leaf & small craft knife',
+    occasion: 'First step before weaving',
     imageUrl: JANUR_IMAGES.janurPreparation,
     description:
-      'Artisanal separation of the woody central rib (lidi) from the supple twin leaf blades, yielding uniform ribbons for precision folding and plaiting.',
+      'Carefully slicing the woody center stick (lidi) away from the soft green leaf blades so they become smooth, even ribbons ready for weaving.',
     culturalBackground:
-      'Zero part of the frond goes unused: the supple blade becomes woven ornaments or food casings, while the separated lidi midribs are bundled into traditional household brooms (sapu lidi) or trimmed into fine fastening skewers (semat).',
+      'Nothing goes to waste: the soft green leaf strips become ketupat or decorations, while the saved lidi sticks are tied into brooms (sapu lidi) or cut into tiny pins.',
   },
   {
     id: 'contemporary-janur-installation',
-    accessionNumber: 'JC-2026-06',
-    title: 'Contemporary Woven Janur Lanterns & Centerpiece',
+    accessionNumber: 'JC-06',
+    title: 'Modern Woven Janur Lamps & Centerpiece',
     indonesianName: 'Instalasi Anyaman Janur Kontemporer',
     category: 'Contemporary',
     region: 'Yogyakarta, Jakarta & Bali',
-    medium: 'Young & mature coconut fronds, natural bamboo armature',
-    occasion: 'Sustainable interior design, cultural exhibitions, eco-weddings',
+    medium: 'Young & mature coconut fronds, natural bamboo frame',
+    occasion: 'Eco-friendly interiors, art exhibitions, green weddings',
     imageUrl: JANUR_IMAGES.modernDesign,
     description:
-      'Architectural pendant lanterns and folded sculptural centerpieces adapting traditional Indonesian diagonal plaiting and accordion pleating for plastic-free modern interiors.',
+      'Modern hanging lampshades and folded table sculptures made using classic Indonesian leaf weaving and fan-pleating without any plastic.',
     culturalBackground:
-      'Contemporary Indonesian florists, eco-designers, and craft collectives collaborate with village artisans to replace synthetic foam and plastic event decor with biodegradable, sculptural janur forms.',
+      'Modern Indonesian designers and event stylists partner with traditional crafters to replace plastic party foam with biodegradable, artistic janur pieces.',
   },
   {
     id: 'ketupat-and-lepet',
-    accessionNumber: 'JC-2026-07',
-    title: 'Ketupat & Lepet Festive Platter',
+    accessionNumber: 'JC-07',
+    title: 'Ketupat & Lepet Holiday Platter',
     indonesianName: 'Ketupat & Lepet Kacang',
     category: 'Culinary',
-    region: 'Central & East Java, West Java',
-    medium: 'Young coconut leaf woven casings and wrapped cylinders with bamboo twine',
-    occasion: 'Syawalan / Bakda Kupat & regional harvest feasts',
+    region: 'Central, East & West Java',
+    medium: 'Woven coconut-leaf pouches and wrapped leaf cylinders tied with bamboo string',
+    occasion: 'Syawalan / Bakda Kupat & harvest gatherings',
     imageUrl: JANUR_IMAGES.ketupatPlatter,
     description:
-      'Woven diamond ketupat paired with cylindrical lepet—glutinous rice mixed with grated coconut and black-eyed peas wrapped tightly in rolled janur and tied with split bamboo string.',
+      'Diamond-shaped ketupat served beside cylindrical lepet—sticky rice mixed with grated coconut and beans wrapped tightly inside rolled janur.',
     culturalBackground:
-      'Together on the Syawalan table, ketupat and lepet showcase two distinct janur structural techniques: interlocking diagonal weaving versus spiral cylindrical wrapping under tension.',
+      'Together on the holiday table, ketupat and lepet show two different leaf skills: criss-cross diamond weaving and tight spiral wrapping.',
   },
   {
     id: 'exhibition-ensemble',
-    accessionNumber: 'JC-2026-08',
-    title: 'Archipelago Janur Craft Ensemble',
+    accessionNumber: 'JC-08',
+    title: 'Indonesian Janur Craft Collection',
     indonesianName: 'Ragam Anyaman Janur Nusantara',
     category: 'Contemporary',
-    region: 'Museum Cultural Exhibition',
-    medium: 'Woven coconut fronds, pleated fans, circular floral garlands',
-    occasion: 'Cultural heritage education and museum display',
+    region: 'Cultural Exhibition Display',
+    medium: 'Woven coconut leaves, pleated fans, circular floral wreaths',
+    occasion: 'Cultural learning and exhibition display',
     imageUrl: JANUR_IMAGES.heroExhibition,
     description:
-      'A curated comparative display bringing together diamond culinary pouches, pleated ceremonial fans, and circular botanical wreaths crafted from fresh coconut fronds.',
+      'A display showing diamond food pouches, pleated leaf fans, and circular garlands all made from fresh young coconut leaves.',
     culturalBackground:
-      'Assembled to show international visitors how a single renewable botanical fiber gives rise to culinary vessels, sacred architecture, and expressive folk sculpture across Indonesia.',
+      'Created to help international visitors see how one renewable plant leaf can become everyday cookware, sacred art, and joyful decorations.',
   },
 ];
 
@@ -131,31 +131,31 @@ export const REGIONAL_TRADITIONS: RegionalTradition[] = [
     provinceOrIsland: 'Bali Island',
     coordinates: { x: 438, y: 266 },
     signatureCrafts: ['Penjor', 'Canang Sari', 'Sampian', 'Lamak'],
-    localTerminology: 'Busung (young coconut leaf), Mejejaitan (stitching/pinning leaf), Metanding (arranging offerings)',
+    localTerminology: 'Busung (young coconut leaf), Mejejaitan (pinning leaves), Metanding (arranging offerings)',
     imageUrl: JANUR_IMAGES.penjorBali,
-    imageCaption: 'Balinese Penjor poles lined with notched busung ornaments during Galungan.',
+    imageCaption: 'Balinese Penjor poles decorated with notched busung leaves during Galungan.',
     summary:
-      'In Bali, young coconut leaf—locally known as busung—forms the living grammar of daily spiritual practice and major temple festivals.',
+      'In Bali, young coconut leaves—called busung—are used every single day for family prayers and big temple festivals.',
     culturalContext:
-      'Unlike regions where janur appears mainly during annual holidays or weddings, Balinese communities craft busung ornaments daily. Intricate geometric cutouts (ringgitan), pinned with tiny bamboo needles (semat), form Canang Sari trays, multi-tiered Gebogan crowns, and towering Penjor poles for Galungan.',
+      'Unlike places where janur appears mostly on holidays or weddings, Balinese communities fold and pin busung daily. Neat cut patterns (ringgitan) pinned with tiny bamboo needles (semat) become Canang Sari flower trays and tall Penjor street poles.',
     verifiedHighlight:
-      'Balinese mejejaitan patterns preserve dozens of named traditional motifs, including lamak (long woven hanging banners) displayed at shrines.',
+      'Balinese families preserve dozens of named cutting patterns, including long woven Lamak banners hung on temple shrines.',
   },
   {
     id: 'central-java-yogya',
     regionName: 'Central Java & Yogyakarta',
     provinceOrIsland: 'Java Island',
     coordinates: { x: 356, y: 256 },
-    signatureCrafts: ['Kembar Mayang', 'Janur Kuning Archway', 'Ketupat Bawang'],
-    localTerminology: 'Janur kuning (yellow-green young frond), Kembar Mayang, Bakda Kupat',
+    signatureCrafts: ['Kembar Mayang', 'Janur Wedding Arch', 'Ketupat Bawang'],
+    localTerminology: 'Janur kuning (yellow-green young leaf), Kembar Mayang, Bakda Kupat',
     imageUrl: JANUR_IMAGES.kembarMayang,
-    imageCaption: 'Kembar Mayang arrangement crafted for Javanese traditional marriage rites.',
+    imageCaption: 'Kembar Mayang arrangement made for traditional Javanese weddings.',
     summary:
-      'Central Java and Yogyakarta unite refined court ceremonial sculpture with deeply rooted culinary and lifecycle customs.',
+      'Central Java and Yogyakarta blend detailed wedding sculptures with lively holiday food traditions.',
     culturalContext:
-      'A tall janur arch placed at a home entrance signals a wedding celebration to the community. Inside the ceremony, matched Kembar Mayang arrangements feature woven keris, umbrellas, birds, and fans. During Bakda Kupat (seven days after Eid al-Fitr), households weave and exchange ketupat.',
+      'A tall janur arch outside a house tells neighbors a wedding is taking place inside. During the ceremony, matched Kembar Mayang bouquets feature woven keris daggers, birds, and fans. A week after Eid, families weave and share ketupat for Bakda Kupat.',
     verifiedHighlight:
-      'Javanese oral philosophy links "kupat" to "ngaku lepat" (acknowledging one’s faults) and "laku papat" (four celebratory virtues).',
+      'Javanese tradition connects "kupat" to "ngaku lepat" (admitting mistakes) and "laku papat" (four holiday virtues).',
   },
   {
     id: 'west-java',
@@ -163,15 +163,15 @@ export const REGIONAL_TRADITIONS: RegionalTradition[] = [
     provinceOrIsland: 'Java Island',
     coordinates: { x: 288, y: 247 },
     signatureCrafts: ['Kupat Tanjung', 'Kupat Salamet', 'Lepet'],
-    localTerminology: 'Daun kalapa ngora (young coconut leaf), Kupat Tahu, Nganyam',
+    localTerminology: 'Daun kalapa ngora (young coconut leaf), Kupat Tahu, Nganyam (weaving)',
     imageUrl: JANUR_IMAGES.ketupatPlatter,
-    imageCaption: 'Woven kupat and tied lepet prepared with young coconut fronds.',
+    imageCaption: 'Woven kupat and tied lepet wrapped in young coconut leaves.',
     summary:
-      'Sundanese communities integrate janur weaving closely into culinary heritage and communal thanksgiving rituals (syukuran).',
+      'Sundanese communities in West Java use coconut-leaf weaving in popular street dishes and family thanksgiving meals.',
     culturalContext:
-      'West Java is renowned for regional culinary dishes built around woven coconut-leaf rice cakes, such as Kupat Tahu in Tasikmalaya and Garut, as well as Kupat Tanjung served alongside savory coconut-milk stews during family celebrations.',
+      'West Java is famous for dishes built around woven coconut-leaf rice cakes, such as Kupat Tahu in Tasikmalaya and Garut, plus Kupat Tanjung served with creamy coconut-milk stews at family celebrations.',
     verifiedHighlight:
-      'Sundanese lepet often incorporates black-eyed peas or peanuts inside rolled janur cylinders tied tightly with split bamboo.',
+      'Sundanese lepet rolls sticky rice with peanuts or black-eyed peas inside young coconut leaves tied with split bamboo.',
   },
   {
     id: 'east-java-madura',
@@ -179,15 +179,15 @@ export const REGIONAL_TRADITIONS: RegionalTradition[] = [
     provinceOrIsland: 'Java & Madura Islands',
     coordinates: { x: 400, y: 258 },
     signatureCrafts: ['Ketupat Luar', 'Kupatan Coastal Festivals', 'Ketupat Pasar'],
-    localTerminology: 'Topak (Madurese for ketupat), Kupatan',
+    localTerminology: 'Topak (Madurese word for ketupat), Kupatan',
     imageUrl: JANUR_IMAGES.ketupatWoven,
-    imageCaption: 'Freshly woven ketupat casings arranged on a bamboo tampah.',
+    imageCaption: 'Freshly woven ketupat pouches resting on a woven bamboo tray.',
     summary:
-      'Coastal East Java and Madura sustain vibrant communal Kupatan celebrations featuring distinctive multi-cornered ketupat weaves.',
+      'Coastal East Java and Madura host festive Kupatan celebrations featuring several multi-cornered ketupat shapes.',
     culturalContext:
-      'Across coastal towns from Gresik and Lamongan to Madura, Eid al-Fitr culminates in Kupatan week, where families gather and weave both standard square Ketupat Pasar and elongated or six-point Ketupat Luar casings.',
+      'From Gresik and Lamongan across to Madura Island, families weave both classic square Ketupat Pasar and pointed Ketupat Luar during Kupatan week.',
     verifiedHighlight:
-      'Madurese Topak Lodeh and Javanese Rujak Cingur or Soto traditions rely on tightly woven ketupat pouches to achieve a dense, sliceable rice texture.',
+      'Madurese Topak Lodeh and East Javanese Rujak Cingur depend on tightly woven ketupat for firm, sliceable rice cakes.',
   },
   {
     id: 'west-sumatra',
@@ -195,15 +195,15 @@ export const REGIONAL_TRADITIONS: RegionalTradition[] = [
     provinceOrIsland: 'Sumatra Island',
     coordinates: { x: 162, y: 170 },
     signatureCrafts: ['Katupek Pitalah', 'Katupek Gulai Kapau', 'Katupek Sayur'],
-    localTerminology: 'Katupek (Minangkabau for ketupat), Pucuak karambia (young coconut shoot)',
+    localTerminology: 'Katupek (Minangkabau word for ketupat), Pucuak karambia (young coconut shoot)',
     imageUrl: JANUR_IMAGES.janurPreparation,
-    imageCaption: 'Artisanal stripping of young coconut fronds prior to weaving katupek.',
+    imageCaption: 'Preparing young coconut fronds before weaving Minangkabau katupek.',
     summary:
-      'In Minangkabau culinary tradition, katupek woven from young coconut fronds is an everyday breakfast staple and ceremonial dish.',
+      'In West Sumatra, katupek woven from young coconut leaves is a beloved everyday breakfast food as well as a festive dish.',
     culturalContext:
-      'Unlike regions where ketupat is primarily seasonal, Minangkabau markets prepare woven katupek daily for dishes such as Katupek Pitalah and Katupek Gulai Kapau, pairing tender compressed rice with spiced jackfruit, fern shoots (pakis), and turmeric curry.',
+      'While some islands weave ketupat mainly for holidays, Minangkabau markets prepare katupek every morning for dishes like Katupek Pitalah and Katupek Gulai Kapau with spiced jackfruit and fern curry.',
     verifiedHighlight:
-      'Minangkabau woven katupek casings are prized for tight diagonal plaiting that yields soft yet firm rice blocks capable of soaking rich gulai broths.',
+      'Tight Minangkabau weaving produces tender rice cakes that soak up rich coconut curry without falling apart.',
   },
   {
     id: 'south-kalimantan',
@@ -213,13 +213,13 @@ export const REGIONAL_TRADITIONS: RegionalTradition[] = [
     signatureCrafts: ['Katupat Kandangan'],
     localTerminology: 'Katupat (Banjar), Daun nyiur anum (young coconut leaf)',
     imageUrl: JANUR_IMAGES.ketupatWoven,
-    imageCaption: 'Classic woven diamond casing central to South Kalimantan’s Katupat Kandangan.',
+    imageCaption: 'Classic woven diamond pouches used for South Kalimantan’s Katupat Kandangan.',
     summary:
-      'The Banjar tradition of Hulu Sungai Selatan elevates woven coconut-leaf rice cakes into one of Borneo’s signature cultural dishes.',
+      'The Banjar people of South Kalimantan turned woven coconut-leaf rice cakes into one of Borneo’s most famous dishes.',
     culturalContext:
-      'Katupat Kandangan uses traditionally woven young coconut-leaf pouches boiled until firm, then broken apart by hand in rich coconut-milk broth with smoked snakehead fish (haruan). Artisan weavers in Kandangan supply markets year-round.',
+      'Katupat Kandangan uses traditionally woven coconut-leaf pouches boiled until soft, then served in warm coconut-milk broth with grilled snakehead fish (haruan). Skilled weavers in Kandangan supply local eateries daily.',
     verifiedHighlight:
-      'The Banjar weaving community maintains rapid hand-plaiting rhythms capable of producing dozens of uniform katupat shells per hour.',
+      'Experienced Banjar weavers work so smoothly by hand that they can braid dozens of uniform katupat shells in an hour.',
   },
   {
     id: 'south-sulawesi',
@@ -227,15 +227,15 @@ export const REGIONAL_TRADITIONS: RegionalTradition[] = [
     provinceOrIsland: 'Sulawesi Island',
     coordinates: { x: 525, y: 196 },
     signatureCrafts: ['Lappa-lappa', 'Ketupat Bugis'],
-    localTerminology: 'Lappa-lappa (glutinous rice coconut-leaf wrap), Daun kaluku lolo',
+    localTerminology: 'Lappa-lappa (wrapped sticky rice), Daun kaluku lolo (young coconut leaf)',
     imageUrl: JANUR_IMAGES.ketupatPlatter,
-    imageCaption: 'Cylindrical wrapped leaf parcels and woven diamond rice pouches.',
+    imageCaption: 'Wrapped coconut-leaf rice rolls and woven diamond pouches.',
     summary:
-      'Bugis and Makassar communities combine woven diamond ketupat with slender wrapped lappa-lappa parcels for festive feasts.',
+      'Bugis and Makassar communities pair woven diamond ketupat with slender rolled lappa-lappa at feasts and family gatherings.',
     culturalContext:
-      'Alongside flat banana-leaf burasa, young coconut fronds are braided into slender cylindrical lappa-lappa and diamond ketupat pouches served with savory meat dishes such as Coto Makassar and Konro during Eid celebrations and family gatherings.',
+      'Young coconut leaves are wrapped in spirals around seasoned sticky rice to make lappa-lappa, then steamed and served alongside hearty stews like Coto Makassar and Konro.',
     verifiedHighlight:
-      'Lappa-lappa parcels use spiraled young coconut leaf strips secured with natural fiber ties to impart a subtle botanical aroma during steaming.',
+      'Steaming lappa-lappa inside young coconut leaves gives the sticky rice a gentle, natural palm fragrance.',
   },
 ];
 
@@ -243,55 +243,55 @@ export const REFERENCE_SOURCES: ReferenceSource[] = [
   {
     id: 'ref-kemendikbud-wbtb',
     title: 'Warisan Budaya Takbenda Indonesia (Intangible Cultural Heritage Registry)',
-    institutionOrAuthor: 'Ministry of Education, Culture, Research, and Technology of the Republic of Indonesia (Kemendikbudristek)',
+    institutionOrAuthor: 'Ministry of Education, Culture, Research, and Technology of Indonesia',
     category: 'Government & Heritage',
     description:
-      'Official national cultural inventory documenting regional Indonesian craft practices, including Balinese mejejaitan/penjor traditions, Javanese wedding rituals, and traditional culinary heritage such as Katupat Kandangan.',
+      'Official national cultural database documenting Indonesian traditions including Balinese offerings, Javanese wedding crafts, and regional dishes like Katupat Kandangan.',
     url: 'https://warisanbudaya.kemdikbud.go.id/',
   },
   {
     id: 'ref-kbbi',
     title: 'Kamus Besar Bahasa Indonesia (KBBI) — Entries: Janur, Ketupat, Lidi, Penjor',
-    institutionOrAuthor: 'Badan Pengembangan dan Pembinaan Bahasa, Kemendikbudristek',
+    institutionOrAuthor: 'Indonesian Language Development Agency (Badan Bahasa)',
     category: 'Government & Heritage',
     description:
-      'Authoritative Indonesian language dictionary defining botanical and cultural craft terminology including janur (daun kelapa muda), lidi, ketupat, kembar mayang, and penjor.',
+      'Official Indonesian dictionary defining craft words including janur, lidi, ketupat, kembar mayang, and penjor.',
     url: 'https://kbbi.kemdikbud.go.id/',
   },
   {
     id: 'ref-isi-denpasar',
-    title: 'Estetika Seni Rupa dan Kerajinan Jejaitan Janur di Bali',
-    institutionOrAuthor: 'Institut Seni Indonesia (ISI) Denpasar — Academic Art & Design Publications',
+    title: 'Balinese Janur Weaving Art & Aesthetics (Jejaitan Busung)',
+    institutionOrAuthor: 'Indonesian Institute of the Arts (ISI) Denpasar',
     category: 'Academic & Botanical',
     description:
-      'Scholarly documentation on Balinese busung/janur cutting techniques (ringgitan), structural assembly (mejejaitan), and symbolic motifs in Hindu ceremonial art.',
+      'Art school research explaining Balinese leaf-cutting motifs (ringgitan), pinning techniques (mejejaitan), and ceremonial symbols.',
     url: 'https://repo.isi-dps.ac.id/',
   },
   {
     id: 'ref-ugm-java',
-    title: 'Makna Simbolik Kembar Mayang dan Tradisi Kupatan dalam Budaya Jawa',
-    institutionOrAuthor: 'Universitas Gadjah Mada (UGM) Cultural Studies & Ethnography Repository',
+    title: 'Symbolism of Kembar Mayang and Kupatan Traditions in Java',
+    institutionOrAuthor: 'Universitas Gadjah Mada (UGM) Cultural Studies Repository',
     category: 'Academic & Botanical',
     description:
-      'Ethnographic research analyzing Javanese wedding iconography, Kembar Mayang construction, and the historical evolution of Bakda Kupat across Central and East Java.',
+      'Cultural studies documenting Javanese wedding decorations, Kembar Mayang meanings, and Bakda Kupat celebrations.',
     url: 'https://etd.repository.ugm.ac.id/',
   },
   {
     id: 'ref-museum-nasional',
-    title: 'Museum Nasional Indonesia — Ethnographic Fiber & Basketry Collections',
-    institutionOrAuthor: 'Museum Nasional Indonesia (Jakarta)',
+    title: 'Museum Nasional Indonesia — Traditional Plant-Fiber & Basketry Collections',
+    institutionOrAuthor: 'National Museum of Indonesia (Jakarta)',
     category: 'Cultural Archive',
     description:
-      'National curatorial archive preserving Nusantara woven plant-fiber traditions, regional ceremonial vessels, and ethnographic documentation.',
+      'National museum preserving Indonesian woven plant-fiber traditions and ethnographic craft records.',
     url: 'https://www.museumnasional.or.id/',
   },
   {
     id: 'ref-brin-ethnobotany',
-    title: 'Ethnobotanical Utilization of Cocos nucifera in Indonesian Traditional Crafts',
-    institutionOrAuthor: 'National Research and Innovation Agency (BRIN) — Research Center for Biology & Ethnobotany',
+    title: 'Traditional Uses of Coconut Palm (Cocos nucifera) in Indonesian Crafts',
+    institutionOrAuthor: 'National Research and Innovation Agency (BRIN)',
     category: 'Academic & Botanical',
     description:
-      'Botanical and sustainability research documenting non-timber palm frond harvesting, biodegradable plant-fiber mechanics, and zero-waste agroforestry across Indonesia.',
+      'Plant and sustainability research documenting eco-friendly coconut-frond harvesting and zero-waste craft practices.',
     url: 'https://www.brin.go.id/',
   },
 ];

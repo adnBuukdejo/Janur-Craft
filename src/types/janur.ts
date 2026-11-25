@@ -74,11 +74,32 @@ export interface RegionalTradition {
   verifiedHighlight: string;
 }
 
+export type StepVisualType =
+  | 'strip-lidi'
+  | 'coil-three'
+  | 'weave-cross'
+  | 'wrap-tails'
+  | 'tuck-tips'
+  | 'tighten-ketupat'
+  | 'trim-petal'
+  | 'notch-edge'
+  | 'pleat-fan'
+  | 'pin-rosette'
+  | 'cross-knot'
+  | 'box-braid'
+  | 'fold-legs'
+  | 'curl-antennae'
+  | 'wrap-hilt'
+  | 'crossguard'
+  | 'zig-blade'
+  | 'lock-tip';
+
 export interface TutorialStep {
   stepNumber: number;
   title: string;
   instruction: string;
   tip?: string;
+  visualType: StepVisualType;
 }
 
 export interface CraftTutorial {
@@ -91,10 +112,14 @@ export interface CraftTutorial {
   imageUrl: string;
   diagramType: 'ketupat' | 'sampian' | 'grasshopper' | 'keris';
   summary: string;
-  materials: string[];
-  tools: string[];
+  whatYouNeed: {
+    materials: string[];
+    tools: string[];
+  };
+  beforeYouStart: string[];
   steps: TutorialStep[];
-  culturalUse: string;
+  visualGuideCaption: string;
+  finishedCraftNote: string;
 }
 
 export interface QuizQuestion {

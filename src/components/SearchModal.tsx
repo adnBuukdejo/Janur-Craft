@@ -15,7 +15,7 @@ interface SearchRecord {
   id: string;
   title: string;
   subtitle: string;
-  kind: 'Education' | 'Gallery' | 'Region' | 'Tutorial' | '3D Studio';
+  kind: 'Learn' | 'Gallery' | 'Region' | 'Tutorial' | 'Craft Studio';
   page: PageId;
   anchorId?: string;
   extraId?: string;
@@ -50,16 +50,16 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     const list: SearchRecord[] = [
       {
         id: 'studio-ketupat',
-        title: 'Guided 3D Ketupat Weaving Studio',
-        subtitle: 'Interactive 6-stage Three.js simulation of material prep, coiling, weaving & shaping',
-        kind: '3D Studio',
+        title: 'Interactive Drag-and-Drop Ketupat Craft Studio',
+        subtitle: 'Hands-on workspace: split a coconut leaf, rotate strips, weave over & under, and tighten a ketupat',
+        kind: 'Craft Studio',
         page: 'studio',
-        searchBlob: '3d studio ketupat weaving simulation interactive stages orbit zoom',
+        searchBlob: 'craft studio ketupat weaving drag drop interactive steps rotate over under',
       },
       {
         id: 'cultural-map',
         title: 'Indonesian Cultural Map of Janur Traditions',
-        subtitle: 'Explore documented traditions across Bali, Java, Sumatra, Kalimantan & Sulawesi',
+        subtitle: 'Click around Bali, Java, Sumatra, Kalimantan & Sulawesi to see local crafts',
         kind: 'Region',
         page: 'explore',
         anchorId: 'cultural-map',
@@ -68,11 +68,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       {
         id: 'knowledge-quiz',
         title: 'Craft Knowledge Quiz',
-        subtitle: '8-question assessment covering botany, cultural symbolism & weaving craft',
-        kind: 'Education',
+        subtitle: '8 fun questions about janur leaves, traditions, and weaving skills',
+        kind: 'Learn',
         page: 'explore',
         anchorId: 'craft-quiz',
-        searchBlob: 'quiz test questions score craft knowledge assessment',
+        searchBlob: 'quiz test questions score craft knowledge',
       },
     ];
 
@@ -85,7 +85,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         id: `edu-${sec.id}`,
         title: `${sec.number}. ${sec.title}`,
         subtitle: sec.subtitle,
-        kind: 'Education',
+        kind: 'Learn',
         page: 'explore',
         anchorId: sec.id,
         searchBlob: `${sec.title} ${sec.subtitle} ${sec.leadParagraph} ${termsText} ${subsText}`.toLowerCase(),
@@ -125,7 +125,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         kind: 'Tutorial',
         page: 'tutorials',
         extraId: tut.id,
-        searchBlob: `${tut.title} ${tut.indonesianTitle} ${tut.summary} ${tut.materials.join(' ')} ${tut.tools.join(' ')}`.toLowerCase(),
+        searchBlob: `${tut.title} ${tut.indonesianTitle} ${tut.summary} ${tut.whatYouNeed.materials.join(' ')} ${tut.whatYouNeed.tools.join(' ')}`.toLowerCase(),
       });
     });
 
@@ -147,57 +147,57 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   const getKindIcon = (kind: SearchRecord['kind']) => {
     switch (kind) {
-      case 'Education':
-        return <BookOpen className="w-4 h-4 text-[#1E4D38]" />;
+      case 'Learn':
+        return <BookOpen className="w-4 h-4 text-[#17422B]" />;
       case 'Gallery':
-        return <ImageIcon className="w-4 h-4 text-[#1E4D38]" />;
+        return <ImageIcon className="w-4 h-4 text-[#17422B]" />;
       case 'Region':
-        return <Compass className="w-4 h-4 text-[#1E4D38]" />;
+        return <Compass className="w-4 h-4 text-[#17422B]" />;
       case 'Tutorial':
-        return <Wrench className="w-4 h-4 text-[#1E4D38]" />;
-      case '3D Studio':
-        return <Sparkles className="w-4 h-4 text-[#1E4D38]" />;
+        return <Wrench className="w-4 h-4 text-[#17422B]" />;
+      case 'Craft Studio':
+        return <Sparkles className="w-4 h-4 text-[#17422B]" />;
     }
   };
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-[#1E241E]/55 px-4 pt-16 sm:pt-24 pb-8"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-[#15221B]/55 px-4 pt-16 sm:pt-24 pb-8"
       role="dialog"
       aria-modal="true"
-      aria-label="Global archive search"
+      aria-label="Global website search"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl bg-[#FBF9F5] border border-[#DCD5C5] rounded-xl shadow-2xl overflow-hidden"
+        className="w-full max-w-2xl bg-[#F7FAF6] border border-[#C3D6C1] rounded-xl shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-[#DCD5C5] bg-[#F3EFE6]">
-          <Search className="w-4 h-4 text-[#525B50] shrink-0" />
+        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-[#C3D6C1] bg-[#EDF4EC]">
+          <Search className="w-4 h-4 text-[#3A7D44] shrink-0" />
           <input
             ref={inputRef}
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search 13 chapters, ketupat, penjor, Bali, tutorials, lidi..."
-            className="w-full bg-transparent text-sm text-[#1E241E] placeholder-[#525B50] focus:outline-none"
+            placeholder="Search topics, ketupat, penjor, Bali, tutorials, lidi..."
+            className="w-full bg-transparent text-sm text-[#15221B] placeholder-[#455B4E] focus:outline-none"
           />
           <button
             type="button"
             onClick={onClose}
-            className="p-2 rounded-lg text-[#525B50] hover:text-[#1E241E] hover:bg-[#E8E2D5] transition-colors cursor-pointer"
+            className="p-2 rounded-lg text-[#455B4E] hover:text-[#15221B] hover:bg-[#DCEAD9] transition-colors cursor-pointer"
             aria-label="Close search"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="max-h-[60vh] overflow-y-auto divide-y divide-[#E8E2D5]">
+        <div className="max-h-[60vh] overflow-y-auto divide-y divide-[#DCEAD9]">
           {results.length === 0 ? (
             <div className="px-6 py-10 text-center">
-              <p className="font-serif text-xl text-[#1E241E] mb-1">No matching archive entries</p>
-              <p className="text-sm text-[#525B50]">
-                Try searching for terms such as &ldquo;ketupat&rdquo;, &ldquo;Bali&rdquo;, &ldquo;lidi&rdquo;, &ldquo;Kembar Mayang&rdquo;, or &ldquo;sustainability&rdquo;.
+              <p className="font-serif text-xl text-[#15221B] mb-1">No matching results found</p>
+              <p className="text-sm text-[#455B4E]">
+                Try searching for words like &ldquo;ketupat&rdquo;, &ldquo;Bali&rdquo;, &ldquo;lidi&rdquo;, &ldquo;Kembar Mayang&rdquo;, or &ldquo;sustainability&rdquo;.
               </p>
             </div>
           ) : (
@@ -209,21 +209,21 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                   onNavigate(rec.page, rec.anchorId, rec.extraId);
                   onClose();
                 }}
-                className="w-full text-left px-5 py-3.5 hover:bg-[#F3EFE6] transition-colors flex items-center justify-between gap-4 cursor-pointer"
+                className="w-full text-left px-5 py-3.5 hover:bg-[#EDF4EC] transition-colors flex items-center justify-between gap-4 cursor-pointer"
               >
                 <div className="flex items-start gap-3 min-w-0">
-                  <div className="mt-0.5 p-2 rounded-lg bg-[#E3EAE1] shrink-0">
+                  <div className="mt-0.5 p-2 rounded-lg bg-[#DCEAD9] shrink-0">
                     {getKindIcon(rec.kind)}
                   </div>
                   <div className="min-w-0">
-                    <div className="flex items-center gap-2 text-xs text-[#525B50] mb-0.5">
-                      <span className="font-medium text-[#1E4D38]">{rec.kind}</span>
+                    <div className="flex items-center gap-2 text-xs text-[#455B4E] mb-0.5">
+                      <span className="font-medium text-[#3A7D44]">{rec.kind}</span>
                     </div>
-                    <p className="text-sm font-semibold text-[#1E241E] truncate">{rec.title}</p>
-                    <p className="text-xs text-[#525B50] line-clamp-1">{rec.subtitle}</p>
+                    <p className="text-sm font-semibold text-[#15221B] truncate">{rec.title}</p>
+                    <p className="text-xs text-[#455B4E] line-clamp-1">{rec.subtitle}</p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-[#525B50] shrink-0" />
+                <ArrowRight className="w-4 h-4 text-[#455B4E] shrink-0" />
               </button>
             ))
           )}

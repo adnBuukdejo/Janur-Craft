@@ -19,12 +19,12 @@ export const ResilientImage: React.FC<ResilientImageProps> = ({
   if (hasError || !src) {
     return (
       <div
-        className={`flex flex-col items-center justify-center bg-[#E3EAE1] text-[#1E4D38] p-6 text-center ${className}`}
+        className={`flex flex-col items-center justify-center bg-[#DCEAD9] text-[#17422B] p-6 text-center ${className}`}
         role="img"
         aria-label={alt}
       >
-        <Leaf className="w-8 h-8 mb-2 opacity-70" strokeWidth={1.5} />
-        <span className="font-serif text-base font-medium text-[#1E241E]">
+        <Leaf className="w-8 h-8 mb-2 opacity-75" strokeWidth={1.5} />
+        <span className="font-serif text-base font-medium text-[#15221B]">
           {fallbackTitle || alt}
         </span>
       </div>

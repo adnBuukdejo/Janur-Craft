@@ -4,113 +4,142 @@ import { JANUR_IMAGES } from './images';
 export const CRAFT_TUTORIALS: CraftTutorial[] = [
   {
     id: 'ketupat-bawang',
-    title: 'Weaving a Classic Ketupat Bawang',
-    indonesianTitle: 'Anyaman Ketupat Bawang',
+    title: 'How to Weave a Classic Ketupat',
+    indonesianTitle: 'Ketupat Bawang',
     level: 'Beginner',
     duration: '15–20 mins',
-    leafCount: '2 stripped janur blades (1 frond leaflet pair)',
+    leafCount: '2 young coconut leaf strips',
     imageUrl: JANUR_IMAGES.ketupatWoven,
     diagramType: 'ketupat',
     summary:
-      'Learn the foundational interlocking six-corner diamond weave used across Indonesia to cook compressed rice cakes without glue or fasteners.',
-    materials: [
-      '2 fresh, supple young coconut leaf strips (~70–90 cm long, 2.5–3 cm wide)',
-      'Damp cotton cloth to keep strips pliable while practicing',
-    ],
-    tools: [
-      'Small sharp paring knife (pisau raut) for stripping the central lidi',
-      'Bowl of cool water for lightly misting dry fronds',
+      'Learn how to weave two young coconut leaf strips into Indonesia’s famous six-corner diamond rice pouch—no glue or tape needed!',
+    whatYouNeed: {
+      materials: [
+        '1 fresh young coconut leaflet (gives 2 soft green leaf strips, about 70–90 cm long)',
+        'Or 2 strips of 2.5 cm wide gift ribbon or flexible paper if coconut leaves are not nearby',
+      ],
+      tools: [
+        '1 small paring knife or kitchen scissors (to remove the woody center stick)',
+        'A damp cloth or small bowl of water to keep leaves soft',
+      ],
+    },
+    beforeYouStart: [
+      'Gently wipe the leaf with a damp cloth so it bends smoothly without cracking.',
+      'Work slowly and keep your loops loose at first—you will pull everything tight at the very end.',
+      'Hold Strip A in your left hand and Strip B in your right hand so you do not mix them up.',
     ],
     steps: [
       {
         stepNumber: 1,
-        title: 'Strip the Central Midrib (Menyeset)',
+        title: 'Remove the Center Stick (Lidi)',
         instruction:
-          'Hold the base of a young coconut leaflet and gently slice along both sides of the central wooden rib (lidi) to separate it into two clean, flexible ribbon strands.',
-        tip: 'Keep the blade angled slightly toward the woody rib so the green leaf lamina remains at full width.',
+          'Hold the bottom of one coconut leaflet and slide your small knife gently along both sides of the woody middle stick (lidi). This separates the leaf into two smooth green strips.',
+        tip: 'Keep the woody lidi sticks—in Indonesia, people tie them together to make brooms!',
+        visualType: 'strip-lidi',
       },
       {
         stepNumber: 2,
-        title: 'Coil Three Spiral Loops on Each Hand',
+        title: 'Make 3 Loops on Each Hand',
         instruction:
-          'Wrap Strand A three times around your left hand with the thick base stem pointing upward. Wrap Strand B three times around your right hand with its base stem pointing downward.',
-        tip: 'Leave the coils loose enough to slide strands smoothly between loops—tightening comes at the end.',
+          'Wrap Strip A three times around your left hand with the thick base pointing UP. Wrap Strip B three times around your right hand with the thick base pointing DOWN.',
+        tip: 'Leave finger space between each loop so the other strip can slide through easily.',
+        visualType: 'coil-three',
       },
       {
         stepNumber: 3,
-        title: 'Interlock the Opposing Coils',
+        title: 'Weave Over and Under',
         instruction:
-          'Pass the three loops of Strand B horizontally through the three loops of Strand A using a strict alternating pattern: Over–Under–Over on the first ring, Under–Over–Under on the second, and Over–Under–Over on the third.',
+          'Slide the three loops of Strip B across the three loops of Strip A in an alternating pattern: Go Over–Under–Over on the first row, Under–Over–Under on the second, and Over–Under–Over on the third.',
+        tip: 'Double-check that no two rows go over the exact same way!',
+        visualType: 'weave-cross',
       },
       {
         stepNumber: 4,
-        title: 'Wrap the Base Tails Around the Equator',
+        title: 'Wrap the Thick Base Ends Around the Sides',
         instruction:
-          'Fold each protruding thick base stem 90 degrees and weave it through the side gaps around the perimeter until the two base stems meet at the bottom point.',
+          'Take each thick base end, fold it 90 degrees around the side edge, and weave it through the open loops until both thick ends meet at the bottom corner.',
+        visualType: 'wrap-tails',
       },
       {
         stepNumber: 5,
-        title: 'Fold the Tapered Tips to Seal the Crown',
+        title: 'Tuck the Thin Tips Into the Top',
         instruction:
-          'Trace the thin tapered leaf tips along the remaining diamond faces, tucking them under the crossing ribs until they exit together at the top point.',
+          'Guide the two thin, pointed leaf tips along the remaining open sides and tuck them neatly under the crossing bands until they meet at the top corner.',
+        visualType: 'tuck-tips',
       },
       {
         stepNumber: 6,
-        title: 'Tighten Progressively (Merapatkan)',
+        title: 'Pull Snug to Finish the Diamond',
         instruction:
-          'Pull each leaf strand gently along its weave path from center to tip, closing every gap so raw rice grains cannot escape during boiling.',
+          'Gently tug each leaf strip from the middle outward toward the ends until all gaps close and the woven pouch forms a firm, puffy diamond shape.',
+        visualType: 'tighten-ketupat',
       },
     ],
-    culturalUse:
-      'Served during Eid al-Fitr (Bakda Kupat), regional harvest feasts, and classic Indonesian dishes such as Ketupat Sayur, Kupat Tahu, and Katupat Kandangan.',
+    visualGuideCaption:
+      'Visual Guide: Two opposing 3-loop coils interlace into a 3×3 grid, then fold around into a sealed 6-corner diamond pouch.',
+    finishedCraftNote:
+      'Your finished Ketupat Bawang is hollow inside and completely sealed by friction! In Indonesian kitchens, cooks fill it two-thirds with raw rice through a tiny corner gap before boiling it into firm rice cakes.',
   },
   {
     id: 'sampian-rosette',
-    title: 'Pleated Sampian Rosette',
+    title: 'Pleated Flower Crown (Sampian)',
     indonesianTitle: 'Sampian Uras / Bunga Janur',
     level: 'Beginner',
     duration: '12–15 mins',
-    leafCount: '4–6 trimmed janur strips (~25 cm each)',
+    leafCount: '4 to 6 short leaf strips',
     imageUrl: JANUR_IMAGES.canangOfferings,
     diagramType: 'sampian',
     summary:
-      'Create the radiating pleated coconut-leaf rosette crown found atop Balinese Canang Sari offerings and decorative table settings.',
-    materials: [
-      '4 to 6 fresh pale-ivory young coconut leaf halves',
-      '4–6 slender bamboo or coconut-midrib pins (semat, ~2 cm each)',
-    ],
-    tools: [
-      'Small curved craft knife (mutik / pisau kecil)',
-      'Scissors for optional decorative scalloped edge notches',
+      'Make the bright star-shaped coconut-leaf flower crown seen on top of Balinese Canang Sari offerings and party tables.',
+    whatYouNeed: {
+      materials: [
+        '4 to 6 stripped young coconut leaf pieces (about 25 cm long each)',
+        '4 to 6 short toothpicks or thin bamboo pins (semat)',
+      ],
+      tools: [
+        'Craft scissors or a small rounded knife',
+        'Damp towel to keep petals fresh',
+      ],
+    },
+    beforeYouStart: [
+      'Trim all leaf pieces to the same 25 cm length so your flower circle stays even.',
+      'Be careful when pushing bamboo pins or toothpicks through overlapping corners.',
     ],
     steps: [
       {
         stepNumber: 1,
-        title: 'Trim & Taper the Leaf Segments',
+        title: 'Cut Pointed Petal Ends',
         instruction:
-          'Cut stripped janur blades into equal 25 cm lengths and bevel each end into a clean pointed petal tip.',
+          'Trim both ends of each 25 cm leaf strip at an angle so every strip ends in neat pointed tips.',
+        visualType: 'trim-petal',
       },
       {
         stepNumber: 2,
-        title: 'Notch Decorative Edge Ridges (Ringgitan)',
+        title: 'Snip Decorative Edge Notches',
         instruction:
-          'Cut small rhythmic triangular notches or sweeping curves along one long edge of each strip to create lace-like petal texture.',
+          'Cut small, even V-shapes or wavy curves along one long edge of each strip to give the petals a lacy border.',
+        tip: 'Practice cutting simple triangles first before trying curved waves.',
+        visualType: 'notch-edge',
       },
       {
         stepNumber: 3,
-        title: 'Accordion-Pleat Each Strip',
+        title: 'Fold Like an Accordion Fan',
         instruction:
-          'Fold each notched strip in crisp alternating pleats, radiating outward from a tight center crease like a folding fan.',
+          'Fold each notched strip back and forth in crisp pleats from a tight base so it opens outward like a small hand fan.',
+        visualType: 'pleat-fan',
       },
       {
         stepNumber: 4,
-        title: 'Pin Into a Circular Rosette',
+        title: 'Pin Into a Full Flower Circle',
         instruction:
-          'Join four pleated fans edge-to-edge in a circle and stitch their inner bases securely together with slender semat midrib pins.',
+          'Line up four folded fans in a circle with their wide edges facing out, then pin their centers together using your bamboo pins or toothpicks.',
+        visualType: 'pin-rosette',
       },
     ],
-    culturalUse:
-      'Used as the ornamental crown on Balinese ceremonial offering trays and adapted today as biodegradable floral table rosettes.',
+    visualGuideCaption:
+      'Visual Guide: Notched leaf strips fold into four radial fans and pin together at the center to create a blooming rosette.',
+    finishedCraftNote:
+      'Place a fresh flower in the center of your Sampian rosette! In Bali, this crown sits on top of square leaf trays as a joyful daily offering.',
   },
   {
     id: 'belalang-janur',
@@ -118,186 +147,214 @@ export const CRAFT_TUTORIALS: CraftTutorial[] = [
     indonesianTitle: 'Belalang Janur (Walang)',
     level: 'Intermediate',
     duration: '15 mins',
-    leafCount: '2 stripped janur blades + 1 thin lidi segment',
+    leafCount: '2 leaf strips + 1 center stick',
     imageUrl: JANUR_IMAGES.heroExhibition,
     diagramType: 'grasshopper',
     summary:
-      'Craft an iconic Indonesian folk toy and table ornament featuring a segmented woven body, folded antennae, and springy arched legs.',
-    materials: [
-      '2 supple young coconut leaf blades stripped from the lidi',
-      '1 thin lidi rib saved for internal spine support',
+      'Fold two soft green coconut-leaf strips into a cute Indonesian folk toy grasshopper with folded jumping legs and curved antennae.',
+    whatYouNeed: {
+      materials: [
+        '2 long stripped young coconut leaf blades (around 75 cm)',
+        '1 thin piece of leftover lidi stick for spine support (optional)',
+      ],
+      tools: [
+        'Small scissors to split the thin tip strands for legs and antennae',
+      ],
+    },
+    beforeYouStart: [
+      'Choose fresh, bendy leaves—dry leaves can snap when making tight leg bends.',
+      'Work over a clean table so you can see both strips clearly.',
     ],
-    tools: ['Small craft knife or scissors', 'Damp cloth for softening tips'],
     steps: [
       {
         stepNumber: 1,
-        title: 'Form the Crossed Starter Knot',
+        title: 'Make a Crossed Starter Knot',
         instruction:
-          'Cross two equal leaf ribbons at a 90-degree angle near their bases and fold each over the other to lock a small square head.',
+          'Cross two leaf strips at a 90-degree angle near their thick ends and fold each strip over the other once to lock a small square head.',
+        visualType: 'cross-knot',
       },
       {
         stepNumber: 2,
-        title: 'Plait the Segmented Thorax & Abdomen',
+        title: 'Braid the Segmented Body',
         instruction:
-          'Alternately fold the two ribbons over each other in a tight rectangular box-braid (anyaman lilit) for 6–8 segments, tapering slightly toward the tail.',
+          'Keep folding the two strips back and forth over one another in a tight square box-braid for 6 to 8 steps to build the grasshopper’s body.',
+        tip: 'Pull gently after each fold so the body segments look neat and even.',
+        visualType: 'box-braid',
       },
       {
         stepNumber: 3,
-        title: 'Fold Back Hind Legs & Wings',
+        title: 'Fold the Hind Jumping Legs',
         instruction:
-          'Split the remaining thin tip strands diagonally: crease two segments into sharp V-shaped hind legs and tuck two flat blades along the back as wings.',
+          'Take two side strands near the back, pinch sharp V-bends pointing upward and back down to create springy grasshopper legs, and lay two strips flat as wings.',
+        visualType: 'fold-legs',
       },
       {
         stepNumber: 4,
-        title: 'Shape the Antennae',
+        title: 'Curl the Long Antennae',
         instruction:
-          'Pull two narrow sliver strips from the head knot and curl them gently between thumb and blade edge for delicate curved antennae.',
+          'Snip two narrow slivers at the head and gently pull them over the dull edge of scissors or your thumb to make graceful curved antennae.',
+        visualType: 'curl-antennae',
       },
     ],
-    culturalUse:
-      'Traditionally woven by elders to delight children at village markets and festivals, and featured in Javanese Kembar Mayang or modern botanical displays.',
+    visualGuideCaption:
+      'Visual Guide: A tight square box-braid forms the segmented body, while split tips fold into sharp V-shaped legs and curled antennae.',
+    finishedCraftNote:
+      'Your woven grasshopper can sit on potted plants, party napkins, or gift boxes—it is one of Indonesia’s favorite handmade street-market toys!',
   },
   {
     id: 'keris-janur',
-    title: 'Ceremonial Woven Keris Ornament',
+    title: 'Woven Ceremonial Keris Ornament',
     indonesianTitle: 'Keris-Kerisan Janur',
     level: 'Advanced',
     duration: '25–30 mins',
-    leafCount: '4 stripped janur blades + 1 sturdy lidi core',
+    leafCount: '4 long leaf strips + 1 strong center stick',
     imageUrl: JANUR_IMAGES.kembarMayang,
     diagramType: 'keris',
     summary:
-      'Construct the sinuous, wave-edged ceremonial dagger silhouette featured inside Javanese Kembar Mayang wedding arrangements.',
-    materials: [
-      '4 long, unblemished young coconut leaf blades (min. 80 cm)',
-      '1 full-length straight lidi midrib to form the central rigid spine',
-    ],
-    tools: [
-      'Precision craft blade',
-      'Small bamboo semat pins to anchor the crossguard (warangka)',
+      'Build the traditional wavy-bladed dagger ornament featured inside Javanese Kembar Mayang wedding bouquets.',
+    whatYouNeed: {
+      materials: [
+        '4 long, smooth young coconut leaf strips (at least 80 cm long)',
+        '1 full-length straight lidi stick to act as the stiff inner spine',
+      ],
+      tools: [
+        'Small craft knife or scissors',
+        '2 tiny bamboo pins (semat) to hold the curved handle guard',
+      ],
+    },
+    beforeYouStart: [
+      'Pick a straight, unbroken lidi stick so your dagger stands tall without bending.',
+      'Take your time on the wavy blade—shifting left and right evenly creates the classic silhouette.',
     ],
     steps: [
       {
         stepNumber: 1,
-        title: 'Anchor Four Strands Around the Lidi Spine',
+        title: 'Wrap the Handle Around the Stick',
         instruction:
-          'Bind four stripped blades around one end of the lidi core using a tight spiral wrap to form the sculpted hilt (ukiran).',
+          'Gather four leaf strips around the bottom end of your lidi stick and wrap them tightly in a neat spiral to form the handle.',
+        visualType: 'wrap-hilt',
       },
       {
         stepNumber: 2,
-        title: 'Fold the Crossguard Wings',
+        title: 'Shape the Curved Crossguard',
         instruction:
-          'Extend two opposing horizontal loops below the hilt and pin them in subtle upward curves to form the classic boat-shaped keris crossguard.',
+          'Loop two leaf strips out to the left and right just above the handle, curve them gently upward, and pin them in place.',
+        visualType: 'crossguard',
       },
       {
         stepNumber: 3,
-        title: 'Weave the Undulating Blade (Luk)',
+        title: 'Weave the Wavy Blade',
         instruction:
-          'Plait the blades down the lidi spine in alternating diagonal zigzags—shifting tension left and right every two turns to create traditional sinuous waves (luk).',
+          'Braid the strips up along the lidi stick in alternating diagonal zigzags—leaning two folds left, then two folds right—to create smooth waves.',
+        tip: 'Keep the braid snug around the center stick so the waves hold their shape.',
+        visualType: 'zig-blade',
       },
       {
         stepNumber: 4,
-        title: 'Lock the Tapered Tip',
+        title: 'Lock and Trim the Pointed Tip',
         instruction:
-          'Tuck the final narrow ends tightly around the tip of the lidi core and trim cleanly at a sharp diagonal point.',
+          'Tuck the final narrow leaf ends tightly beneath the top fold and trim cleanly into a sharp point.',
+        visualType: 'lock-tip',
       },
     ],
-    culturalUse:
-      'A quintessential component of Javanese Kembar Mayang wedding bouquets, symbolizing courage, moral discernment, and guardianship.',
+    visualGuideCaption:
+      'Visual Guide: Four leaf strips braid in alternating left-right waves around a rigid central lidi stick.',
+    finishedCraftNote:
+      'Traditional Javanese wedding crafters place pairs of these woven keris ornaments inside Kembar Mayang bouquets to symbolize courage and good judgment.',
   },
 ];
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 'q1',
-    topic: 'Botany & Terminology',
-    question: 'What natural botanical material is "janur" harvested from?',
+    topic: 'Janur Basics',
+    question: 'What is "janur" made from?',
     options: [
       'Mature dried banana leaves',
-      'Young, unfurled pale yellow-green leaves of the coconut palm (Cocos nucifera)',
-      'Split young bamboo shoots',
-      'Wild riverside pandan reeds',
+      'Young, newly opened pale yellow-green coconut palm leaves',
+      'Split bamboo shoots',
+      'Painted paper ribbons',
     ],
     correctIndex: 1,
     explanation:
-      'Janur refers specifically to the young, unopened frond of the coconut palm (Cocos nucifera). Because it has not yet darkened in full sunlight, it retains a luminous pale yellow-to-sage hue and high flexibility ideal for folding and weaving.',
+      'Janur is the young, unopened leaf of the coconut palm. Because it has not turned dark green in the sun yet, it is soft, pale yellow-green, and easy to fold without cracking.',
   },
   {
     id: 'q2',
-    topic: 'Craft Anatomy',
-    question: 'When preparing a coconut leaflet for weaving ketupat, what is the central woody spine called that is stripped away with a knife?',
+    topic: 'Leaf Parts',
+    question: 'What do Indonesians call the thin woody stick in the middle of a coconut leaflet that is removed before weaving?',
     options: ['Semat', 'Lidi', 'Sampian', 'Gedebog'],
     correctIndex: 1,
     explanation:
-      'The rigid central midrib of a coconut leaflet is called the lidi. Artisans strip the twin leaf blades off the lidi (a process called menyeset) and repurpose the lidi into traditional brooms (sapu lidi) or fastening pins.',
+      'That stiff center stick is called the lidi! Crafters slice the soft green blades off the lidi before weaving, and save the lidi sticks to make sweeping brooms (sapu lidi) or tiny pins.',
   },
   {
     id: 'q3',
-    topic: 'Regional Heritage — Bali',
-    question: 'In Bali, tall curved bamboo poles adorned with intricate hanging janur (busung) ornaments during Galungan are known as:',
+    topic: 'Bali Heritage',
+    question: 'In Bali, what are the tall, curved bamboo poles decorated with woven young coconut leaves along streets during Galungan called?',
     options: ['Kembar Mayang', 'Penjor', 'Lepet', 'Lappa-lappa'],
     correctIndex: 1,
     explanation:
-      'A Penjor is a tall, gracefully curved bamboo pole decorated with woven young coconut leaves (busung), agricultural produce, and hanging sampian pendants erected along Balinese streets for Galungan and temple ceremonies.',
+      'They are called Penjor! Families put them up along village roads to give thanks for harvest abundance and celebrate Galungan.',
   },
   {
     id: 'q4',
-    topic: 'Regional Heritage — Java',
-    question: 'Which paired ceremonial janur arrangement, featuring woven keris daggers, fans, and birds, is carried during traditional Javanese weddings?',
+    topic: 'Javanese Weddings',
+    question: 'Which matching pair of woven janur bouquets, decorated with toy keris daggers, fans, and birds, is carried at Javanese weddings?',
     options: ['Canang Sari', 'Kembar Mayang', 'Katupek Pitalah', 'Burasa'],
     correctIndex: 1,
     explanation:
-      'Kembar Mayang ("twin blossoms") is a pair of sculptural ceremonial arrangements rooted in Central Javanese and Yogyakarta wedding traditions, symbolizing harmony and blessings for the couple.',
+      'Kembar Mayang ("twin blossoms") is a traditional pair of ceremonial bouquets in Central Java and Yogyakarta carrying wishes of happiness and unity for the couple.',
   },
   {
     id: 'q5',
-    topic: 'Weaving Technique',
-    question: 'How many interlocking spiral loops are typically formed on each hand before weaving a classic diamond-shaped Ketupat Bawang?',
+    topic: 'Ketupat Weaving',
+    question: 'How many loops do you wrap on each hand before weaving a classic diamond-shaped Ketupat Bawang?',
     options: [
-      'One large loop per hand',
-      'Three spiral coils per hand with opposing stem directions',
-      'Six flat strips laid parallel on a table',
-      'Two closed knots tied before coiling',
+      'One giant loop per hand',
+      'Three loops per hand (one facing up, one facing down)',
+      'Six flat strips taped to a board',
+      'Two tight knots before starting',
     ],
     correctIndex: 1,
     explanation:
-      'The classic Ketupat Bawang begins by coiling two stripped janur blades into three opposing spiral loops on each hand (one base stem up, one down), then interlocking them in an over-under-over weave.',
+      'To weave a Ketupat Bawang, you wrap three loops around each hand in opposite directions, then weave them together over and under.',
   },
   {
     id: 'q6',
-    topic: 'Culinary & Cultural Meaning',
-    question: 'In Javanese cultural lore associated with Bakda Kupat (one week after Eid al-Fitr), what phrase is commonly connected to the word "kupat"?',
+    topic: 'Holiday Meanings',
+    question: 'In Javanese tradition during Bakda Kupat, what friendly message is connected to the word "kupat"?',
     options: [
-      'Ngaku lepat (acknowledging mistakes)',
-      'Tri Hita Karana (three causes of well-being)',
-      'Gotong royong (building houses together)',
-      'Subak (traditional terrace irrigation)',
+      'Ngaku lepat (admitting mistakes and forgiving one another)',
+      'Building bamboo bridges',
+      'Sailing across the ocean',
+      'Planting rice terraces',
     ],
     correctIndex: 0,
     explanation:
-      'In Javanese cultural tradition, "kupat" is linked to "ngaku lepat" (acknowledging one’s mistakes and seeking forgiveness) and "laku papat" (four celebratory virtues), connecting culinary craft with social reconciliation.',
+      'In Javanese wordplay, "kupat" sounds like "ngaku lepat"—reminding neighbors and family to apologize, forgive, and start fresh together.',
   },
   {
     id: 'q7',
-    topic: 'Regional Diversity',
-    question: 'In West Sumatra (Minangkabau), woven young coconut-leaf rice pouches served year-round with spiced jackfruit or fern curry are known as:',
+    topic: 'Regional Food',
+    question: 'In West Sumatra (Minangkabau), woven coconut-leaf rice cakes served every day with spiced curries are called:',
     options: ['Sampian', 'Katupek', 'Canang', 'Ringgitan'],
     correctIndex: 1,
     explanation:
-      'In Minangkabau culinary culture, woven coconut-leaf rice cakes are called katupek (such as Katupek Pitalah and Katupek Gulai Kapau), demonstrating how janur weaving varies richly across Indonesia.',
+      'Minangkabau cooks call them katupek (as in Katupek Pitalah and Katupek Gulai Kapau), showing how coconut-leaf weaving varies across Indonesia.',
   },
   {
     id: 'q8',
-    topic: 'Preparation & Sustainability',
-    question: 'Why are young coconut fronds carefully wrapped in damp cloth or banana leaves before weaving, and what happens to the finished crafts afterward?',
+    topic: 'Sustainability',
+    question: 'Why are janur crafts considered a great example of zero-waste, eco-friendly design?',
     options: [
-      'To bleach them white with synthetic dye; they are recycled as plastic resin',
-      'To retain natural moisture so fibers do not crack; finished crafts are 100% biodegradable and compostable',
-      'To harden the ribs like metal wire; they are laminated for permanent storage',
-      'To remove all chlorophyll before boiling; they require chemical sealant',
+      'They are sealed with waterproof plastic spray',
+      'They use no glue or plastic, leftover sticks become brooms, and used leaves turn into garden compost',
+      'They require cutting down whole coconut trees every year',
+      'They are baked into permanent ceramic tiles',
     ],
     correctIndex: 1,
     explanation:
-      'Keeping janur cool and slightly hydrated preserves natural flexibility during folding. Because traditional janur crafts rely on mechanical weaving and bamboo or midrib pins with zero synthetic adhesives, used pieces return cleanly to soil as compost.',
+      'Healthy coconut trees grow 12–16 new fronds every year without being cut down. Every bit of the leaf is used, and afterward it breaks down naturally into soil.',
   },
 ];

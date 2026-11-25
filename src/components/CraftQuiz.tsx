@@ -38,31 +38,31 @@ export const CraftQuiz: React.FC = () => {
     const pct = Math.round((totalScore / QUIZ_QUESTIONS.length) * 100);
     const tierLabel =
       pct >= 85
-        ? 'Curatorial Mastery'
+        ? 'Janur Master!'
         : pct >= 60
-        ? 'Thoughtful Explorer'
-        : 'Apprentice Weaver';
+        ? 'Great Job, Craft Explorer!'
+        : 'Good Try — Keep Exploring!';
 
     return (
-      <div className="bg-[#F3EFE6] border border-[#DCD5C5] rounded-xl p-6 sm:p-8">
+      <div className="bg-[#EDF4EC] border border-[#C3D6C1] rounded-xl p-6 sm:p-8">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center pb-6 border-b border-[#DCD5C5]">
-            <p className="text-xs font-mono uppercase tracking-widest text-[#525B50] mb-1">
-              Knowledge Assessment Complete
+          <div className="text-center pb-6 border-b border-[#C3D6C1]">
+            <p className="text-xs font-mono uppercase tracking-widest text-[#3A7D44] mb-1">
+              Quiz Complete
             </p>
-            <h3 className="font-serif text-3xl sm:text-4xl font-semibold text-[#1E241E]">
+            <h3 className="font-serif text-3xl sm:text-4xl font-semibold text-[#15221B]">
               {tierLabel}
             </h3>
-            <p className="mt-3 text-2xl font-mono font-medium tabular-nums text-[#1E4D38]">
+            <p className="mt-3 text-2xl font-mono font-medium tabular-nums text-[#17422B]">
               {totalScore} / {QUIZ_QUESTIONS.length} Correct ({pct}%)
             </p>
-            <p className="mt-2 text-sm text-[#525B50] max-w-xl mx-auto">
-              Review each cultural insight below or restart the quiz to reinforce what you learned about Indonesian janur craft heritage.
+            <p className="mt-2 text-sm text-[#455B4E] max-w-xl mx-auto">
+              Check your answers below or restart the quiz to try for a higher score!
             </p>
             <button
               type="button"
               onClick={handleRestart}
-              className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#1E4D38] rounded-lg hover:bg-[#163B2A] transition-colors cursor-pointer"
+              className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#17422B] rounded-lg hover:bg-[#10311F] transition-colors cursor-pointer"
             >
               <RotateCcw className="w-4 h-4" />
               <span>Restart Quiz</span>
@@ -76,18 +76,18 @@ export const CraftQuiz: React.FC = () => {
               return (
                 <div
                   key={q.id}
-                  className="bg-[#FBF9F5] border border-[#DCD5C5] rounded-lg p-4"
+                  className="bg-[#F7FAF6] border border-[#C3D6C1] rounded-lg p-4"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <p className="text-sm font-semibold text-[#1E241E]">
-                      <span className="font-mono text-[#525B50] mr-2 tabular-nums">
+                    <p className="text-sm font-semibold text-[#15221B]">
+                      <span className="font-mono text-[#3A7D44] mr-2 tabular-nums">
                         0{idx + 1}.
                       </span>
                       {q.question}
                     </p>
                     <span
                       className={`inline-flex items-center gap-1 text-xs font-medium shrink-0 ${
-                        isCorrect ? 'text-[#1E4D38]' : 'text-[#8C3B2B]'
+                        isCorrect ? 'text-[#17422B]' : 'text-[#9B3B2B]'
                       }`}
                     >
                       {isCorrect ? (
@@ -103,8 +103,8 @@ export const CraftQuiz: React.FC = () => {
                       )}
                     </span>
                   </div>
-                  <p className="text-xs text-[#525B50] mt-2 leading-relaxed">
-                    <strong className="text-[#1E241E]">Answer:</strong>{' '}
+                  <p className="text-xs text-[#455B4E] mt-2 leading-relaxed">
+                    <strong className="text-[#15221B]">Answer:</strong>{' '}
                     {q.options[q.correctIndex]} — {q.explanation}
                   </p>
                 </div>
@@ -117,26 +117,25 @@ export const CraftQuiz: React.FC = () => {
   }
 
   return (
-    <div className="bg-[#F3EFE6] border border-[#DCD5C5] rounded-xl p-6 sm:p-8">
+    <div className="bg-[#EDF4EC] border border-[#C3D6C1] rounded-xl p-6 sm:p-8">
       <div className="max-w-3xl mx-auto">
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#DCD5C5]">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#C3D6C1]">
           <div>
-            <p className="text-xs font-mono uppercase tracking-widest text-[#525B50]">
+            <p className="text-xs font-mono uppercase tracking-widest text-[#3A7D44]">
               Craft Knowledge Quiz · {currentQuestion.topic}
             </p>
-            <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#1E241E] mt-0.5">
-              Test Your Understanding of Janur Heritage
+            <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#15221B] mt-0.5">
+              How Much Do You Know About Janur?
             </h3>
           </div>
-          <div className="text-xs font-mono tabular-nums text-[#1E4D38] bg-[#FBF9F5] border border-[#DCD5C5] px-3 py-1.5 rounded-lg">
+          <div className="text-xs font-mono tabular-nums text-[#17422B] bg-[#F7FAF6] border border-[#C3D6C1] px-3 py-1.5 rounded-lg">
             Question {currentIdx + 1} / {QUIZ_QUESTIONS.length}
           </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="w-full h-1.5 bg-[#DCD5C5] rounded-full overflow-hidden mt-4">
+        <div className="w-full h-1.5 bg-[#C3D6C1] rounded-full overflow-hidden mt-4">
           <div
-            className="h-full bg-[#1E4D38] transition-all duration-300"
+            className="h-full bg-[#3A7D44] transition-all duration-300"
             style={{
               width: `${((currentIdx + (hasAnsweredCurrent ? 1 : 0)) / QUIZ_QUESTIONS.length) * 100}%`,
             }}
@@ -144,7 +143,7 @@ export const CraftQuiz: React.FC = () => {
         </div>
 
         <div className="mt-6">
-          <p className="font-serif text-xl sm:text-2xl font-medium text-[#1E241E] leading-snug">
+          <p className="font-serif text-xl sm:text-2xl font-medium text-[#15221B] leading-snug">
             {currentQuestion.question}
           </p>
 
@@ -154,14 +153,14 @@ export const CraftQuiz: React.FC = () => {
               const isCorrectOption = idx === currentQuestion.correctIndex;
 
               let buttonStyle =
-                'bg-[#FBF9F5] border-[#DCD5C5] text-[#1E241E] hover:border-[#5E7D63] hover:bg-[#E3EAE1]/50';
+                'bg-[#F7FAF6] border-[#C3D6C1] text-[#15221B] hover:border-[#3A7D44] hover:bg-[#DCEAD9]/50';
               if (hasAnsweredCurrent) {
                 if (isCorrectOption) {
-                  buttonStyle = 'bg-[#E3EAE1] border-[#1E4D38] text-[#1E241E] font-medium';
+                  buttonStyle = 'bg-[#DCEAD9] border-[#17422B] text-[#15221B] font-medium';
                 } else if (isSelected && !isCorrectOption) {
-                  buttonStyle = 'bg-[#F8EAE6] border-[#8C3B2B] text-[#1E241E]';
+                  buttonStyle = 'bg-[#F8EAE6] border-[#9B3B2B] text-[#15221B]';
                 } else {
-                  buttonStyle = 'bg-[#FBF9F5]/70 border-[#DCD5C5] text-[#525B50]';
+                  buttonStyle = 'bg-[#F7FAF6]/70 border-[#C3D6C1] text-[#455B4E]';
                 }
               }
 
@@ -174,16 +173,16 @@ export const CraftQuiz: React.FC = () => {
                   className={`w-full text-left px-4 py-3.5 rounded-lg border transition-colors flex items-center justify-between gap-3 cursor-pointer disabled:cursor-default min-h-[48px] ${buttonStyle}`}
                 >
                   <span className="text-sm leading-snug">
-                    <span className="font-mono text-xs text-[#525B50] mr-2.5">
+                    <span className="font-mono text-xs text-[#455B4E] mr-2.5">
                       {String.fromCharCode(65 + idx)}.
                     </span>
                     {opt}
                   </span>
                   {hasAnsweredCurrent && isCorrectOption && (
-                    <CheckCircle2 className="w-4 h-4 text-[#1E4D38] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#17422B] shrink-0" />
                   )}
                   {hasAnsweredCurrent && isSelected && !isCorrectOption && (
-                    <XCircle className="w-4 h-4 text-[#8C3B2B] shrink-0" />
+                    <XCircle className="w-4 h-4 text-[#9B3B2B] shrink-0" />
                   )}
                 </button>
               );
@@ -191,25 +190,25 @@ export const CraftQuiz: React.FC = () => {
           </div>
 
           {hasAnsweredCurrent && (
-            <div className="mt-5 p-4 rounded-lg bg-[#FBF9F5] border border-[#DCD5C5]">
-              <p className="text-xs font-mono uppercase tracking-wider text-[#1E4D38] mb-1">
+            <div className="mt-5 p-4 rounded-lg bg-[#F7FAF6] border border-[#C3D6C1]">
+              <p className="text-xs font-mono uppercase tracking-wider text-[#3A7D44] mb-1">
                 {selectedOption === currentQuestion.correctIndex
-                  ? 'Correct Answer'
-                  : 'Explanation'}
+                  ? 'Nice Job! Correct Answer'
+                  : 'Good to Know'}
               </p>
-              <p className="text-sm text-[#1E241E] leading-relaxed">
+              <p className="text-sm text-[#15221B] leading-relaxed">
                 {currentQuestion.explanation}
               </p>
               <div className="mt-4 flex justify-end">
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#1E4D38] rounded-lg hover:bg-[#163B2A] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#17422B] rounded-lg hover:bg-[#10311F] transition-colors cursor-pointer"
                 >
                   <span>
                     {currentIdx < QUIZ_QUESTIONS.length - 1
                       ? 'Next Question'
-                      : 'View Final Results'}
+                      : 'See Final Score'}
                   </span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
