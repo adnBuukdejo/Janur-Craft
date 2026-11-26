@@ -5,23 +5,25 @@
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-offwhite: #F7FAF6;
-  --color-sage-tint: #EDF4EC;
-  --color-sage-soft: #DCEAD9;
-  --color-sage-border: #C3D6C1;
-  --color-leaf: #3A7D44;
-  --color-leaf-light: #65A35E;
-  --color-forest: #17422B;
-  --color-forest-hover: #10311F;
-  --color-ink: #15221B;
-  --color-ink-muted: #455B4E;
+  --color-ivory: #FAFBF6;
+  --color-offwhite: #F5F8F2;
+  --color-mint: #E8F5E9;
+  --color-sage-tint: #E5F0E3;
+  --color-sage-soft: #CFE4CA;
+  --color-sage-border: #B5D2AF;
+  --color-leaf: #3B8E47;
+  --color-emerald: #0F764A;
+  --color-forest: #143D28;
+  --color-forest-hover: #0D2B1B;
+  --color-ink: #132219;
+  --color-ink-muted: #3F5749;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #F7FAF6;
-    color: #15221B;
+    background-color: #FAFBF6;
+    color: #132219;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -36,7 +38,7 @@
   a:focus-visible,
   input:focus-visible,
   select:focus-visible {
-    outline: 2px solid #17422B;
+    outline: 2px solid #0F764A;
     outline-offset: 2px;
   }
 }
@@ -46,7 +48,7 @@
 }
 
 .botanical-paper-grid {
-  background-image: radial-gradient(rgba(23, 66, 43, 0.065) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(15, 118, 74, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 

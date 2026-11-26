@@ -38,34 +38,34 @@ export const CraftQuiz: React.FC = () => {
     const pct = Math.round((totalScore / QUIZ_QUESTIONS.length) * 100);
     const tierLabel =
       pct >= 85
-        ? 'Janur Master!'
+        ? 'Janur Star!'
         : pct >= 60
-        ? 'Great Job, Craft Explorer!'
-        : 'Good Try — Keep Exploring!';
+        ? 'Great Job!'
+        : 'Nice Try — Keep Exploring!';
 
     return (
-      <div className="bg-[#EDF4EC] border border-[#C3D6C1] rounded-xl p-6 sm:p-8">
+      <div className="bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl p-6 sm:p-8">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center pb-6 border-b border-[#C3D6C1]">
-            <p className="text-xs font-mono uppercase tracking-widest text-[#3A7D44] mb-1">
-              Quiz Complete
+          <div className="text-center pb-6 border-b border-[#B5D2AF]">
+            <p className="text-xs font-mono uppercase tracking-widest text-[#0F764A] font-semibold mb-1">
+              Quiz Done
             </p>
-            <h3 className="font-serif text-3xl sm:text-4xl font-semibold text-[#15221B]">
+            <h3 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219]">
               {tierLabel}
             </h3>
-            <p className="mt-3 text-2xl font-mono font-medium tabular-nums text-[#17422B]">
+            <p className="mt-3 text-2xl font-mono font-semibold tabular-nums text-[#143D28]">
               {totalScore} / {QUIZ_QUESTIONS.length} Correct ({pct}%)
             </p>
-            <p className="mt-2 text-sm text-[#455B4E] max-w-xl mx-auto">
-              Check your answers below or restart the quiz to try for a higher score!
+            <p className="mt-2 text-sm text-[#3F5749] max-w-xl mx-auto">
+              Check the answers below or try the quiz again!
             </p>
             <button
               type="button"
               onClick={handleRestart}
-              className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#17422B] rounded-lg hover:bg-[#10311F] transition-colors cursor-pointer"
+              className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#143D28] rounded-lg hover:bg-[#0D2B1B] transition-colors cursor-pointer"
             >
               <RotateCcw className="w-4 h-4" />
-              <span>Restart Quiz</span>
+              <span>Play Again</span>
             </button>
           </div>
 
@@ -76,24 +76,24 @@ export const CraftQuiz: React.FC = () => {
               return (
                 <div
                   key={q.id}
-                  className="bg-[#F7FAF6] border border-[#C3D6C1] rounded-lg p-4"
+                  className="bg-[#FAFBF6] border border-[#B5D2AF] rounded-lg p-4"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <p className="text-sm font-semibold text-[#15221B]">
-                      <span className="font-mono text-[#3A7D44] mr-2 tabular-nums">
+                    <p className="text-sm font-semibold text-[#132219]">
+                      <span className="font-mono text-[#0F764A] mr-2 tabular-nums">
                         0{idx + 1}.
                       </span>
                       {q.question}
                     </p>
                     <span
                       className={`inline-flex items-center gap-1 text-xs font-medium shrink-0 ${
-                        isCorrect ? 'text-[#17422B]' : 'text-[#9B3B2B]'
+                        isCorrect ? 'text-[#0F764A]' : 'text-[#9B3B2B]'
                       }`}
                     >
                       {isCorrect ? (
                         <>
                           <CheckCircle2 className="w-4 h-4" />
-                          <span>Correct</span>
+                          <span>Right</span>
                         </>
                       ) : (
                         <>
@@ -103,8 +103,8 @@ export const CraftQuiz: React.FC = () => {
                       )}
                     </span>
                   </div>
-                  <p className="text-xs text-[#455B4E] mt-2 leading-relaxed">
-                    <strong className="text-[#15221B]">Answer:</strong>{' '}
+                  <p className="text-xs text-[#3F5749] mt-2 leading-relaxed">
+                    <strong className="text-[#132219]">Answer:</strong>{' '}
                     {q.options[q.correctIndex]} — {q.explanation}
                   </p>
                 </div>
@@ -117,25 +117,25 @@ export const CraftQuiz: React.FC = () => {
   }
 
   return (
-    <div className="bg-[#EDF4EC] border border-[#C3D6C1] rounded-xl p-6 sm:p-8">
+    <div className="bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl p-6 sm:p-8">
       <div className="max-w-3xl mx-auto">
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#C3D6C1]">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#B5D2AF]">
           <div>
-            <p className="text-xs font-mono uppercase tracking-widest text-[#3A7D44]">
+            <p className="text-xs font-mono uppercase tracking-widest text-[#0F764A] font-semibold">
               Craft Knowledge Quiz · {currentQuestion.topic}
             </p>
-            <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#15221B] mt-0.5">
-              How Much Do You Know About Janur?
+            <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#132219] mt-0.5">
+              Test What You Learned!
             </h3>
           </div>
-          <div className="text-xs font-mono tabular-nums text-[#17422B] bg-[#F7FAF6] border border-[#C3D6C1] px-3 py-1.5 rounded-lg">
+          <div className="text-xs font-mono tabular-nums text-[#143D28] bg-[#FAFBF6] border border-[#B5D2AF] px-3 py-1.5 rounded-lg">
             Question {currentIdx + 1} / {QUIZ_QUESTIONS.length}
           </div>
         </div>
 
-        <div className="w-full h-1.5 bg-[#C3D6C1] rounded-full overflow-hidden mt-4">
+        <div className="w-full h-2 bg-[#CFE4CA] rounded-full overflow-hidden mt-4">
           <div
-            className="h-full bg-[#3A7D44] transition-all duration-300"
+            className="h-full bg-[#0F764A] transition-all duration-300"
             style={{
               width: `${((currentIdx + (hasAnsweredCurrent ? 1 : 0)) / QUIZ_QUESTIONS.length) * 100}%`,
             }}
@@ -143,7 +143,7 @@ export const CraftQuiz: React.FC = () => {
         </div>
 
         <div className="mt-6">
-          <p className="font-serif text-xl sm:text-2xl font-medium text-[#15221B] leading-snug">
+          <p className="font-serif text-xl sm:text-2xl font-medium text-[#132219] leading-snug">
             {currentQuestion.question}
           </p>
 
@@ -153,14 +153,14 @@ export const CraftQuiz: React.FC = () => {
               const isCorrectOption = idx === currentQuestion.correctIndex;
 
               let buttonStyle =
-                'bg-[#F7FAF6] border-[#C3D6C1] text-[#15221B] hover:border-[#3A7D44] hover:bg-[#DCEAD9]/50';
+                'bg-[#FAFBF6] border-[#B5D2AF] text-[#132219] hover:border-[#0F764A] hover:bg-[#CFE4CA]/45';
               if (hasAnsweredCurrent) {
                 if (isCorrectOption) {
-                  buttonStyle = 'bg-[#DCEAD9] border-[#17422B] text-[#15221B] font-medium';
+                  buttonStyle = 'bg-[#CFE4CA] border-[#0F764A] text-[#132219] font-medium';
                 } else if (isSelected && !isCorrectOption) {
-                  buttonStyle = 'bg-[#F8EAE6] border-[#9B3B2B] text-[#15221B]';
+                  buttonStyle = 'bg-[#F8EAE6] border-[#9B3B2B] text-[#132219]';
                 } else {
-                  buttonStyle = 'bg-[#F7FAF6]/70 border-[#C3D6C1] text-[#455B4E]';
+                  buttonStyle = 'bg-[#FAFBF6]/70 border-[#B5D2AF] text-[#3F5749]';
                 }
               }
 
@@ -173,13 +173,13 @@ export const CraftQuiz: React.FC = () => {
                   className={`w-full text-left px-4 py-3.5 rounded-lg border transition-colors flex items-center justify-between gap-3 cursor-pointer disabled:cursor-default min-h-[48px] ${buttonStyle}`}
                 >
                   <span className="text-sm leading-snug">
-                    <span className="font-mono text-xs text-[#455B4E] mr-2.5">
+                    <span className="font-mono text-xs text-[#3F5749] mr-2.5">
                       {String.fromCharCode(65 + idx)}.
                     </span>
                     {opt}
                   </span>
                   {hasAnsweredCurrent && isCorrectOption && (
-                    <CheckCircle2 className="w-4 h-4 text-[#17422B] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#0F764A] shrink-0" />
                   )}
                   {hasAnsweredCurrent && isSelected && !isCorrectOption && (
                     <XCircle className="w-4 h-4 text-[#9B3B2B] shrink-0" />
@@ -190,25 +190,25 @@ export const CraftQuiz: React.FC = () => {
           </div>
 
           {hasAnsweredCurrent && (
-            <div className="mt-5 p-4 rounded-lg bg-[#F7FAF6] border border-[#C3D6C1]">
-              <p className="text-xs font-mono uppercase tracking-wider text-[#3A7D44] mb-1">
+            <div className="mt-5 p-4 rounded-lg bg-[#FAFBF6] border border-[#B5D2AF]">
+              <p className="text-xs font-mono uppercase tracking-wider text-[#0F764A] font-semibold mb-1">
                 {selectedOption === currentQuestion.correctIndex
-                  ? 'Nice Job! Correct Answer'
+                  ? 'Nice Job! Right Answer'
                   : 'Good to Know'}
               </p>
-              <p className="text-sm text-[#15221B] leading-relaxed">
+              <p className="text-sm text-[#132219] leading-relaxed">
                 {currentQuestion.explanation}
               </p>
               <div className="mt-4 flex justify-end">
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#17422B] rounded-lg hover:bg-[#10311F] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#143D28] rounded-lg hover:bg-[#0D2B1B] transition-colors cursor-pointer"
                 >
                   <span>
                     {currentIdx < QUIZ_QUESTIONS.length - 1
                       ? 'Next Question'
-                      : 'See Final Score'}
+                      : 'See Score'}
                   </span>
                   <ArrowRight className="w-4 h-4" />
                 </button>

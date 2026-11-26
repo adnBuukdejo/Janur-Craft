@@ -50,16 +50,16 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     const list: SearchRecord[] = [
       {
         id: 'studio-ketupat',
-        title: 'Interactive Drag-and-Drop Ketupat Craft Studio',
-        subtitle: 'Hands-on workspace: split a coconut leaf, rotate strips, weave over & under, and tighten a ketupat',
+        title: 'Interactive Craft Studio (Make a Ketupat)',
+        subtitle: 'Hands-on table: cut the coconut leaf, fold loops, weave over & under, and pull tight',
         kind: 'Craft Studio',
         page: 'studio',
-        searchBlob: 'craft studio ketupat weaving drag drop interactive steps rotate over under',
+        searchBlob: 'craft studio ketupat weaving drag drop cut scissors fold rotate over under',
       },
       {
         id: 'cultural-map',
-        title: 'Indonesian Cultural Map of Janur Traditions',
-        subtitle: 'Click around Bali, Java, Sumatra, Kalimantan & Sulawesi to see local crafts',
+        title: 'Indonesian Cultural Map',
+        subtitle: 'Click Bali, Java, Sumatra, Kalimantan & Sulawesi to see local leaf crafts',
         kind: 'Region',
         page: 'explore',
         anchorId: 'cultural-map',
@@ -68,7 +68,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       {
         id: 'knowledge-quiz',
         title: 'Craft Knowledge Quiz',
-        subtitle: '8 fun questions about janur leaves, traditions, and weaving skills',
+        subtitle: '8 easy questions about janur leaves, holidays, and weaving',
         kind: 'Learn',
         page: 'explore',
         anchorId: 'craft-quiz',
@@ -148,56 +148,56 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   const getKindIcon = (kind: SearchRecord['kind']) => {
     switch (kind) {
       case 'Learn':
-        return <BookOpen className="w-4 h-4 text-[#17422B]" />;
+        return <BookOpen className="w-4 h-4 text-[#143D28]" />;
       case 'Gallery':
-        return <ImageIcon className="w-4 h-4 text-[#17422B]" />;
+        return <ImageIcon className="w-4 h-4 text-[#143D28]" />;
       case 'Region':
-        return <Compass className="w-4 h-4 text-[#17422B]" />;
+        return <Compass className="w-4 h-4 text-[#143D28]" />;
       case 'Tutorial':
-        return <Wrench className="w-4 h-4 text-[#17422B]" />;
+        return <Wrench className="w-4 h-4 text-[#143D28]" />;
       case 'Craft Studio':
-        return <Sparkles className="w-4 h-4 text-[#17422B]" />;
+        return <Sparkles className="w-4 h-4 text-[#143D28]" />;
     }
   };
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-[#15221B]/55 px-4 pt-16 sm:pt-24 pb-8"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-[#132219]/55 px-4 pt-16 sm:pt-24 pb-8"
       role="dialog"
       aria-modal="true"
-      aria-label="Global website search"
+      aria-label="Website search"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl bg-[#F7FAF6] border border-[#C3D6C1] rounded-xl shadow-2xl overflow-hidden"
+        className="w-full max-w-2xl bg-[#FAFBF6] border border-[#B5D2AF] rounded-xl shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-[#C3D6C1] bg-[#EDF4EC]">
-          <Search className="w-4 h-4 text-[#3A7D44] shrink-0" />
+        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-[#B5D2AF] bg-[#E8F5E9]">
+          <Search className="w-4 h-4 text-[#0F764A] shrink-0" />
           <input
             ref={inputRef}
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search topics, ketupat, penjor, Bali, tutorials, lidi..."
-            className="w-full bg-transparent text-sm text-[#15221B] placeholder-[#455B4E] focus:outline-none"
+            placeholder="Search ketupat, penjor, Bali, tutorials, lidi..."
+            className="w-full bg-transparent text-sm text-[#132219] placeholder-[#3F5749] focus:outline-none"
           />
           <button
             type="button"
             onClick={onClose}
-            className="p-2 rounded-lg text-[#455B4E] hover:text-[#15221B] hover:bg-[#DCEAD9] transition-colors cursor-pointer"
+            className="p-2 rounded-lg text-[#3F5749] hover:text-[#132219] hover:bg-[#CFE4CA] transition-colors cursor-pointer"
             aria-label="Close search"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="max-h-[60vh] overflow-y-auto divide-y divide-[#DCEAD9]">
+        <div className="max-h-[60vh] overflow-y-auto divide-y divide-[#CFE4CA]">
           {results.length === 0 ? (
             <div className="px-6 py-10 text-center">
-              <p className="font-serif text-xl text-[#15221B] mb-1">No matching results found</p>
-              <p className="text-sm text-[#455B4E]">
-                Try searching for words like &ldquo;ketupat&rdquo;, &ldquo;Bali&rdquo;, &ldquo;lidi&rdquo;, &ldquo;Kembar Mayang&rdquo;, or &ldquo;sustainability&rdquo;.
+              <p className="font-serif text-xl text-[#132219] mb-1">No matching results found</p>
+              <p className="text-sm text-[#3F5749]">
+                Try words like &ldquo;ketupat&rdquo;, &ldquo;Bali&rdquo;, &ldquo;lidi&rdquo;, &ldquo;Kembar Mayang&rdquo;, or &ldquo;scissors&rdquo;.
               </p>
             </div>
           ) : (
@@ -209,21 +209,21 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                   onNavigate(rec.page, rec.anchorId, rec.extraId);
                   onClose();
                 }}
-                className="w-full text-left px-5 py-3.5 hover:bg-[#EDF4EC] transition-colors flex items-center justify-between gap-4 cursor-pointer"
+                className="w-full text-left px-5 py-3.5 hover:bg-[#E8F5E9] transition-colors flex items-center justify-between gap-4 cursor-pointer"
               >
                 <div className="flex items-start gap-3 min-w-0">
-                  <div className="mt-0.5 p-2 rounded-lg bg-[#DCEAD9] shrink-0">
+                  <div className="mt-0.5 p-2 rounded-lg bg-[#CFE4CA] shrink-0">
                     {getKindIcon(rec.kind)}
                   </div>
                   <div className="min-w-0">
-                    <div className="flex items-center gap-2 text-xs text-[#455B4E] mb-0.5">
-                      <span className="font-medium text-[#3A7D44]">{rec.kind}</span>
+                    <div className="flex items-center gap-2 text-xs text-[#3F5749] mb-0.5">
+                      <span className="font-semibold text-[#0F764A]">{rec.kind}</span>
                     </div>
-                    <p className="text-sm font-semibold text-[#15221B] truncate">{rec.title}</p>
-                    <p className="text-xs text-[#455B4E] line-clamp-1">{rec.subtitle}</p>
+                    <p className="text-sm font-semibold text-[#132219] truncate">{rec.title}</p>
+                    <p className="text-xs text-[#3F5749] line-clamp-1">{rec.subtitle}</p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-[#455B4E] shrink-0" />
+                <ArrowRight className="w-4 h-4 text-[#3F5749] shrink-0" />
               </button>
             ))
           )}

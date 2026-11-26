@@ -45,22 +45,22 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
   return (
     <div>
       <PageHeader
-        kicker="Learn About Janur · 13 Complete Sections"
+        kicker="Learn About Janur · 13 Simple Topics"
         title="Explore the World of Janur"
-        description="Everything you want to know about Indonesian young coconut leaf craft—explained simply! Read through all 13 topics, click around the Indonesia Cultural Map, and test yourself with the quiz."
+        description="Everything you need to know about Indonesian young coconut leaf crafts—told in simple, friendly English! Read all 13 topics, click around the Indonesia Map, and test yourself in the quiz."
         currentPageLabel="Explore Janur"
         onNavigateHome={() => onNavigate('home')}
       />
 
       {/* Mobile & Tablet Quick Jump Strip */}
-      <div className="lg:hidden border-b border-[#C3D6C1] bg-[#F7FAF6] px-4 py-3 overflow-x-auto">
+      <div className="lg:hidden border-b border-[#B5D2AF] bg-[#FAFBF6] px-4 py-3 overflow-x-auto">
         <div className="flex items-center gap-2">
           {EDUCATIONAL_SECTIONS.map((sec) => (
             <button
               key={sec.id}
               type="button"
               onClick={() => jumpTo(sec.id)}
-              className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#EDF4EC] border border-[#C3D6C1] text-[#15221B] hover:bg-[#DCEAD9] whitespace-nowrap shrink-0 cursor-pointer"
+              className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#E8F5E9] border border-[#B5D2AF] text-[#132219] hover:bg-[#CFE4CA] whitespace-nowrap shrink-0 cursor-pointer"
             >
               {sec.number}. {sec.title}
             </button>
@@ -68,14 +68,14 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
           <button
             type="button"
             onClick={() => jumpTo('cultural-map')}
-            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#DCEAD9] border border-[#3A7D44] text-[#17422B] whitespace-nowrap shrink-0 cursor-pointer"
+            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#CFE4CA] border border-[#0F764A] text-[#143D28] whitespace-nowrap shrink-0 cursor-pointer"
           >
             Cultural Map
           </button>
           <button
             type="button"
             onClick={() => jumpTo('craft-quiz')}
-            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#DCEAD9] border border-[#3A7D44] text-[#17422B] whitespace-nowrap shrink-0 cursor-pointer"
+            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#CFE4CA] border border-[#0F764A] text-[#143D28] whitespace-nowrap shrink-0 cursor-pointer"
           >
             Knowledge Quiz
           </button>
@@ -86,22 +86,22 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Desktop Sticky Sidebar */}
           <aside className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-22 bg-[#EDF4EC] border border-[#C3D6C1] rounded-xl p-4 space-y-4">
-              <div className="flex items-center gap-2 pb-2 border-b border-[#C3D6C1]">
-                <BookOpen className="w-4 h-4 text-[#17422B]" />
-                <span className="font-mono text-xs uppercase tracking-wider text-[#15221B] font-medium">
-                  13 Learning Sections
+            <div className="sticky top-22 bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl p-4 space-y-4">
+              <div className="flex items-center gap-2 pb-2 border-b border-[#B5D2AF]">
+                <BookOpen className="w-4 h-4 text-[#0F764A]" />
+                <span className="font-mono text-xs uppercase tracking-wider text-[#143D28] font-semibold">
+                  13 Learning Topics
                 </span>
               </div>
-              <nav aria-label="Educational sections" className="space-y-1 max-h-[60vh] overflow-y-auto pr-1">
+              <nav aria-label="Educational topics" className="space-y-1 max-h-[60vh] overflow-y-auto pr-1">
                 {EDUCATIONAL_SECTIONS.map((sec) => (
                   <button
                     key={sec.id}
                     type="button"
                     onClick={() => jumpTo(sec.id)}
-                    className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs text-[#455B4E] hover:text-[#17422B] hover:bg-[#F7FAF6] transition-colors flex items-start gap-2 cursor-pointer"
+                    className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs text-[#3F5749] hover:text-[#143D28] hover:bg-[#FAFBF6] transition-colors flex items-start gap-2 cursor-pointer"
                   >
-                    <span className="font-mono tabular-nums text-[#3A7D44] shrink-0">
+                    <span className="font-mono tabular-nums text-[#0F764A] font-semibold shrink-0">
                       {sec.number}
                     </span>
                     <span className="leading-snug">{sec.title}</span>
@@ -109,18 +109,18 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
                 ))}
               </nav>
 
-              <div className="pt-3 border-t border-[#C3D6C1] space-y-1.5">
+              <div className="pt-3 border-t border-[#B5D2AF] space-y-1.5">
                 <button
                   type="button"
                   onClick={() => jumpTo('cultural-map')}
-                  className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-[#F7FAF6] border border-[#C3D6C1] text-[#17422B] hover:bg-[#DCEAD9] transition-colors cursor-pointer"
+                  className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-[#FAFBF6] border border-[#B5D2AF] text-[#143D28] hover:bg-[#CFE4CA] transition-colors cursor-pointer"
                 >
                   Indonesian Cultural Map
                 </button>
                 <button
                   type="button"
                   onClick={() => jumpTo('craft-quiz')}
-                  className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-[#F7FAF6] border border-[#C3D6C1] text-[#17422B] hover:bg-[#DCEAD9] transition-colors cursor-pointer"
+                  className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-[#FAFBF6] border border-[#B5D2AF] text-[#143D28] hover:bg-[#CFE4CA] transition-colors cursor-pointer"
                 >
                   Craft Knowledge Quiz
                 </button>
@@ -134,11 +134,11 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
               <article
                 key={sec.id}
                 id={sec.id}
-                className="scroll-mt-24 pb-12 border-b border-[#C3D6C1]"
+                className="scroll-mt-24 pb-12 border-b border-[#B5D2AF]"
               >
-                <div className="flex flex-wrap items-center gap-2 text-xs text-[#455B4E] mb-2">
-                  <span className="font-mono tabular-nums text-[#3A7D44] font-medium">
-                    Section {sec.number} of 13
+                <div className="flex flex-wrap items-center gap-2 text-xs text-[#3F5749] mb-2">
+                  <span className="font-mono tabular-nums text-[#0F764A] font-semibold">
+                    Topic {sec.number} of 13
                   </span>
                   <span aria-hidden="true">·</span>
                   <span>{sec.category}</span>
@@ -146,20 +146,20 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
                   <span>{sec.readTime}</span>
                 </div>
 
-                <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#15221B] tracking-tight">
+                <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219] tracking-tight">
                   {sec.title}
                 </h2>
-                <p className="mt-1.5 text-base font-serif italic text-[#455B4E]">
+                <p className="mt-1.5 text-base font-serif italic text-[#3F5749]">
                   {sec.subtitle}
                 </p>
 
-                <p className="mt-5 text-base text-[#15221B] leading-relaxed max-w-prose">
+                <p className="mt-5 text-base text-[#132219] leading-relaxed max-w-prose">
                   {sec.leadParagraph}
                 </p>
 
                 {sec.imageUrl && (
                   <figure className="mt-6">
-                    <div className="aspect-[16/9] max-h-[400px] w-full rounded-xl overflow-hidden border border-[#C3D6C1] bg-[#DCEAD9]">
+                    <div className="aspect-[16/9] max-h-[400px] w-full rounded-xl overflow-hidden border border-[#B5D2AF] bg-[#CFE4CA]">
                       <ResilientImage
                         src={sec.imageUrl}
                         alt={sec.imageCaption || sec.title}
@@ -168,7 +168,7 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
                       />
                     </div>
                     {sec.imageCaption && (
-                      <figcaption className="mt-2 text-xs font-serif italic text-[#455B4E]">
+                      <figcaption className="mt-2 text-xs font-serif italic text-[#3F5749]">
                         {sec.imageCaption}
                       </figcaption>
                     )}
@@ -199,25 +199,25 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
                 <div className="mt-6 space-y-5 max-w-prose">
                   {sec.subsections.map((sub) => (
                     <div key={sub.subheading}>
-                      <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#15221B] mb-2">
+                      <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#132219] mb-2">
                         {sub.subheading}
                       </h3>
                       <div className="space-y-3">
                         {sub.paragraphs.map((p, pIdx) => (
                           <p
                             key={pIdx}
-                            className="text-sm sm:text-[15px] text-[#15221B]/90 leading-[1.75]"
+                            className="text-sm sm:text-[15px] text-[#132219]/90 leading-[1.75]"
                           >
                             {p}
                           </p>
                         ))}
                       </div>
                       {sub.practicalExample && (
-                        <div className="mt-3 p-4 rounded-lg bg-[#DCEAD9]/65 border border-[#C3D6C1]">
-                          <p className="text-xs font-mono uppercase tracking-wider text-[#17422B] mb-1">
+                        <div className="mt-3 p-4 rounded-lg bg-[#E8F5E9] border border-[#B5D2AF]">
+                          <p className="text-xs font-mono uppercase tracking-wider font-semibold text-[#0F764A] mb-1">
                             Real-Life Example
                           </p>
-                          <p className="text-xs sm:text-sm text-[#15221B] leading-relaxed">
+                          <p className="text-xs sm:text-sm text-[#132219] leading-relaxed">
                             {sub.practicalExample}
                           </p>
                         </div>
@@ -227,11 +227,11 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
                 </div>
 
                 {sec.culturalNote && (
-                  <div className="mt-6 p-4 sm:p-5 rounded-xl bg-[#EDF4EC] border border-[#C3D6C1] max-w-prose">
-                    <p className="text-sm font-semibold text-[#15221B]">
+                  <div className="mt-6 p-4 sm:p-5 rounded-xl bg-[#E5F0E3] border border-[#B5D2AF] max-w-prose">
+                    <p className="text-sm font-semibold text-[#143D28]">
                       {sec.culturalNote.title}
                     </p>
-                    <p className="text-xs sm:text-sm text-[#455B4E] mt-1 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#3F5749] mt-1 leading-relaxed">
                       {sec.culturalNote.body}
                     </p>
                   </div>
@@ -239,22 +239,22 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
 
                 {sec.keyTerms.length > 0 && (
                   <div className="mt-6">
-                    <p className="font-mono text-xs uppercase tracking-wider text-[#455B4E] mb-2.5">
-                      Helpful Indonesian Words
+                    <p className="font-mono text-xs uppercase tracking-wider font-semibold text-[#0F764A] mb-2.5">
+                      Indonesian Words to Know
                     </p>
                     <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {sec.keyTerms.map((term) => (
                         <div
                           key={term.term}
-                          className="p-3.5 rounded-lg bg-[#EDF4EC]/80 border border-[#C3D6C1]"
+                          className="p-3.5 rounded-lg bg-[#E8F5E9]/85 border border-[#B5D2AF]"
                         >
-                          <dt className="text-sm font-semibold text-[#15221B]">
+                          <dt className="text-sm font-semibold text-[#132219]">
                             {term.term}{' '}
-                            <span className="text-xs font-normal text-[#455B4E]">
+                            <span className="text-xs font-normal text-[#3F5749]">
                               ({term.origin})
                             </span>
                           </dt>
-                          <dd className="text-xs text-[#455B4E] mt-1 leading-relaxed">
+                          <dd className="text-xs text-[#3F5749] mt-1 leading-relaxed">
                             {term.definition}
                           </dd>
                         </div>
@@ -268,7 +268,7 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
                     <button
                       type="button"
                       onClick={() => onNavigate('tutorials')}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-white bg-[#17422B] rounded-lg hover:bg-[#10311F] transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-white bg-[#143D28] rounded-lg hover:bg-[#0D2B1B] transition-colors cursor-pointer"
                     >
                       <span>Open Step-by-Step Tutorials</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -276,7 +276,7 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
                     <button
                       type="button"
                       onClick={() => onNavigate('studio')}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-medium text-[#17422B] bg-[#DCEAD9] border border-[#C3D6C1] rounded-lg hover:bg-[#C7DEC9] transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-[#143D28] bg-[#CFE4CA] border border-[#0F764A]/30 rounded-lg hover:bg-[#BEDBB8] transition-colors cursor-pointer"
                     >
                       <span>Practice in Interactive Craft Studio</span>
                     </button>
@@ -295,21 +295,21 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
               <CraftQuiz />
             </section>
 
-            <div className="p-6 rounded-xl bg-[#EDF4EC] border border-[#C3D6C1] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="p-6 rounded-xl bg-[#E8F5E9] border border-[#B5D2AF] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h3 className="font-serif text-xl font-semibold text-[#15221B]">
+                <h3 className="font-serif text-xl font-semibold text-[#132219]">
                   Sources &amp; Cultural References
                 </h3>
-                <p className="text-xs sm:text-sm text-[#455B4E] mt-0.5">
-                  See the Indonesian cultural archives, dictionaries, and research institutions used for this website.
+                <p className="text-xs sm:text-sm text-[#3F5749] mt-0.5">
+                  See the Indonesian museums, dictionaries, and schools that helped us gather true facts for this website.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => onNavigate('about', 'sources-references')}
-                className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-white bg-[#17422B] rounded-lg hover:bg-[#10311F] transition-colors shrink-0 cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-white bg-[#143D28] rounded-lg hover:bg-[#0D2B1B] transition-colors shrink-0 cursor-pointer"
               >
-                <span>View Sources</span>
+                <span>See Sources</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>

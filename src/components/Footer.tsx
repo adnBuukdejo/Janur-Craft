@@ -7,30 +7,30 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="border-t border-[#C3D6C1] bg-[#17422B] text-[#F7FAF6]">
+    <footer className="border-t border-[#B5D2AF] bg-[#143D28] text-[#FAFBF6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-[#2C6143]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-[#255D3F]">
           <div className="md:col-span-5 space-y-3">
             <button
               type="button"
               onClick={() => onNavigate('home')}
-              className="font-serif text-2xl font-semibold text-[#F7FAF6] hover:text-[#C7DEC9] transition-colors cursor-pointer"
+              className="font-serif text-2xl font-semibold text-[#FAFBF6] hover:text-[#CFE4CA] transition-colors cursor-pointer"
             >
               JanurCraft
             </button>
-            <p className="text-sm font-serif italic text-[#C7DEC9]">
+            <p className="text-sm font-serif italic text-[#CFE4CA]">
               Where Tradition Meets Creativity.
             </p>
-            <p className="text-xs text-[#DCEAD9] max-w-md leading-relaxed">
-              A student-built cultural learning website created to share the beauty, craft skills, and traditions of Indonesian young coconut leaf art with visitors around the world.
+            <p className="text-xs text-[#E8F5E9] max-w-md leading-relaxed">
+              A student-made website sharing Indonesian young coconut leaf crafts with friends and visitors around the world.
             </p>
           </div>
 
           <div className="md:col-span-3 space-y-2.5">
-            <h2 className="font-mono text-xs uppercase tracking-widest text-[#C7DEC9]">
-              Explore Pages
+            <h2 className="font-mono text-xs uppercase tracking-widest text-[#A9D37B]">
+              Pages
             </h2>
-            <ul className="space-y-2 text-sm text-[#EDF4EC]">
+            <ul className="space-y-2 text-sm text-[#E8F5E9]">
               <li>
                 <button
                   type="button"
@@ -71,10 +71,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="md:col-span-4 space-y-2.5">
-            <h2 className="font-mono text-xs uppercase tracking-widest text-[#C7DEC9]">
-              Interactive Features
+            <h2 className="font-mono text-xs uppercase tracking-widest text-[#A9D37B]">
+              Fun Activities
             </h2>
-            <ul className="space-y-2 text-sm text-[#EDF4EC]">
+            <ul className="space-y-2 text-sm text-[#E8F5E9]">
               <li>
                 <button
                   type="button"
@@ -106,12 +106,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-[#C7DEC9]">
+        <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-[#CFE4CA]">
           <p>
             JanurCraft — Sharing Indonesian Coconut-Leaf Craft Heritage with the World.
           </p>
           <p>
-            Free to explore · No login needed
+            Free to learn · No login needed
           </p>
         </div>
       </div>

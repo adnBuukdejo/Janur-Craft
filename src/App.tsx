@@ -67,7 +67,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7FAF6] text-[#15221B]">
+    <div className="min-h-screen flex flex-col bg-[#FAFBF6] text-[#132219]">
       <Navbar
         activePage={activePage}
         onNavigate={(page, anchor) => handleNavigate(page, anchor)}
