@@ -10,13 +10,13 @@ interface GalleryPageProps {
   onNavigate: (page: PageId, anchorId?: string) => void;
 }
 
-const CATEGORIES: GalleryCategory[] = [
-  'All',
-  'Ceremonial',
-  'Culinary',
-  'Offerings',
-  'Contemporary',
-  'Technique',
+const CATEGORIES: { id: GalleryCategory; label: string }[] = [
+  { id: 'All', label: 'All' },
+  { id: 'Ceremonial', label: 'Special Events' },
+  { id: 'Culinary', label: 'Food' },
+  { id: 'Offerings', label: 'Offerings' },
+  { id: 'Contemporary', label: 'Modern' },
+  { id: 'Technique', label: 'How-To' },
 ];
 
 export const GalleryPage: React.FC<GalleryPageProps> = ({
@@ -51,17 +51,21 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
         item.title.toLowerCase().includes(q) ||
         item.indonesianName.toLowerCase().includes(q) ||
         item.region.toLowerCase().includes(q) ||
-        item.description.toLowerCase().includes(q);
+        item.whatItLooksLike.toLowerCase().includes(q) ||
+        item.howItIsUsed.toLowerCase().includes(q);
       return catMatch && textMatch;
     });
   }, [activeCategory, filterText]);
+
+  const getCategoryLabel = (cat: GalleryItem['category']) =>
+    CATEGORIES.find((c) => c.id === cat)?.label || cat;
 
   return (
     <div>
       <PageHeader
         kicker="Craft Gallery · Photo Collection"
         title="Interactive Craft Gallery"
-        description="Look at Indonesian janur crafts—from tall Balinese festival poles and wedding bouquets to diamond rice pouches and eco-friendly lamps. Click any card to view it bigger and read its story!"
+        description="Look at Indonesian janur crafts—from tall Balinese festival poles and wedding bouquets to diamond rice pouches and eco-friendly lamps. Click any photo to learn more!"
         currentPageLabel="Craft Gallery"
         onNavigateHome={() => onNavigate('home')}
       />
@@ -71,19 +75,19 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#B5D2AF]">
           <div className="flex flex-wrap items-center gap-1.5">
             {CATEGORIES.map((cat) => {
-              const active = activeCategory === cat;
+              const active = activeCategory === cat.id;
               return (
                 <button
-                  key={cat}
+                  key={cat.id}
                   type="button"
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => setActiveCategory(cat.id)}
                   className={`px-3.5 py-2 rounded-lg text-xs font-medium border transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                     active
                       ? 'bg-[#143D28] text-white border-[#143D28]'
                       : 'bg-[#E8F5E9] text-[#132219] border-[#B5D2AF] hover:bg-[#CFE4CA]'
                   }`}
                 >
-                  {cat}
+                  {cat.label}
                 </button>
               );
             })}
@@ -144,7 +148,9 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                   <div>
                     <div className="flex items-center justify-between text-xs text-[#3F5749] mb-1">
-                      <span className="text-[#0F764A] font-medium">{item.category}</span>
+                      <span className="text-[#0F764A] font-medium">
+                        {getCategoryLabel(item.category)}
+                      </span>
                       <span className="font-mono tabular-nums">{item.accessionNumber}</span>
                     </div>
                     <h2 className="font-serif text-2xl font-semibold text-[#132219] group-hover:text-[#0F764A] transition-colors">
@@ -153,8 +159,8 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                     <p className="text-xs font-serif italic text-[#0F764A] mt-0.5">
                       {item.indonesianName}
                     </p>
-                    <p className="text-sm text-[#3F5749] mt-2 line-clamp-3 leading-relaxed">
-                      {item.description}
+                    <p className="text-sm text-[#3F5749] mt-2 line-clamp-2 leading-relaxed">
+                      {item.whatItLooksLike}
                     </p>
                   </div>
 
@@ -169,7 +175,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
         )}
       </div>
 
-      {/* Expanded Lightbox Modal */}
+      {/* Expanded Lightbox Modal with exact 5-part beginner format */}
       {selectedItem && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-[#132219]/75 p-4 sm:p-6 overflow-y-auto"
@@ -184,7 +190,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
           >
             <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#B5D2AF] bg-[#E8F5E9]">
               <span className="font-mono text-xs tabular-nums text-[#0F764A] font-semibold">
-                {selectedItem.accessionNumber} · {selectedItem.category}
+                {selectedItem.accessionNumber} · {getCategoryLabel(selectedItem.category)}
               </span>
               <button
                 type="button"
@@ -206,8 +212,11 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                 />
               </div>
 
-              <div className="md:col-span-5 p-6 space-y-4 overflow-y-auto max-h-[520px]">
+              <div className="md:col-span-5 p-6 space-y-3.5 overflow-y-auto max-h-[520px]">
                 <div>
+                  <p className="text-xs font-mono uppercase tracking-wider text-[#0F764A] font-semibold">
+                    Craft Name
+                  </p>
                   <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#132219]">
                     {selectedItem.title}
                   </h3>
@@ -216,33 +225,35 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                   </p>
                 </div>
 
-                <p className="text-sm text-[#132219] leading-relaxed">
-                  {selectedItem.description}
-                </p>
+                <div>
+                  <p className="text-xs font-semibold text-[#132219]">Where It Comes From</p>
+                  <p className="text-sm text-[#3F5749] mt-0.5">{selectedItem.region}</p>
+                </div>
 
-                <div className="p-3.5 rounded-lg bg-[#E8F5E9] border border-[#B5D2AF]">
-                  <p className="font-mono text-[11px] uppercase tracking-wider font-semibold text-[#0F764A] mb-1">
-                    Cultural Story
-                  </p>
-                  <p className="text-xs sm:text-sm text-[#132219] leading-relaxed">
-                    {selectedItem.culturalBackground}
+                <div>
+                  <p className="text-xs font-semibold text-[#132219]">What It Looks Like</p>
+                  <p className="text-sm text-[#3F5749] mt-0.5 leading-relaxed">
+                    {selectedItem.whatItLooksLike}
                   </p>
                 </div>
 
-                <dl className="pt-2 border-t border-[#B5D2AF] space-y-2 text-xs">
-                  <div>
-                    <dt className="font-semibold text-[#132219] inline">Region: </dt>
-                    <dd className="text-[#3F5749] inline">{selectedItem.region}</dd>
+                <div>
+                  <p className="text-xs font-semibold text-[#132219]">How It Is Used</p>
+                  <p className="text-sm text-[#3F5749] mt-0.5 leading-relaxed">
+                    {selectedItem.howItIsUsed}
+                  </p>
+                </div>
+
+                {selectedItem.interestingFact && (
+                  <div className="p-3.5 rounded-lg bg-[#E8F5E9] border border-[#B5D2AF]">
+                    <p className="font-mono text-[11px] uppercase tracking-wider font-semibold text-[#0F764A] mb-1">
+                      One Interesting Fact
+                    </p>
+                    <p className="text-xs sm:text-sm text-[#132219] leading-relaxed">
+                      {selectedItem.interestingFact}
+                    </p>
                   </div>
-                  <div>
-                    <dt className="font-semibold text-[#132219] inline">Made From: </dt>
-                    <dd className="text-[#3F5749] inline">{selectedItem.medium}</dd>
-                  </div>
-                  <div>
-                    <dt className="font-semibold text-[#132219] inline">When Used: </dt>
-                    <dd className="text-[#3F5749] inline">{selectedItem.occasion}</dd>
-                  </div>
-                </dl>
+                )}
               </div>
             </div>
           </div>

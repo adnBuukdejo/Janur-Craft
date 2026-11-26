@@ -29,7 +29,7 @@ interface StudioSnapshot {
   stripBOffset: Point;
   foldsA: number; // 0 to 3 loops folded
   stripBPlaced: boolean;
-  stripBAngle: number; // 0 (vertical) to 90 (horizontal)
+  stripBAngle: number; // 0 to 90
   crossings: CrossingState[][];
   tuckedCorners: boolean[];
   tightness: number; // 0 to 100
@@ -73,52 +73,52 @@ interface StageInstruction {
 
 const STAGE_INSTRUCTIONS: StageInstruction[] = [
   {
-    title: 'Step 1: Cut the Coconut Leaf',
+    title: 'Step 1: Cut the Leaf',
     shortLabel: '1. Cut Leaf',
     instruction:
-      'Drag the Young Coconut Leaf onto the mat. Next, pick up the Craft Scissors and drag them from left to right along the dotted middle line to cut the leaf into two soft green strips.',
-    goalText: 'Put the leaf on the mat and slide the scissors across to cut it.',
-    hintText: 'Drag the Leaf onto the mat, drag the Scissors onto the leaf, then slide the scissors handle from left to right!',
+      'Pick up the Young Coconut Leaf and move it onto the mat. Next, pick up the Scissors, put them on the leaf, and slide from left to right to cut it into two soft green strips.',
+    goalText: 'Put the leaf on the mat and cut down the middle line.',
+    hintText: 'Move the Leaf onto the mat, put the Scissors on the leaf, then drag the scissors to the right!',
   },
   {
-    title: 'Step 2: Fold Strip A Into 3 Loops',
-    shortLabel: '2. Fold Loops',
+    title: 'Step 2: Fold 3 Leaf Loops',
+    shortLabel: '2. Fold 3 Loops',
     instruction:
-      'Grab the glowing end of Leaf Strip A and drag it across to the loop ring to fold it. Make 3 neat loops side by side.',
-    goalText: 'Drag the strip end 3 times to fold 3 vertical loops.',
-    hintText: 'Pull the bright yellow-green dot on the right side of Strip A over to the dashed circle on the left.',
+      'Pick up the green leaf end on the right and move it onto the "Fold Here" circle. Fold the leaf 3 times to make 3 neat loops side by side.',
+    goalText: 'Fold Loop 1, Loop 2, and Loop 3 onto the "Fold Here" circles.',
+    hintText: 'Drag the green dot on the right directly into the dashed "Fold Here" circle for each loop (1, 2, and 3).',
   },
   {
-    title: 'Step 3: Place & Turn Strip B',
+    title: 'Step 3: Add & Turn Strip B',
     shortLabel: '3. Turn Strip B',
     instruction:
-      'Drag Leaf Strip B onto the mat. Then grab the green Rotate Handle (or click Turn 90°) to turn Strip B sideways across Strip A.',
-    goalText: 'Place Strip B and turn it 90° sideways.',
-    hintText: 'Drag Leaf Strip B onto the mat, then drag the round Rotate Handle clockwise until it locks at 90°.',
+      'Pick up Leaf Strip B and move it onto the mat. Then drag the round "Turn" button (or click Turn Sideways) so Strip B lies across Strip A.',
+    goalText: 'Put Strip B on the mat and turn it sideways.',
+    hintText: 'Drag Leaf Strip B onto the mat, then drag the "Turn" handle right until it locks sideways.',
   },
   {
-    title: 'Step 4: Weave Over and Under',
-    shortLabel: '4. Weave Grid',
+    title: 'Step 4: Put Strips Over & Under',
+    shortLabel: '4. Over & Under',
     instruction:
-      'Time to weave! Click or slide across any of the 9 crossing spots to switch between OVER and UNDER. Make a checkerboard pattern so every strip locks tight.',
-    goalText: 'Match all 9 spots to the alternating Over–Under pattern.',
+      'Now weave! Click or slide across each square where the leaves cross. Switch between OVER and UNDER so every row alternates and locks together.',
+    goalText: 'Make every crossing switch Over and Under (9 out of 9).',
     hintText: 'Row 1: Over · Under · Over | Row 2: Under · Over · Under | Row 3: Over · Under · Over.',
   },
   {
-    title: 'Step 5: Fold & Tuck the 4 Ends',
+    title: 'Step 5: Tuck the 4 Ends',
     shortLabel: '5. Tuck Ends',
     instruction:
-      'Grab each loose leaf end and drag it into its glowing corner pocket on the diamond edge to close the sides.',
-    goalText: 'Drag all 4 loose leaf ends into their corner pockets.',
-    hintText: 'Drag each numbered circle (End 1 to End 4) inward to the matching pocket on the diamond.',
+      'Pick up each loose leaf end (End 1 to End 4) and move it into the glowing corner pocket on the diamond.',
+    goalText: 'Move all 4 loose ends into their corner pockets.',
+    hintText: 'Drag End 1, End 2, End 3, and End 4 inward to the dashed circles on the diamond.',
   },
   {
     title: 'Step 6: Pull Tight Into a Ketupat',
     shortLabel: '6. Pull Tight',
     instruction:
-      'Grab the top or bottom leaf tips and pull outward—or move the Tighten slider to 100%—to close the gaps and finish your diamond ketupat!',
-    goalText: 'Pull the weave tight to 100% to complete your ketupat.',
-    hintText: 'Drag the glowing green pull handle outward or drag the Tighten slider all the way to 100%.',
+      'Grab the green pull handle and drag downward—or slide the bar to 100%—to close the gaps and finish your diamond ketupat!',
+    goalText: 'Pull the strips tight to 100% to finish your ketupat.',
+    hintText: 'Drag the green "Pull Tight" handle down or move the slider all the way to 100%.',
   },
 ];
 
@@ -126,10 +126,10 @@ type PaletteItemId = 'whole-leaf' | 'water-bowl' | 'strip-a' | 'strip-b' | 'scis
 
 const PALETTE_LABELS: Record<PaletteItemId, string> = {
   'whole-leaf': 'Young Coconut Leaf',
-  'water-bowl': 'Bowl of Cool Water',
+  'water-bowl': 'Bowl of Water',
   'strip-a': 'Leaf Strip A',
   'strip-b': 'Leaf Strip B',
-  scissors: 'Craft Scissors',
+  scissors: 'Scissors',
 };
 
 type ActiveCanvasDrag =
@@ -149,6 +149,9 @@ const CORNER_TUCK_POINTS = [
   { idx: 3, start: { x: 442, y: 328 }, target: { x: 358, y: 284 } },
 ];
 
+const LOOP_SLOTS_X = [195, 267, 339];
+const LOOP_TARGET_Y = 196;
+
 export const KetupatCraftStudio: React.FC = () => {
   const [state, setState] = useState<StudioSnapshot>(INITIAL_STATE);
   const [history, setHistory] = useState<StudioSnapshot[]>([]);
@@ -162,7 +165,7 @@ export const KetupatCraftStudio: React.FC = () => {
   const [weaveSweeping, setWeaveSweeping] = useState(false);
   const [lastSweptKey, setLastSweptKey] = useState<string | null>(null);
   const [feedbackMsg, setFeedbackMsg] = useState<string>(
-    'Drag the Young Coconut Leaf from the Materials Panel onto the craft mat to begin!'
+    'Pick up the Young Coconut Leaf and move it onto the mat!'
   );
 
   const workspaceRef = useRef<HTMLDivElement>(null);
@@ -182,7 +185,6 @@ export const KetupatCraftStudio: React.FC = () => {
     []
   );
 
-  // Convert screen pointer coordinates into SVG 560x440 coordinates cleanly
   const toSvgPoint = useCallback((clientX: number, clientY: number): Point => {
     const svg = svgRef.current;
     if (!svg) return { x: 280, y: 220 };
@@ -237,7 +239,6 @@ export const KetupatCraftStudio: React.FC = () => {
     ([0, 1, 2, 3, 4, 5].filter((i) => isStageComplete(state, i)).length / 6) * 100
   );
 
-  // Drop or tap action for palette items
   const applyPaletteDrop = useCallback(
     (itemId: PaletteItemId) => {
       const s = stateRef.current;
@@ -245,7 +246,7 @@ export const KetupatCraftStudio: React.FC = () => {
         if (!s.leafOnMat) {
           pushState(
             (p) => ({ ...p, stage: 0, leafOnMat: true }),
-            'Great! Now pick up the Craft Scissors from the Tools Panel and drag them onto the leaf.'
+            'Well done! Now pick up the Scissors and move them onto the leaf.'
           );
         }
         return;
@@ -253,26 +254,26 @@ export const KetupatCraftStudio: React.FC = () => {
 
       if (itemId === 'water-bowl') {
         if (!s.leafOnMat) {
-          setFeedbackMsg('Put the Young Coconut Leaf on the mat first before adding water.');
+          setFeedbackMsg('Put the Young Coconut Leaf on the mat first!');
           return;
         }
         pushState(
           (p) => ({ ...p, leafHydrated: true }),
-          'Nice! The leaf is cool and soft, so it will not crack when folded.'
+          'Nice! The leaf is soft and ready to fold.'
         );
         return;
       }
 
       if (itemId === 'scissors') {
         if (!s.leafOnMat) {
-          setFeedbackMsg('Put the Young Coconut Leaf on the mat first.');
+          setFeedbackMsg('Put the Young Coconut Leaf on the mat first!');
           return;
         }
         setSelectedTool('scissors');
         if (!s.leafCutDone) {
           setScissorsActiveOnLeaf(true);
           setFeedbackMsg(
-            'Cutting line ready! Grab the Scissors on the left of the leaf and slide them right to cut it.'
+            'Slide the Scissors from left to right along the dotted line!'
           );
         }
         return;
@@ -280,39 +281,39 @@ export const KetupatCraftStudio: React.FC = () => {
 
       if (itemId === 'strip-a') {
         if (!s.leafCutDone) {
-          setFeedbackMsg('Cut the whole coconut leaf first in Step 1 to get Strip A.');
+          setFeedbackMsg('Cut the whole leaf first in Step 1.');
           return;
         }
         if (s.stage === 0) {
           pushState(
             (p) => ({ ...p, stage: 1 }),
-            'Strip A is ready on the folding table! Drag the bright tip to fold 3 loops.'
+            'Fold the leaf! Drag the green dot on the right to the "Fold Here" circle.'
           );
         } else {
-          setFeedbackMsg('Strip A is already on the mat—drag its end to fold the 3 loops!');
+          setFeedbackMsg('Drag the green dot on the right onto the "Fold Here" circle!');
         }
         return;
       }
 
       if (itemId === 'strip-b') {
         if (!s.leafCutDone) {
-          setFeedbackMsg('Cut the whole coconut leaf first in Step 1 to get Strip B.');
+          setFeedbackMsg('Cut the whole leaf first in Step 1.');
           return;
         }
         if (s.foldsA < 3) {
-          setFeedbackMsg('Finish folding Strip A into 3 loops first (Step 2).');
+          setFeedbackMsg('Fold all 3 loops in Step 2 first!');
           return;
         }
         pushState(
           (p) => ({ ...p, stage: Math.max(p.stage, 2), stripBPlaced: true }),
-          'Strip B is on the mat! Now drag the Rotate Handle (or click Turn 90°) to turn it sideways.'
+          'Well done! Now drag the "Turn" handle right (or click Turn Sideways).'
         );
       }
     },
     [pushState]
   );
 
-  // Pointer handling for Palette drags
+  // Palette pointer drag listeners
   useEffect(() => {
     if (!paletteDrag) return;
 
@@ -339,6 +340,8 @@ export const KetupatCraftStudio: React.FC = () => {
           e.clientY <= rect.bottom;
         if (inside) {
           applyPaletteDrop(paletteDrag);
+        } else {
+          setFeedbackMsg('Try again! Drop the item inside the craft mat.');
         }
       }
       setPaletteDrag(null);
@@ -353,7 +356,7 @@ export const KetupatCraftStudio: React.FC = () => {
     };
   }, [paletteDrag, applyPaletteDrop]);
 
-  // Pointer handling for in-canvas physical crafting drags (cutting, folding, rotating, tucking, pulling)
+  // In-canvas physical crafting drags
   useEffect(() => {
     if (!canvasDrag) return;
 
@@ -361,13 +364,12 @@ export const KetupatCraftStudio: React.FC = () => {
       const pt = toSvgPoint(e.clientX, e.clientY);
 
       if (canvasDrag.type === 'scissors-cut') {
-        // Cut track runs from x=86 to x=474
         const pct = Math.max(0, Math.min(100, ((pt.x - 86) / (474 - 86)) * 100));
         setState((prev) => {
           if (pct >= 92 && !prev.leafCutDone) {
             setHistory((h) => [...h.slice(-20), prev]);
             setFeedbackMsg(
-              'Clean cut! The middle stick is removed and you now have two soft green strips. Drag them around or click Next Step!'
+              'Well done! You cut the leaf into two green strips. Move them around or click Next Step!'
             );
             return { ...prev, cutProgress: 100, leafCutDone: true };
           }
@@ -396,7 +398,6 @@ export const KetupatCraftStudio: React.FC = () => {
       } else if (canvasDrag.type === 'fold-strip-a') {
         setCanvasDrag({ type: 'fold-strip-a', pointer: pt });
       } else if (canvasDrag.type === 'rotate-strip-b') {
-        // Center of Strip B is (280, 220)
         const angleRad = Math.atan2(pt.y - 220, pt.x - 280);
         let deg = (angleRad * 180) / Math.PI + 90;
         if (deg < 0) deg += 360;
@@ -409,7 +410,7 @@ export const KetupatCraftStudio: React.FC = () => {
         const nextTight = Math.min(100, Math.max(0, Math.round(canvasDrag.startTightness + delta)));
         setState((prev) => ({ ...prev, tightness: nextTight }));
         if (nextTight >= 100) {
-          setFeedbackMsg('Awesome! You wove a real Indonesian diamond Ketupat!');
+          setFeedbackMsg('Well done! You made a traditional diamond Ketupat!');
         }
       }
     };
@@ -418,33 +419,54 @@ export const KetupatCraftStudio: React.FC = () => {
       const pt = toSvgPoint(e.clientX, e.clientY);
 
       if (canvasDrag.type === 'fold-strip-a') {
-        // If dragged leftward into the fold target zone (x < 290)
-        if (pt.x < 305) {
-          pushState((p) => {
-            const nextFolds = Math.min(3, p.foldsA + 1);
-            return { ...p, foldsA: nextFolds };
-          }, stateRef.current.foldsA + 1 >= 3 ? 'All 3 loops folded! Click Next Step to add Strip B.' : `Nice fold! Loop ${stateRef.current.foldsA + 1} of 3 complete.`);
+        const currentFoldIndex = stateRef.current.foldsA;
+        if (currentFoldIndex < 3) {
+          const targetX = LOOP_SLOTS_X[currentFoldIndex];
+          const distToCircle = Math.hypot(pt.x - targetX, pt.y - LOOP_TARGET_Y);
+          const insideLoopSlot =
+            Math.abs(pt.x - targetX) <= 44 && pt.y >= 62 && pt.y <= 360;
+
+          if (distToCircle <= 64 || insideLoopSlot) {
+            const nextCount = currentFoldIndex + 1;
+            pushState(
+              (p) => ({ ...p, foldsA: Math.min(3, nextCount) }),
+              nextCount >= 3
+                ? 'Well done! All 3 loops (3/3) are folded! Click Next Step to add Strip B.'
+                : `Well done! Loop ${nextCount} of 3 is folded. Now fold Loop ${nextCount + 1}!`
+            );
+          } else {
+            setFeedbackMsg(
+              `Try again! Move the leaf onto the "Fold Here" circle for Loop ${currentFoldIndex + 1}.`
+            );
+          }
         }
       } else if (canvasDrag.type === 'rotate-strip-b') {
         if (stateRef.current.stripBAngle >= 70) {
           pushState(
             (p) => ({ ...p, stripBAngle: 90 }),
-            'Strip B turned 90° sideways across Strip A! Click Next Step to weave Over & Under.'
+            'Well done! Strip B is sideways across Strip A. Click Next Step!'
           );
+        } else {
+          setFeedbackMsg('Try again! Drag the Turn button further right until it locks sideways.');
         }
       } else if (canvasDrag.type === 'tuck-tail') {
         const idx = canvasDrag.tailIdx;
         const corner = CORNER_TUCK_POINTS[idx];
         const dist = Math.hypot(pt.x - corner.target.x, pt.y - corner.target.y);
-        // Generous drop tolerance around the diamond pocket (also works if pulled inward past halfway)
-        const distToCenter = Math.hypot(pt.x - 280, pt.y - 220);
-        if (dist < 85 || distToCenter < 130) {
+        if (dist < 72) {
           const nextCount = stateRef.current.tuckedCorners.filter(Boolean).length + 1;
-          pushState((p) => {
-            const nextTucked = [...p.tuckedCorners];
-            nextTucked[idx] = true;
-            return { ...p, tuckedCorners: nextTucked };
-          }, nextCount === 4 ? 'All 4 leaf ends are tucked! Click Next Step to pull your ketupat tight.' : `Tucked End ${idx + 1} (${nextCount}/4). Keep tucking!`);
+          pushState(
+            (p) => {
+              const nextTucked = [...p.tuckedCorners];
+              nextTucked[idx] = true;
+              return { ...p, tuckedCorners: nextTucked };
+            },
+            nextCount === 4
+              ? 'Well done! All 4 ends are tucked! Click Next Step to pull tight.'
+              : `Well done! End ${idx + 1} tucked (${nextCount}/4).`
+          );
+        } else {
+          setFeedbackMsg(`Try again! Move End ${idx + 1} directly into its corner pocket.`);
         }
       }
 
@@ -488,8 +510,8 @@ export const KetupatCraftStudio: React.FC = () => {
       );
       setFeedbackMsg(
         nowLocked
-          ? 'Checkerboard pattern locked! Click Next Step to fold and tuck the 4 ends.'
-          : 'Switched crossing! Keep alternating Over and Under across each row.'
+          ? 'Well done! Every crossing is Over and Under. Click Next Step!'
+          : 'Switched! Keep making Over and Under switch on every row.'
       );
       return { ...prev, crossings: nextGrid };
     });
@@ -497,14 +519,14 @@ export const KetupatCraftStudio: React.FC = () => {
 
   const handleRotateButton = () => {
     if (!state.stripBPlaced) {
-      setFeedbackMsg('Drag Leaf Strip B onto the mat first.');
+      setFeedbackMsg('Put Leaf Strip B on the mat first!');
       return;
     }
     pushState(
       (p) => ({ ...p, stripBAngle: p.stripBAngle >= 85 ? 0 : 90 }),
       state.stripBAngle >= 85
-        ? 'Turned Strip B back up and down.'
-        : 'Turned Strip B 90° sideways across Strip A! Click Next Step to weave.'
+        ? 'Turned Strip B back.'
+        : 'Well done! Strip B is sideways. Click Next Step!'
     );
   };
 
@@ -523,7 +545,7 @@ export const KetupatCraftStudio: React.FC = () => {
     setShowHint(false);
     setSelectedTool('none');
     setScissorsActiveOnLeaf(false);
-    setFeedbackMsg('Table cleared! Drag the Young Coconut Leaf onto the mat to start.');
+    setFeedbackMsg('Table cleared! Pick up the Young Coconut Leaf and move it onto the mat.');
   };
 
   const goToStage = (targetIdx: number) => {
@@ -552,9 +574,17 @@ export const KetupatCraftStudio: React.FC = () => {
     }, STAGE_INSTRUCTIONS[targetIdx].goalText);
   };
 
-  // Compute live coordinates for scissors cut animation
   const scissorsX = 86 + (state.cutProgress / 100) * (474 - 86);
   const splitGap = state.leafCutDone ? 36 : (state.cutProgress / 100) * 16;
+
+  // Check if active Loop drag is right inside the active "Fold Here" circle
+  const activeFoldTargetX = state.foldsA < 3 ? LOOP_SLOTS_X[state.foldsA] : 339;
+  const foldDragInsideZone =
+    canvasDrag?.type === 'fold-strip-a' &&
+    (Math.hypot(canvasDrag.pointer.x - activeFoldTargetX, canvasDrag.pointer.y - LOOP_TARGET_Y) <= 64 ||
+      (Math.abs(canvasDrag.pointer.x - activeFoldTargetX) <= 44 &&
+        canvasDrag.pointer.y >= 62 &&
+        canvasDrag.pointer.y <= 360));
 
   return (
     <div className="space-y-5">
@@ -565,7 +595,7 @@ export const KetupatCraftStudio: React.FC = () => {
             Ketupat Progress: Step {state.stage + 1} of {STAGE_INSTRUCTIONS.length}
           </span>
           <span className="font-mono tabular-nums text-[#0F764A] font-semibold">
-            {overallProgress}% Complete
+            {overallProgress}% Done
           </span>
         </div>
         <div className="w-full h-2 bg-[#CFE4CA] rounded-full overflow-hidden">
@@ -601,16 +631,15 @@ export const KetupatCraftStudio: React.FC = () => {
 
       {/* Main 3-Zone Craft Table Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-        {/* LEFT PANEL: Materials Panel + Tools Panel */}
+        {/* LEFT PANEL: Materials & Tools */}
         <aside className="lg:col-span-3 space-y-4">
-          {/* Materials Panel */}
           <div className="bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl p-4 space-y-2.5">
             <div className="pb-2 border-b border-[#B5D2AF]">
               <h2 className="font-serif text-xl font-semibold text-[#132219]">
-                Materials Panel
+                Materials
               </h2>
               <p className="text-xs text-[#3F5749] mt-0.5">
-                Drag any leaf or item onto the craft mat.
+                Pick up a leaf and move it onto the mat.
               </p>
             </div>
 
@@ -636,7 +665,7 @@ export const KetupatCraftStudio: React.FC = () => {
               <p className="text-xs font-semibold text-[#132219] mt-1">
                 Young Coconut Leaf
               </p>
-              <p className="text-[11px] text-[#3F5749]">Fresh leaf with center stick</p>
+              <p className="text-[11px] text-[#3F5749]">Fresh leaf with middle stick</p>
             </div>
 
             {/* Leaf Strip A */}
@@ -664,7 +693,7 @@ export const KetupatCraftStudio: React.FC = () => {
                 Leaf Strip A (Dark Green)
               </p>
               <p className="text-[11px] text-[#3F5749]">
-                {state.leafCutDone ? 'Ready for 3 loops' : 'Cut the leaf first'}
+                {state.leafCutDone ? 'Used for 3 loops' : 'Cut the leaf first'}
               </p>
             </div>
 
@@ -693,7 +722,7 @@ export const KetupatCraftStudio: React.FC = () => {
                 Leaf Strip B (Light Green)
               </p>
               <p className="text-[11px] text-[#3F5749]">
-                {state.leafCutDone ? 'Weaves across Strip A' : 'Cut the leaf first'}
+                {state.leafCutDone ? 'Goes across Strip A' : 'Cut the leaf first'}
               </p>
             </div>
 
@@ -712,9 +741,9 @@ export const KetupatCraftStudio: React.FC = () => {
                 <Droplets className="w-5 h-5 text-[#1E6C7A]" />
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#132219]">Bowl of Cool Water</p>
+                <p className="text-xs font-semibold text-[#132219]">Bowl of Water</p>
                 <p className="text-[11px] text-[#3F5749]">
-                  {state.leafHydrated ? 'Leaf moist & soft' : 'Keeps leaves bendable'}
+                  {state.leafHydrated ? 'Leaf is soft!' : 'Makes leaves soft'}
                 </p>
               </div>
             </div>
@@ -724,14 +753,14 @@ export const KetupatCraftStudio: React.FC = () => {
           <div className="bg-[#E5F0E3] border border-[#B5D2AF] rounded-xl p-4 space-y-2.5">
             <div className="pb-2 border-b border-[#B5D2AF]">
               <h2 className="font-serif text-xl font-semibold text-[#132219]">
-                Tools Panel
+                Tools
               </h2>
               <p className="text-xs text-[#3F5749] mt-0.5">
-                Pick a tool and drag it onto the leaf.
+                Pick a tool and move it onto the leaf.
               </p>
             </div>
 
-            {/* Craft Scissors */}
+            {/* Scissors */}
             <div
               onPointerDown={(e) => startPaletteDrag('scissors', e)}
               onClick={() => applyPaletteDrop('scissors')}
@@ -752,14 +781,14 @@ export const KetupatCraftStudio: React.FC = () => {
                 <Scissors className="w-5 h-5 text-[#143D28]" />
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#132219]">Craft Scissors</p>
+                <p className="text-xs font-semibold text-[#132219]">Scissors</p>
                 <p className="text-[11px] text-[#3F5749]">
-                  Drag onto leaf, then slide right to cut
+                  Cuts the middle stick out
                 </p>
               </div>
             </div>
 
-            {/* Turn / Rotate Tool */}
+            {/* Turn Sideways Tool */}
             <button
               type="button"
               onClick={handleRotateButton}
@@ -774,19 +803,18 @@ export const KetupatCraftStudio: React.FC = () => {
                 <RotateCw className="w-5 h-5 text-[#143D28]" />
               </div>
               <div>
-                <p className="text-xs font-semibold text-[#132219]">Turn Strip 90°</p>
-                <p className="text-[11px] text-[#3F5749]">Turns Strip B sideways</p>
+                <p className="text-xs font-semibold text-[#132219]">Turn Sideways</p>
+                <p className="text-[11px] text-[#3F5749]">Turns Strip B across Strip A</p>
               </div>
             </button>
           </div>
         </aside>
 
-        {/* CENTER PANEL: Real Craft Table Workspace */}
+        {/* CENTER PANEL: Real Craft Mat */}
         <section className="lg:col-span-6 space-y-3">
-          {/* Workspace Header Bar */}
           <div className="bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-2">
             <span className="text-xs font-semibold text-[#143D28]">
-              Craft Table Workspace
+              Craft Mat
             </span>
             <div className="flex items-center gap-2 text-xs font-mono tabular-nums">
               {state.stage === 0 && state.leafOnMat && (
@@ -801,12 +829,12 @@ export const KetupatCraftStudio: React.FC = () => {
               )}
               {state.stage === 2 && (
                 <span className="px-2.5 py-1 rounded-md bg-[#FAFBF6] border border-[#B5D2AF] text-[#143D28]">
-                  Angle: {state.stripBAngle}°
+                  Turned: {state.stripBAngle}°
                 </span>
               )}
               {state.stage === 3 && (
                 <span className="px-2.5 py-1 rounded-md bg-[#FAFBF6] border border-[#B5D2AF] text-[#143D28]">
-                  Locked: {lockedCrossingsCount} / 9
+                  Done: {lockedCrossingsCount} / 9
                 </span>
               )}
               {state.stage === 4 && (
@@ -816,13 +844,12 @@ export const KetupatCraftStudio: React.FC = () => {
               )}
               {state.stage === 5 && (
                 <span className="px-2.5 py-1 rounded-md bg-[#FAFBF6] border border-[#B5D2AF] text-[#143D28]">
-                  Tightness: {state.tightness}%
+                  Tight: {state.tightness}%
                 </span>
               )}
             </div>
           </div>
 
-          {/* Interactive Craft Mat Canvas */}
           <div
             ref={workspaceRef}
             className={`relative rounded-xl border-2 transition-colors overflow-hidden min-h-[420px] sm:min-h-[470px] flex flex-col items-center justify-center p-3 sm:p-4 select-none touch-none ${
@@ -836,7 +863,7 @@ export const KetupatCraftStudio: React.FC = () => {
               viewBox="0 0 560 440"
               className="w-full max-w-[560px] h-auto touch-none"
               role="img"
-              aria-label="Interactive janur craft table"
+              aria-label="Interactive janur craft mat"
             >
               <defs>
                 <pattern id="bambooMat" width="24" height="24" patternUnits="userSpaceOnUse">
@@ -859,7 +886,6 @@ export const KetupatCraftStudio: React.FC = () => {
                 </filter>
               </defs>
 
-              {/* Craft Table Mat Border & Surface */}
               <rect
                 x="10"
                 y="10"
@@ -871,7 +897,7 @@ export const KetupatCraftStudio: React.FC = () => {
                 strokeWidth="3"
               />
 
-              {/* ================= STAGE 0: PLACE LEAF & INTERACTIVE SCISSORS CUT ================= */}
+              {/* ================= STAGE 0: CUT THE LEAF ================= */}
               {state.stage === 0 && (
                 <g>
                   {!state.leafOnMat ? (
@@ -889,15 +915,14 @@ export const KetupatCraftStudio: React.FC = () => {
                         strokeDasharray="8 6"
                       />
                       <text x="280" y="212" textAnchor="middle" fill="#143D28" fontSize="16" fontWeight="700">
-                        Drag Young Coconut Leaf Here
+                        Move Leaf Here
                       </text>
                       <text x="280" y="236" textAnchor="middle" fill="#3F5749" fontSize="12">
-                        Pick up the leaf from the Materials Panel on the left
+                        Pick up the Young Coconut Leaf on the left
                       </text>
                     </g>
                   ) : (
                     <g>
-                      {/* Top Strip A — visibly splits upward as scissors slide! */}
                       <g
                         transform={`translate(${state.leafCutDone ? state.stripAOffset.x : 0}, ${
                           (state.leafCutDone ? state.stripAOffset.y : 0) - splitGap
@@ -923,12 +948,11 @@ export const KetupatCraftStudio: React.FC = () => {
                         <path d="M 110 198 C 215 168, 355 170, 460 208" fill="none" stroke="#BCE4B1" strokeWidth="1.3" strokeDasharray="6 4" />
                         {state.leafCutDone && (
                           <text x="280" y="196" textAnchor="middle" fill="#FFFFFF" fontSize="12" fontWeight="700">
-                            Strip A (Drag me!)
+                            Strip A (Move me!)
                           </text>
                         )}
                       </g>
 
-                      {/* Bottom Strip B — visibly splits downward as scissors slide! */}
                       <g
                         transform={`translate(${state.leafCutDone ? state.stripBOffset.x : 0}, ${
                           (state.leafCutDone ? state.stripBOffset.y : 0) + splitGap
@@ -954,12 +978,11 @@ export const KetupatCraftStudio: React.FC = () => {
                         <path d="M 110 242 C 215 272, 355 270, 460 232" fill="none" stroke="#E4F5CB" strokeWidth="1.3" strokeDasharray="6 4" />
                         {state.leafCutDone && (
                           <text x="280" y="256" textAnchor="middle" fill="#132219" fontSize="12" fontWeight="700">
-                            Strip B (Drag me!)
+                            Strip B (Move me!)
                           </text>
                         )}
                       </g>
 
-                      {/* Center Woody Lidi Stick */}
                       <line
                         x1="54"
                         y1="220"
@@ -973,14 +996,12 @@ export const KetupatCraftStudio: React.FC = () => {
 
                       {state.leafCutDone && (
                         <text x="280" y="216" textAnchor="middle" fill="#7A5A3A" fontSize="11" fontWeight="600">
-                          Hard middle stick removed — drag Strip A or B, or click Next Step!
+                          Middle stick cut out! Click Next Step when ready.
                         </text>
                       )}
 
-                      {/* Interactive Cutting Guide & Draggable Scissors Track */}
                       {!state.leafCutDone && (
                         <g>
-                          {/* Guide Line */}
                           <line
                             x1="86"
                             y1="220"
@@ -990,7 +1011,6 @@ export const KetupatCraftStudio: React.FC = () => {
                             strokeWidth="3"
                             strokeDasharray="7 5"
                           />
-                          {/* Already-cut dark slice behind scissors */}
                           <line
                             x1="86"
                             y1="220"
@@ -1005,27 +1025,26 @@ export const KetupatCraftStudio: React.FC = () => {
                               onClick={() => {
                                 setSelectedTool('scissors');
                                 setScissorsActiveOnLeaf(true);
-                                setFeedbackMsg('Now drag the Scissors handle from left to right along the yellow dotted line!');
+                                setFeedbackMsg('Slide the Scissors from left to right along the yellow dotted line!');
                               }}
                               className="cursor-pointer"
                             >
                               <rect
-                                x="155"
+                                x="165"
                                 y="198"
-                                width="250"
+                                width="230"
                                 height="44"
                                 rx="22"
                                 fill="#FAFBF6"
-                                fillOpacity="0.92"
+                                fillOpacity="0.94"
                                 stroke="#0F764A"
                                 strokeWidth="2"
                               />
                               <text x="280" y="224" textAnchor="middle" fill="#143D28" fontSize="12.5" fontWeight="700">
-                                Drag Craft Scissors Here to Start Cutting
+                                Move Scissors Here to Cut
                               </text>
                             </g>
                           ) : (
-                            /* Draggable Scissors Handle along the cut line */
                             <g
                               transform={`translate(${scissorsX}, 220)`}
                               onPointerDown={(e) => {
@@ -1043,7 +1062,6 @@ export const KetupatCraftStudio: React.FC = () => {
                                 strokeWidth="2.5"
                                 filter="url(#dropLeaf)"
                               />
-                              {/* Animated SVG Scissors blades */}
                               <g transform="scale(1.15)">
                                 <line
                                   x1="-8"
@@ -1067,7 +1085,7 @@ export const KetupatCraftStudio: React.FC = () => {
                                 <circle cx="-10" cy="6" r="3" fill="none" stroke="#A9D37B" strokeWidth="1.8" />
                               </g>
                               <text x="0" y="-34" textAnchor="middle" fill="#143D28" fontSize="11.5" fontWeight="700">
-                                Drag Right →
+                                Slide Right →
                               </text>
                             </g>
                           )}
@@ -1078,38 +1096,48 @@ export const KetupatCraftStudio: React.FC = () => {
                 </g>
               )}
 
-              {/* ================= STAGE 1: INTERACTIVE FOLDING OF STRIP A (3 LOOPS) ================= */}
+              {/* ================= STAGE 1: FOLD 3 LEAF LOOPS (FIXED FOR LOOP 1, 2, AND 3!) ================= */}
               {state.stage === 1 && (
                 <g>
-                  {/* Already folded vertical loops */}
-                  {[0, 1, 2].map((i) => {
-                    const cx = 195 + i * 72;
-                    const folded = i < state.foldsA;
+                  {/* Render Loop 1, Loop 2, Loop 3 slots */}
+                  {LOOP_SLOTS_X.map((cx, i) => {
+                    const isFolded = i < state.foldsA;
+                    const isCurrent = i === state.foldsA;
                     return (
                       <g key={cx}>
-                        {!folded ? (
-                          <rect
-                            x={cx - 21}
-                            y="76"
-                            width="42"
-                            height="280"
-                            rx="10"
-                            fill="#E8F5E9"
-                            fillOpacity="0.6"
-                            stroke="#0F764A"
-                            strokeWidth="2"
-                            strokeDasharray="6 4"
-                          />
+                        {!isFolded ? (
+                          <g>
+                            {/* Dashed leaf loop outline */}
+                            <rect
+                              x={cx - 22}
+                              y="68"
+                              width="44"
+                              height="286"
+                              rx="22"
+                              fill={isCurrent ? '#E8F5E9' : '#FAFBF6'}
+                              fillOpacity={isCurrent ? 0.75 : 0.45}
+                              stroke={isCurrent ? '#0F764A' : '#9AC193'}
+                              strokeWidth={isCurrent ? '2.2' : '1.5'}
+                              strokeDasharray="6 4"
+                            />
+                            <text x={cx} y="376" textAnchor="middle" fill="#3F5749" fontSize="11" fontWeight="600">
+                              Loop {i + 1}
+                            </text>
+                          </g>
                         ) : (
+                          /* Completed Folded Loop with visible leaf bend & inner hole */
                           <g filter="url(#dropLeaf)">
+                            {/* Back strip half */}
                             <path
-                              d={`M ${cx - 20} 76 L ${cx} 54 L ${cx + 20} 76 L ${cx + 20} 354 L ${cx - 20} 354 Z`}
+                              d={`M ${cx - 21} 92 C ${cx - 21} 56, ${cx + 21} 56, ${cx + 21} 92 L ${cx + 21} 332 C ${cx + 21} 356, ${cx - 21} 356, ${cx - 21} 332 Z`}
                               fill="url(#leafDark)"
                               stroke="#143D28"
-                              strokeWidth="1.7"
+                              strokeWidth="1.8"
                             />
-                            <line x1={cx} y1="74" x2={cx} y2="346" stroke="#98D292" strokeWidth="1" strokeDasharray="6 4" />
-                            <text x={cx} y="378" textAnchor="middle" fill="#143D28" fontSize="11" fontWeight="700">
+                            {/* Loop opening at top so it visibly reads as a folded loop */}
+                            <ellipse cx={cx} cy="86" rx="10" ry="12" fill="#E8F5E9" stroke="#143D28" strokeWidth="1.3" />
+                            <line x1={cx} y1="104" x2={cx} y2="342" stroke="#98D292" strokeWidth="1.2" strokeDasharray="6 4" />
+                            <text x={cx} y="378" textAnchor="middle" fill="#143D28" fontSize="11.5" fontWeight="700">
                               Loop {i + 1} ✓
                             </text>
                           </g>
@@ -1118,51 +1146,60 @@ export const KetupatCraftStudio: React.FC = () => {
                     );
                   })}
 
-                  {/* Active Unfolded Tail & Draggable Bend End */}
+                  {/* Active Draggable Leaf Strip & Target Circle */}
                   {state.foldsA < 3 && (
                     <g>
-                      {/* Target Fold Zone Ring */}
+                      {/* Target "Fold Here" Ring */}
                       <circle
-                        cx={195 + state.foldsA * 72}
-                        cy="216"
-                        r="26"
-                        fill="#CFE4CA"
-                        fillOpacity="0.6"
-                        stroke={showHint ? '#D97706' : '#0F764A'}
-                        strokeWidth="2.5"
-                        strokeDasharray="5 4"
+                        cx={activeFoldTargetX}
+                        cy={LOOP_TARGET_Y}
+                        r={foldDragInsideZone ? 31 : 27}
+                        fill={foldDragInsideZone ? '#0F764A' : '#CFE4CA'}
+                        fillOpacity={foldDragInsideZone ? 0.25 : 0.7}
+                        stroke={foldDragInsideZone ? '#0F764A' : showHint ? '#D97706' : '#0F764A'}
+                        strokeWidth={foldDragInsideZone || showHint ? '3' : '2.2'}
+                        strokeDasharray={foldDragInsideZone ? 'none' : '5 4'}
                       />
-                      <text x={195 + state.foldsA * 72} y="220" textAnchor="middle" fill="#143D28" fontSize="11" fontWeight="700">
-                        Fold Here
+                      <text
+                        x={activeFoldTargetX}
+                        y={LOOP_TARGET_Y + 4}
+                        textAnchor="middle"
+                        fill="#143D28"
+                        fontSize="10.5"
+                        fontWeight="700"
+                      >
+                        {foldDragInsideZone ? 'Drop!' : 'Fold Here'}
                       </text>
 
-                      {/* Strip bending dynamically when dragged! */}
+                      {/* Bending Leaf Strip that visibly curves from right side to user pointer */}
                       {(() => {
+                        const restPoint = { x: 472, y: 270 };
                         const dragPt =
-                          canvasDrag?.type === 'fold-strip-a'
-                            ? canvasDrag.pointer
-                            : { x: 472, y: 216 };
-                        const startX = 195 + state.foldsA * 72;
-                        const ctrlX = (startX + dragPt.x) / 2;
-                        const ctrlY = Math.min(296, dragPt.y) - 45;
+                          canvasDrag?.type === 'fold-strip-a' ? canvasDrag.pointer : restPoint;
+                        const anchorX = 435;
+                        const anchorY = 330;
+                        const bendCtrlX = Math.min(anchorX, dragPt.x) + 40;
+                        const bendCtrlY = Math.min(anchorY, dragPt.y) - 90;
+
                         return (
                           <g>
+                            {/* Base leaf tail on the right waiting to be folded */}
                             <path
-                              d={`M ${startX} 296 Q ${ctrlX} ${ctrlY}, ${dragPt.x} ${dragPt.y}`}
+                              d={`M ${anchorX} ${anchorY} Q ${bendCtrlX} ${bendCtrlY}, ${dragPt.x} ${dragPt.y}`}
                               fill="none"
-                              stroke="#3B8E47"
+                              stroke={foldDragInsideZone ? '#0F764A' : '#3B8E47'}
                               strokeWidth="26"
                               strokeLinecap="round"
                               filter="url(#dropLeaf)"
                             />
                             <path
-                              d={`M ${startX} 296 Q ${ctrlX} ${ctrlY}, ${dragPt.x} ${dragPt.y}`}
+                              d={`M ${anchorX} ${anchorY} Q ${bendCtrlX} ${bendCtrlY}, ${dragPt.x} ${dragPt.y}`}
                               fill="none"
                               stroke="#A9D37B"
                               strokeWidth="2"
                               strokeDasharray="6 4"
                             />
-                            {/* Draggable End Knob */}
+                            {/* Draggable Leaf Tip */}
                             <g
                               transform={`translate(${dragPt.x}, ${dragPt.y})`}
                               onPointerDown={(e) => {
@@ -1174,13 +1211,13 @@ export const KetupatCraftStudio: React.FC = () => {
                               <circle
                                 cx="0"
                                 cy="0"
-                                r="22"
-                                fill="#143D28"
+                                r="23"
+                                fill={foldDragInsideZone ? '#0F764A' : '#143D28'}
                                 stroke="#FAFBF6"
                                 strokeWidth="2.5"
                               />
                               <text x="0" y="4" textAnchor="middle" fill="#FAFBF6" fontSize="10.5" fontWeight="700">
-                                Drag
+                                Fold {state.foldsA + 1}
                               </text>
                             </g>
                           </g>
@@ -1191,19 +1228,20 @@ export const KetupatCraftStudio: React.FC = () => {
                 </g>
               )}
 
-              {/* ================= STAGE 2: PLACE & DRAG-ROTATE STRIP B ================= */}
+              {/* ================= STAGE 2: ADD & TURN STRIP B ================= */}
               {state.stage === 2 && (
                 <g>
-                  {/* Vertical Loops of Strip A */}
-                  {[195, 267, 339].map((cx) => (
-                    <path
-                      key={cx}
-                      d={`M ${cx - 20} 76 L ${cx} 54 L ${cx + 20} 76 L ${cx + 20} 354 L ${cx - 20} 354 Z`}
-                      fill="url(#leafDark)"
-                      stroke="#143D28"
-                      strokeWidth="1.6"
-                      opacity="0.92"
-                    />
+                  {LOOP_SLOTS_X.map((cx) => (
+                    <g key={cx}>
+                      <path
+                        d={`M ${cx - 20} 88 C ${cx - 20} 54, ${cx + 20} 54, ${cx + 20} 88 L ${cx + 20} 332 C ${cx + 20} 356, ${cx - 20} 356, ${cx - 20} 332 Z`}
+                        fill="url(#leafDark)"
+                        stroke="#143D28"
+                        strokeWidth="1.6"
+                        opacity="0.92"
+                      />
+                      <ellipse cx={cx} cy="84" rx="8" ry="10" fill="#E8F5E9" stroke="#143D28" strokeWidth="1.2" />
+                    </g>
                   ))}
 
                   {!state.stripBPlaced ? (
@@ -1215,17 +1253,16 @@ export const KetupatCraftStudio: React.FC = () => {
                         height="208"
                         rx="14"
                         fill="#FAFBF6"
-                        fillOpacity="0.72"
+                        fillOpacity="0.76"
                         stroke="#0F764A"
                         strokeWidth="2.2"
                         strokeDasharray="7 5"
                       />
                       <text x="280" y="220" textAnchor="middle" fill="#143D28" fontSize="14.5" fontWeight="700">
-                        Drag Leaf Strip B Here
+                        Move Leaf Strip B Here
                       </text>
                     </g>
                   ) : (
-                    /* Live Rotatable Strip B (0 deg -> 90 deg) */
                     <g transform={`translate(280, 220) rotate(${state.stripBAngle})`}>
                       {[-72, 0, 72].map((dx) => (
                         <path
@@ -1239,7 +1276,6 @@ export const KetupatCraftStudio: React.FC = () => {
                         />
                       ))}
 
-                      {/* Interactive Rotate Handle attached to Strip B */}
                       {state.stripBAngle < 85 && (
                         <g
                           transform="translate(0, -168)"
@@ -1250,14 +1286,7 @@ export const KetupatCraftStudio: React.FC = () => {
                           className="cursor-grab active:cursor-grabbing"
                         >
                           <line x1="0" y1="0" x2="0" y2="20" stroke="#143D28" strokeWidth="2.5" />
-                          <circle
-                            cx="0"
-                            cy="0"
-                            r="20"
-                            fill="#143D28"
-                            stroke="#FAFBF6"
-                            strokeWidth="2.5"
-                          />
+                          <circle cx="0" cy="0" r="21" fill="#143D28" stroke="#FAFBF6" strokeWidth="2.5" />
                           <text x="0" y="4" textAnchor="middle" fill="#FAFBF6" fontSize="10" fontWeight="700">
                             Turn
                           </text>
@@ -1268,10 +1297,9 @@ export const KetupatCraftStudio: React.FC = () => {
                 </g>
               )}
 
-              {/* ================= STAGE 3: INTERACTIVE 3x3 OVER/UNDER WEAVE ================= */}
+              {/* ================= STAGE 3: WEAVE OVER & UNDER ================= */}
               {state.stage === 3 && (
                 <g>
-                  {/* Vertical Strip A */}
                   {[208, 280, 352].map((cx) => (
                     <path
                       key={`va-${cx}`}
@@ -1282,7 +1310,6 @@ export const KetupatCraftStudio: React.FC = () => {
                     />
                   ))}
 
-                  {/* Horizontal Strip B */}
                   {[148, 220, 292].map((cy) => (
                     <path
                       key={`hb-${cy}`}
@@ -1293,7 +1320,6 @@ export const KetupatCraftStudio: React.FC = () => {
                     />
                   ))}
 
-                  {/* Interactive 9 Crossing Spots */}
                   {[148, 220, 292].map((cy, r) =>
                     [208, 280, 352].map((cx, c) => {
                       const mode = state.crossings[r][c];
@@ -1373,10 +1399,9 @@ export const KetupatCraftStudio: React.FC = () => {
                 </g>
               )}
 
-              {/* ================= STAGE 4: DRAG & TUCK ALL 4 LOOSE ENDS ================= */}
+              {/* ================= STAGE 4: TUCK THE 4 ENDS ================= */}
               {state.stage === 4 && (
                 <g>
-                  {/* Diamond Weave Body */}
                   <g transform="translate(280, 220) rotate(45)" filter="url(#dropLeaf)">
                     <rect
                       x="-76"
@@ -1396,7 +1421,6 @@ export const KetupatCraftStudio: React.FC = () => {
                     ))}
                   </g>
 
-                  {/* 4 Draggable Leaf Ends & Corner Pockets */}
                   {CORNER_TUCK_POINTS.map((corner) => {
                     const tucked = state.tuckedCorners[corner.idx];
                     const isDraggingThis =
@@ -1405,16 +1429,15 @@ export const KetupatCraftStudio: React.FC = () => {
 
                     return (
                       <g key={corner.idx}>
-                        {/* Glowing target pocket */}
                         {!tucked && (
                           <circle
                             cx={corner.target.x}
                             cy={corner.target.y}
                             r="18"
                             fill="#E8F5E9"
-                            fillOpacity="0.85"
+                            fillOpacity="0.88"
                             stroke={isDraggingThis || showHint ? '#0F764A' : '#3F5749'}
-                            strokeWidth="2"
+                            strokeWidth="2.2"
                             strokeDasharray="4 3"
                           />
                         )}
@@ -1480,7 +1503,6 @@ export const KetupatCraftStudio: React.FC = () => {
                     const gap = 14 * (1 - t);
                     return (
                       <g transform={`translate(280, 214) scale(${scale})`}>
-                        {/* Top tapered tips */}
                         <path
                           d="M -6 -108 C -16 -148, -34 -168, -44 -178 L -34 -182 C -18 -164, -2 -144, 2 -108 Z"
                           fill="#8CC065"
@@ -1494,7 +1516,6 @@ export const KetupatCraftStudio: React.FC = () => {
                           strokeWidth="1.5"
                         />
 
-                        {/* Bottom thick stems */}
                         <path
                           d="M -6 108 L -14 156 L -4 160 L 4 108 Z"
                           fill="#3B8E47"
@@ -1508,7 +1529,6 @@ export const KetupatCraftStudio: React.FC = () => {
                           strokeWidth="1.5"
                         />
 
-                        {/* Traditional Diamond Ketupat Body */}
                         <g transform="rotate(45)" filter="url(#dropLeaf)">
                           <rect
                             x={-84 - gap * 0.4}
@@ -1560,7 +1580,6 @@ export const KetupatCraftStudio: React.FC = () => {
                           )}
                         </g>
 
-                        {/* Draggable Bottom Pull Handle */}
                         {state.tightness < 100 && (
                           <g
                             transform="translate(0, 162)"
@@ -1586,7 +1605,7 @@ export const KetupatCraftStudio: React.FC = () => {
                               strokeWidth="2"
                             />
                             <text x="0" y="4" textAnchor="middle" fill="#FAFBF6" fontSize="11" fontWeight="700">
-                              Drag to Pull Tight ↓
+                              Pull Tight ↓
                             </text>
                           </g>
                         )}
@@ -1597,11 +1616,10 @@ export const KetupatCraftStudio: React.FC = () => {
               )}
             </svg>
 
-            {/* Tightening Slider on Stage 5 */}
             {state.stage === 5 && (
               <div className="w-full max-w-md mt-2 bg-[#FAFBF6] border border-[#B5D2AF] rounded-xl p-3.5 space-y-2">
                 <div className="flex items-center justify-between text-xs font-semibold text-[#132219]">
-                  <label htmlFor="tighten-slider">Tighten Ketupat</label>
+                  <label htmlFor="tighten-slider">Pull Tight</label>
                   <span className="font-mono tabular-nums text-[#0F764A]">{state.tightness}%</span>
                 </div>
                 <div className="flex items-center gap-3">
@@ -1615,7 +1633,7 @@ export const KetupatCraftStudio: React.FC = () => {
                       const val = Number(e.target.value);
                       setState((p) => ({ ...p, tightness: val }));
                       if (val >= 100) {
-                        setFeedbackMsg('Awesome! Your traditional woven diamond Ketupat is complete!');
+                        setFeedbackMsg('Well done! Your diamond Ketupat is finished!');
                       }
                     }}
                     className="w-full accent-[#0F764A] cursor-pointer"
@@ -1625,7 +1643,7 @@ export const KetupatCraftStudio: React.FC = () => {
                     onClick={() =>
                       pushState(
                         (p) => ({ ...p, tightness: 100 }),
-                        'Awesome! You finished weaving a traditional Indonesian Ketupat!'
+                        'Well done! Your diamond Ketupat is finished!'
                       )
                     }
                     className="px-3.5 py-2 text-xs font-semibold bg-[#143D28] text-white rounded-lg hover:bg-[#0D2B1B] whitespace-nowrap shrink-0 cursor-pointer"
@@ -1637,14 +1655,13 @@ export const KetupatCraftStudio: React.FC = () => {
             )}
           </div>
 
-          {/* Live Feedback Strip */}
           <div className="bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl px-4 py-2.5 flex items-center gap-2 text-xs text-[#132219]">
             <Sparkles className="w-4 h-4 text-[#0F764A] shrink-0" />
             <span>{feedbackMsg}</span>
           </div>
         </section>
 
-        {/* RIGHT PANEL: Simple Instructions & Controls */}
+        {/* RIGHT PANEL: Instructions & Controls */}
         <aside className="lg:col-span-3 bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl p-4 sm:p-5 space-y-4">
           <div className="pb-3 border-b border-[#B5D2AF]">
             <p className="font-mono text-xs text-[#0F764A] tabular-nums mb-1 font-semibold">
@@ -1667,10 +1684,10 @@ export const KetupatCraftStudio: React.FC = () => {
             }`}
           >
             <span className="font-semibold block mb-0.5 text-[#132219]">
-              {currentComplete ? 'Step Done!' : 'Goal:'}
+              {currentComplete ? 'Well Done!' : 'Goal:'}
             </span>
             {currentComplete && state.stage === STAGE_INSTRUCTIONS.length - 1
-              ? 'You made a real diamond Ketupat Bawang! Click Reset to play again or try our step-by-step tutorials.'
+              ? 'You made a traditional diamond Ketupat! Click Reset to try again.'
               : stageInfo.goalText}
           </div>
 
@@ -1681,7 +1698,6 @@ export const KetupatCraftStudio: React.FC = () => {
             </div>
           )}
 
-          {/* Action Controls */}
           <div className="pt-2 border-t border-[#B5D2AF] space-y-2.5">
             <div className="grid grid-cols-2 gap-2">
               <button
@@ -1748,7 +1764,6 @@ export const KetupatCraftStudio: React.FC = () => {
         </aside>
       </div>
 
-      {/* Floating Ghost Preview While Dragging from Side Panel */}
       {paletteDrag && (
         <div
           className="fixed z-50 pointer-events-none px-3 py-1.5 rounded-lg bg-[#143D28] text-white text-xs font-semibold shadow-lg -translate-x-1/2 -translate-y-1/2"

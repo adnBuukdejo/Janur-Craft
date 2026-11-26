@@ -8,7 +8,6 @@ export type PageId =
 
 export interface TerminologyEntry {
   term: string;
-  pronunciation?: string;
   origin: string;
   definition: string;
 }
@@ -53,11 +52,10 @@ export interface GalleryItem {
   indonesianName: string;
   category: Exclude<GalleryCategory, 'All'>;
   region: string;
-  medium: string;
-  occasion: string;
+  whatItLooksLike: string;
+  howItIsUsed: string;
+  interestingFact?: string;
   imageUrl: string;
-  description: string;
-  culturalBackground: string;
 }
 
 export interface RegionalTradition {

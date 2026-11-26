@@ -100,7 +100,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         kind: 'Gallery',
         page: 'gallery',
         extraId: item.id,
-        searchBlob: `${item.title} ${item.indonesianName} ${item.category} ${item.region} ${item.description} ${item.culturalBackground}`.toLowerCase(),
+        searchBlob: `${item.title} ${item.indonesianName} ${item.category} ${item.region} ${item.whatItLooksLike} ${item.howItIsUsed}`.toLowerCase(),
       });
     });
 

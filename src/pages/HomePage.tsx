@@ -113,7 +113,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 Featured Crafts
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219]">
-                Traditional &amp; Modern Janur Creations
+                Traditional and Modern Janur Crafts
               </h2>
             </div>
             <button
@@ -153,7 +153,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                       {item.title}
                     </h3>
                     <p className="text-xs text-[#3F5749] mt-1.5 line-clamp-2 leading-relaxed">
-                      {item.description}
+                      {item.whatItLooksLike}
                     </p>
                   </div>
                 </div>
