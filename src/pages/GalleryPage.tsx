@@ -4,6 +4,7 @@ import { GALLERY_ITEMS } from '../data/galleryAndRegions';
 import { GalleryCategory, GalleryItem, PageId } from '../types/janur';
 import { PageHeader } from '../components/PageHeader';
 import { ResilientImage } from '../components/ResilientImage';
+import { KetupatDivider } from '../components/BotanicalDecorations';
 
 interface GalleryPageProps {
   initialItemId?: string;
@@ -60,12 +61,25 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
   const getCategoryLabel = (cat: GalleryItem['category']) =>
     CATEGORIES.find((c) => c.id === cat)?.label || cat;
 
+  const getCategoryColor = (cat: GalleryItem['category']) => {
+    switch (cat) {
+      case 'Ceremonial':
+        return 'text-[#B65236]';
+      case 'Offerings':
+        return 'text-[#C26019]';
+      case 'Technique':
+        return 'text-[#9C6F0A]';
+      default:
+        return 'text-[#0F764A]';
+    }
+  };
+
   return (
-    <div>
+    <div className="bg-[#FAFBF6]">
       <PageHeader
         kicker="Craft Gallery · Photo Collection"
         title="Interactive Craft Gallery"
-        description="Look at Indonesian janur crafts—from tall Balinese festival poles and wedding bouquets to diamond rice pouches and eco-friendly lamps. Click any photo to learn more!"
+        description="Look at Indonesian janur crafts—from tall Balinese festival poles and wedding bouquets to diamond rice pouches, leaf toys, and eco-friendly lamps. Click any photo to learn more!"
         currentPageLabel="Craft Gallery"
         onNavigateHome={() => onNavigate('home')}
       />
@@ -84,7 +98,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                   className={`px-3.5 py-2 rounded-lg text-xs font-medium border transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                     active
                       ? 'bg-[#143D28] text-white border-[#143D28]'
-                      : 'bg-[#E8F5E9] text-[#132219] border-[#B5D2AF] hover:bg-[#CFE4CA]'
+                      : 'bg-[#E8F5E9] text-[#132219] border-[#B5D2AF] hover:bg-[#FDF5DB] hover:border-[#E2B334]'
                   }`}
                 >
                   {cat.label}
@@ -126,12 +140,18 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
           </div>
         ) : (
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredItems.map((item) => (
+            {filteredItems.map((item, idx) => (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => setSelectedItem(item)}
-                className="group text-left bg-[#E8F5E9]/85 border border-[#B5D2AF] rounded-xl overflow-hidden hover:border-[#0F764A] transition-colors flex flex-col cursor-pointer"
+                className={`group text-left border rounded-xl overflow-hidden hover:border-[#0F764A] transition-colors flex flex-col cursor-pointer ${
+                  idx % 3 === 1
+                    ? 'bg-[#FDF5DB]/65 border-[#E8D28C]'
+                    : idx % 3 === 2
+                    ? 'bg-[#FAEDE8]/65 border-[#E4B7AA]'
+                    : 'bg-[#E8F5E9]/85 border-[#B5D2AF]'
+                }`}
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#CFE4CA]">
                   <ResilientImage
@@ -148,7 +168,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                   <div>
                     <div className="flex items-center justify-between text-xs text-[#3F5749] mb-1">
-                      <span className="text-[#0F764A] font-medium">
+                      <span className={`font-semibold ${getCategoryColor(item.category)}`}>
                         {getCategoryLabel(item.category)}
                       </span>
                       <span className="font-mono tabular-nums">{item.accessionNumber}</span>
@@ -165,7 +185,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                   </div>
 
                   <div className="pt-3 border-t border-[#B5D2AF] flex items-center gap-1.5 text-xs text-[#143D28] font-medium">
-                    <MapPin className="w-3.5 h-3.5 shrink-0 text-[#0F764A]" />
+                    <MapPin className="w-3.5 h-3.5 shrink-0 text-[#DD7930]" />
                     <span className="truncate">{item.region}</span>
                   </div>
                 </div>
@@ -173,6 +193,8 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
             ))}
           </div>
         )}
+
+        <KetupatDivider className="mt-12" />
       </div>
 
       {/* Expanded Lightbox Modal with exact 5-part beginner format */}
@@ -188,7 +210,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
             className="w-full max-w-4xl bg-[#FAFBF6] border border-[#B5D2AF] rounded-xl overflow-hidden shadow-2xl my-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#B5D2AF] bg-[#E8F5E9]">
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#B5D2AF] bg-gradient-to-r from-[#E8F5E9] to-[#FDF5DB]/80">
               <span className="font-mono text-xs tabular-nums text-[#0F764A] font-semibold">
                 {selectedItem.accessionNumber} · {getCategoryLabel(selectedItem.category)}
               </span>
@@ -245,8 +267,8 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
                 </div>
 
                 {selectedItem.interestingFact && (
-                  <div className="p-3.5 rounded-lg bg-[#E8F5E9] border border-[#B5D2AF]">
-                    <p className="font-mono text-[11px] uppercase tracking-wider font-semibold text-[#0F764A] mb-1">
+                  <div className="p-3.5 rounded-lg bg-[#FDF5DB] border border-[#E8D28C]">
+                    <p className="font-mono text-[11px] uppercase tracking-wider font-semibold text-[#B65236] mb-1">
                       One Interesting Fact
                     </p>
                     <p className="text-xs sm:text-sm text-[#132219] leading-relaxed">

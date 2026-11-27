@@ -147,13 +147,13 @@ export const IndonesiaCulturalMap: React.FC<IndonesiaCulturalMapProps> = ({
                     className="cursor-pointer focus:outline-none"
                   >
                     {isSelected && (
-                      <circle cx="0" cy="0" r="15" fill="#0F764A" opacity="0.24" />
+                      <circle cx="0" cy="0" r="15" fill="#DD7930" opacity="0.28" />
                     )}
                     <circle
                       cx="0"
                       cy="0"
                       r={isSelected ? 8.5 : 6}
-                      fill={isSelected ? '#143D28' : '#FAFBF6'}
+                      fill={isSelected ? '#B65236' : '#FAFBF6'}
                       stroke="#143D28"
                       strokeWidth="2.2"
                     />
@@ -189,7 +189,7 @@ export const IndonesiaCulturalMap: React.FC<IndonesiaCulturalMapProps> = ({
 
           <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
             <div>
-              <div className="flex items-center gap-1.5 text-xs text-[#0F764A] font-semibold mb-1">
+              <div className="flex items-center gap-1.5 text-xs text-[#B65236] font-semibold mb-1">
                 <MapPin className="w-3.5 h-3.5" />
                 <span>{activeRegion.provinceOrIsland}</span>
               </div>
@@ -215,7 +215,7 @@ export const IndonesiaCulturalMap: React.FC<IndonesiaCulturalMapProps> = ({
                 <span className="font-semibold text-[#132219]">Local Words: </span>
                 <span className="text-[#3F5749]">{activeRegion.localTerminology}</span>
               </div>
-              <div className="p-3 rounded-lg bg-[#E8F5E9] border border-[#B5D2AF] text-[#132219] leading-relaxed">
+              <div className="p-3 rounded-lg bg-[#FDF5DB] border border-[#E8D28C] text-[#132219] leading-relaxed">
                 {activeRegion.verifiedHighlight}
               </div>
             </div>

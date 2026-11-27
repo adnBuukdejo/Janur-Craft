@@ -7,4 +7,6 @@ export const JANUR_IMAGES = {
   canangOfferings: '/src/assets/images/craft_canang_offerings_1795521501372.jpg',
   modernDesign: '/src/assets/images/craft_ombak_ombak_modern_1795521502460.jpg',
   ketupatPlatter: '/src/assets/images/craft_ketupat_lebaran_platter_1795521503672.jpg',
+  handsWeavingKetupat: '/src/assets/images/craft_hands_weaving_ketupat_1795761740972.jpg',
+  janurToys: '/src/assets/images/craft_janur_grasshopper_toys_1795761740553.jpg',
 } as const;

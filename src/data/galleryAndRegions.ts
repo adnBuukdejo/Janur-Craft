@@ -122,6 +122,21 @@ export const GALLERY_ITEMS: GalleryItem[] = [
       'Every single item on the table is made from one renewable plant without a drop of glue.',
     imageUrl: JANUR_IMAGES.heroExhibition,
   },
+  {
+    id: 'belalang-janur-toys',
+    accessionNumber: 'JC-09',
+    title: 'Woven Leaf Grasshopper & Flower Rosette',
+    indonesianName: 'Belalang Janur & Bunga',
+    category: 'Technique',
+    region: 'Java, Bali & Sumatra',
+    whatItLooksLike:
+      'A green woven grasshopper with long feelers and bent jumping legs, beside a star-shaped palm leaf flower.',
+    howItIsUsed:
+      'Parents and craft teachers weave leaf animals as plastic-free toys for children and decorate family trays with the leaf flower.',
+    interestingFact:
+      'Making leaf grasshoppers teaches children how to braid and fold leaves without any glue or plastic.',
+    imageUrl: JANUR_IMAGES.janurToys,
+  },
 ];
 
 export const REGIONAL_TRADITIONS: RegionalTradition[] = [

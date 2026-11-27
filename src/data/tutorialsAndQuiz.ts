@@ -9,7 +9,7 @@ export const CRAFT_TUTORIALS: CraftTutorial[] = [
     level: 'Beginner',
     duration: '15–20 mins',
     leafCount: '2 soft green janur strips',
-    imageUrl: JANUR_IMAGES.ketupatWoven,
+    imageUrl: JANUR_IMAGES.handsWeavingKetupat,
     diagramType: 'ketupat',
     summary:
       'Learn how to weave two strips of janur into a diamond rice pouch. No glue or tape needed!',
@@ -148,7 +148,7 @@ export const CRAFT_TUTORIALS: CraftTutorial[] = [
     level: 'Intermediate',
     duration: '15 mins',
     leafCount: '2 leaf strips + 1 center stick',
-    imageUrl: JANUR_IMAGES.heroExhibition,
+    imageUrl: JANUR_IMAGES.janurToys,
     diagramType: 'grasshopper',
     summary:
       'Fold two green coconut leaf strips into a cute toy grasshopper with jumping legs.',

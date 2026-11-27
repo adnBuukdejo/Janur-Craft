@@ -63,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {isActive && (
                   <span
                     aria-hidden="true"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0F764A]"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#0F764A] via-[#E2B334] to-[#DD7930]"
                   />
                 )}
               </button>
@@ -76,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={onOpenSearch}
-            className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-[#143D28] bg-[#E8F5E9] border border-[#B5D2AF] rounded-lg hover:bg-[#CFE4CA] hover:border-[#0F764A] transition-colors whitespace-nowrap shrink-0 cursor-pointer min-h-[40px]"
+            className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-[#143D28] bg-[#E8F5E9] border border-[#B5D2AF] rounded-lg hover:bg-[#FDF5DB] hover:border-[#E2B334] transition-colors whitespace-nowrap shrink-0 cursor-pointer min-h-[40px]"
             aria-label="Open website search"
           >
             <Search className="w-3.5 h-3.5 text-[#0F764A]" strokeWidth={2} />

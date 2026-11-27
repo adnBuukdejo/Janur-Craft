@@ -133,9 +133,9 @@ export const CraftQuiz: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-full h-2 bg-[#CFE4CA] rounded-full overflow-hidden mt-4">
+        <div className="w-full h-2.5 bg-[#CFE4CA] rounded-full overflow-hidden mt-4">
           <div
-            className="h-full bg-[#0F764A] transition-all duration-300"
+            className="h-full bg-gradient-to-r from-[#0F764A] via-[#3B8E47] to-[#E2B334] transition-all duration-300"
             style={{
               width: `${((currentIdx + (hasAnsweredCurrent ? 1 : 0)) / QUIZ_QUESTIONS.length) * 100}%`,
             }}
@@ -153,12 +153,12 @@ export const CraftQuiz: React.FC = () => {
               const isCorrectOption = idx === currentQuestion.correctIndex;
 
               let buttonStyle =
-                'bg-[#FAFBF6] border-[#B5D2AF] text-[#132219] hover:border-[#0F764A] hover:bg-[#CFE4CA]/45';
+                'bg-[#FAFBF6] border-[#B5D2AF] text-[#132219] hover:border-[#0F764A] hover:bg-[#FDF5DB]/60';
               if (hasAnsweredCurrent) {
                 if (isCorrectOption) {
                   buttonStyle = 'bg-[#CFE4CA] border-[#0F764A] text-[#132219] font-medium';
                 } else if (isSelected && !isCorrectOption) {
-                  buttonStyle = 'bg-[#F8EAE6] border-[#9B3B2B] text-[#132219]';
+                  buttonStyle = 'bg-[#FAEDE8] border-[#B65236] text-[#132219]';
                 } else {
                   buttonStyle = 'bg-[#FAFBF6]/70 border-[#B5D2AF] text-[#3F5749]';
                 }
@@ -182,7 +182,7 @@ export const CraftQuiz: React.FC = () => {
                     <CheckCircle2 className="w-4 h-4 text-[#0F764A] shrink-0" />
                   )}
                   {hasAnsweredCurrent && isSelected && !isCorrectOption && (
-                    <XCircle className="w-4 h-4 text-[#9B3B2B] shrink-0" />
+                    <XCircle className="w-4 h-4 text-[#B65236] shrink-0" />
                   )}
                 </button>
               );
@@ -190,8 +190,8 @@ export const CraftQuiz: React.FC = () => {
           </div>
 
           {hasAnsweredCurrent && (
-            <div className="mt-5 p-4 rounded-lg bg-[#FAFBF6] border border-[#B5D2AF]">
-              <p className="text-xs font-mono uppercase tracking-wider text-[#0F764A] font-semibold mb-1">
+            <div className="mt-5 p-4 rounded-lg bg-[#FDF5DB]/85 border border-[#E8D28C]">
+              <p className="text-xs font-mono uppercase tracking-wider text-[#B65236] font-semibold mb-1">
                 {selectedOption === currentQuestion.correctIndex
                   ? 'Nice Job! Right Answer'
                   : 'Good to Know'}

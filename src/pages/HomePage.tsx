@@ -1,14 +1,28 @@
 import React from 'react';
-import { ArrowRight, Compass, HelpCircle, Images, Sparkles, Wrench } from 'lucide-react';
+import { ArrowRight, Compass, HelpCircle, Images, Leaf, MapPin, Sparkles, Wrench } from 'lucide-react';
 import { EDUCATIONAL_SECTIONS } from '../data/educationalSections';
 import { GALLERY_ITEMS } from '../data/galleryAndRegions';
 import { JANUR_IMAGES } from '../data/images';
 import { PageId } from '../types/janur';
 import { ResilientImage } from '../components/ResilientImage';
+import {
+  AnyamanCornerAccent,
+  JanurLeafIcon,
+  KetupatDiamondIcon,
+  KetupatDivider,
+} from '../components/BotanicalDecorations';
 
 interface HomePageProps {
   onNavigate: (page: PageId, anchorId?: string, extraId?: string) => void;
 }
+
+const FEATURE_TINTS = [
+  'bg-[#FAFBF6] border-[#B5D2AF]',
+  'bg-[#FDF5DB]/80 border-[#E8D28C]',
+  'bg-[#FDF0E4]/85 border-[#EBC3A0]',
+  'bg-[#FAEDE8]/85 border-[#E4B7AA]',
+  'bg-[#E8F5E9] border-[#B5D2AF]',
+];
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const featuredCrafts = GALLERY_ITEMS.slice(0, 4);
@@ -23,13 +37,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div>
       {/* 1. Hero Section */}
-      <section className="border-b border-[#B5D2AF] bg-gradient-to-b from-[#FAFBF6] to-[#E8F5E9]/70 botanical-paper-grid">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <section className="relative overflow-hidden border-b border-[#B5D2AF] bg-gradient-to-br from-[#FAFBF6] via-[#E8F5E9]/85 to-[#FDF5DB]/70 botanical-paper-grid">
+        <AnyamanCornerAccent className="hidden lg:block absolute right-0 top-0 w-72 h-56 opacity-75" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
             <div className="lg:col-span-5 flex flex-col justify-between py-2">
               <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-[#0F764A] font-semibold mb-4">
-                  Indonesian Coconut Leaf Art · Student Project
+                <p className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#B65236] font-semibold mb-4">
+                  <JanurLeafIcon className="w-4 h-4" />
+                  <span>Indonesian Coconut Leaf Art · Student Project</span>
                 </p>
                 <h1 className="font-serif text-5xl sm:text-6xl font-semibold text-[#132219] leading-[1.06] tracking-tight">
                   The Art of Janur
@@ -54,16 +70,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <button
                   type="button"
                   onClick={() => onNavigate('studio')}
-                  className="inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold text-[#143D28] bg-[#CFE4CA] border border-[#3B8E47]/40 rounded-lg hover:bg-[#BEDBB8] transition-colors cursor-pointer min-h-[44px]"
+                  className="inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold text-[#143D28] bg-[#FDF5DB] border border-[#E2B334] rounded-lg hover:bg-[#F7E8B6] transition-colors cursor-pointer min-h-[44px]"
                 >
-                  <Sparkles className="w-4 h-4 text-[#0F764A]" />
+                  <KetupatDiamondIcon className="w-4 h-4" />
                   <span>Try Craft Studio</span>
                 </button>
               </div>
             </div>
 
             <div className="lg:col-span-7">
-              <div className="h-full min-h-[320px] sm:min-h-[420px] rounded-xl overflow-hidden border-2 border-[#B5D2AF] bg-[#CFE4CA]">
+              <div className="h-full min-h-[320px] sm:min-h-[420px] rounded-xl overflow-hidden border-2 border-[#B5D2AF] bg-[#CFE4CA] shadow-sm">
                 <ResilientImage
                   src={JANUR_IMAGES.heroExhibition}
                   alt="Display of Indonesian woven janur crafts including ketupat pouches and folded coconut leaf fans"
@@ -74,42 +90,65 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Quick Overview Strip */}
+          {/* Quick Overview Strip with balanced green/yellow/orange/terracotta accents */}
           <div className="mt-10 pt-6 border-t border-[#B5D2AF] grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            <div>
-              <p className="font-mono text-xs font-semibold text-[#0F764A] tabular-nums">13 Topics</p>
-              <p className="text-sm font-medium text-[#132219] mt-0.5">
-                Easy Stories &amp; Guides
-              </p>
+            <div className="bg-[#FAFBF6]/85 border border-[#B5D2AF] rounded-lg p-3.5 flex items-start gap-3">
+              <div className="p-2 rounded-lg bg-[#E8F5E9] shrink-0">
+                <Sparkles className="w-4 h-4 text-[#0F764A]" />
+              </div>
+              <div>
+                <p className="font-mono text-xs font-semibold text-[#0F764A] tabular-nums">13 Topics</p>
+                <p className="text-sm font-medium text-[#132219] mt-0.5">
+                  Easy Stories &amp; Guides
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="font-mono text-xs font-semibold text-[#0F764A] tabular-nums">7 Regions</p>
-              <p className="text-sm font-medium text-[#132219] mt-0.5">
-                Interactive Indonesia Map
-              </p>
+
+            <div className="bg-[#FAFBF6]/85 border border-[#E8D28C] rounded-lg p-3.5 flex items-start gap-3">
+              <div className="p-2 rounded-lg bg-[#FDF5DB] shrink-0">
+                <MapPin className="w-4 h-4 text-[#B68310]" />
+              </div>
+              <div>
+                <p className="font-mono text-xs font-semibold text-[#9C6F0A] tabular-nums">7 Regions</p>
+                <p className="text-sm font-medium text-[#132219] mt-0.5">
+                  Interactive Indonesia Map
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="font-mono text-xs font-semibold text-[#0F764A] tabular-nums">Hands-On Studio</p>
-              <p className="text-sm font-medium text-[#132219] mt-0.5">
-                Cut, Fold &amp; Weave a Ketupat
-              </p>
+
+            <div className="bg-[#FAFBF6]/85 border border-[#EBC3A0] rounded-lg p-3.5 flex items-start gap-3">
+              <div className="p-2 rounded-lg bg-[#FDF0E4] shrink-0">
+                <Wrench className="w-4 h-4 text-[#DD7930]" />
+              </div>
+              <div>
+                <p className="font-mono text-xs font-semibold text-[#C26019] tabular-nums">7 Craft Steps</p>
+                <p className="text-sm font-medium text-[#132219] mt-0.5">
+                  Hands-On Ketupat Studio
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="font-mono text-xs font-semibold text-[#0F764A] tabular-nums">100% Natural</p>
-              <p className="text-sm font-medium text-[#132219] mt-0.5">
-                Zero-Plastic Plant Craft
-              </p>
+
+            <div className="bg-[#FAFBF6]/85 border border-[#E4B7AA] rounded-lg p-3.5 flex items-start gap-3">
+              <div className="p-2 rounded-lg bg-[#FAEDE8] shrink-0">
+                <Leaf className="w-4 h-4 text-[#B65236]" />
+              </div>
+              <div>
+                <p className="font-mono text-xs font-semibold text-[#B65236] tabular-nums">100% Natural</p>
+                <p className="text-sm font-medium text-[#132219] mt-0.5">
+                  Zero-Plastic Plant Craft
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Featured Traditional & Modern Crafts */}
-      <section className="py-14 sm:py-16 border-b border-[#B5D2AF] bg-[#E8F5E9]">
+      {/* 2. Featured Traditional and Modern Janur Crafts */}
+      <section className="py-14 sm:py-16 border-b border-[#B5D2AF] bg-[#E8F5E9] anyaman-weave-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-[#0F764A] font-semibold mb-1">
+              <p className="font-mono text-xs uppercase tracking-widest text-[#B65236] font-semibold mb-1">
                 Featured Crafts
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219]">
@@ -127,38 +166,48 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredCrafts.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => onNavigate('gallery', undefined, item.id)}
-                className="group text-left bg-[#FAFBF6] border border-[#B5D2AF] rounded-xl overflow-hidden hover:border-[#0F764A] transition-colors flex flex-col cursor-pointer"
-              >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-[#CFE4CA]">
-                  <ResilientImage
-                    src={item.imageUrl}
-                    alt={item.title}
-                    fallbackTitle={item.title}
-                    className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-4 flex-1 flex flex-col justify-between">
-                  <div>
-                    <p className="text-xs text-[#0F764A] font-medium mb-1">
-                      <span>{item.category}</span>
-                      <span aria-hidden="true"> · </span>
-                      <span>{item.region.split(',')[0]}</span>
-                    </p>
-                    <h3 className="font-serif text-xl font-semibold text-[#132219] group-hover:text-[#0F764A] transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-[#3F5749] mt-1.5 line-clamp-2 leading-relaxed">
-                      {item.whatItLooksLike}
-                    </p>
+            {featuredCrafts.map((item, idx) => {
+              const accentClass =
+                idx === 0
+                  ? 'text-[#0F764A]'
+                  : idx === 1
+                  ? 'text-[#B65236]'
+                  : idx === 2
+                  ? 'text-[#C26019]'
+                  : 'text-[#9C6F0A]';
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => onNavigate('gallery', undefined, item.id)}
+                  className="group text-left bg-[#FAFBF6] border border-[#B5D2AF] rounded-xl overflow-hidden hover:border-[#0F764A] transition-colors flex flex-col cursor-pointer"
+                >
+                  <div className="aspect-[4/3] w-full overflow-hidden bg-[#CFE4CA]">
+                    <ResilientImage
+                      src={item.imageUrl}
+                      alt={item.title}
+                      fallbackTitle={item.title}
+                      className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                    />
                   </div>
-                </div>
-              </button>
-            ))}
+                  <div className="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                      <p className={`text-xs font-semibold mb-1 ${accentClass}`}>
+                        <span>{item.category}</span>
+                        <span aria-hidden="true"> · </span>
+                        <span>{item.region.split(',')[0]}</span>
+                      </p>
+                      <h3 className="font-serif text-xl font-semibold text-[#132219] group-hover:text-[#0F764A] transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-[#3F5749] mt-1.5 line-clamp-2 leading-relaxed">
+                        {item.whatItLooksLike}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -166,29 +215,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* 3. Preview of Interactive Craft Studio */}
       <section className="py-14 sm:py-16 border-b border-[#B5D2AF] bg-[#FAFBF6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-[#E5F0E3] to-[#CFE4CA]/85 border border-[#B5D2AF] rounded-xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="bg-gradient-to-br from-[#E5F0E3] via-[#E8F5E9] to-[#FDF5DB]/85 border border-[#B5D2AF] rounded-xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
-              <p className="font-mono text-xs uppercase tracking-widest text-[#0F764A] font-semibold">
-                Interactive Craft Studio · Hands-On Activity
+              <p className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#B65236] font-semibold">
+                <KetupatDiamondIcon className="w-4 h-4" />
+                <span>Interactive Craft Studio · 7 Hands-On Steps</span>
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219]">
                 Make Your Own Ketupat Step by Step
               </h2>
               <p className="text-sm sm:text-base text-[#132219]/85 leading-relaxed max-w-2xl">
-                Try crafting at our interactive table! Drag a fresh coconut leaf onto the mat, slide the scissors to cut it into two strips, fold the loops, weave them over and under, and pull tight into a diamond ketupat.
+                Try crafting at our interactive table! Soften a coconut leaf with water, cut out the middle stick, bend 3 connected loops, weave over and under, tuck the corners, and pull tight into a diamond ketupat.
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs text-[#132219]">
                 <div className="bg-[#FAFBF6] border border-[#B5D2AF] rounded-lg px-3 py-2.5">
                   <span className="font-mono font-semibold text-[#0F764A] block">Step 1–2</span>
-                  <span className="font-medium">Cut Leaf &amp; Fold Loops</span>
+                  <span className="font-medium">Soften Leaf &amp; Cut Strips</span>
                 </div>
-                <div className="bg-[#FAFBF6] border border-[#B5D2AF] rounded-lg px-3 py-2.5">
-                  <span className="font-mono font-semibold text-[#0F764A] block">Step 3–4</span>
-                  <span className="font-medium">Turn &amp; Weave Over/Under</span>
+                <div className="bg-[#FDF5DB]/90 border border-[#E8D28C] rounded-lg px-3 py-2.5">
+                  <span className="font-mono font-semibold text-[#9C6F0A] block">Step 3–5</span>
+                  <span className="font-medium">Fold 3 Loops &amp; Weave</span>
                 </div>
-                <div className="bg-[#FAFBF6] border border-[#B5D2AF] rounded-lg px-3 py-2.5 col-span-2 sm:col-span-1">
-                  <span className="font-mono font-semibold text-[#0F764A] block">Step 5–6</span>
+                <div className="bg-[#FDF0E4]/90 border border-[#EBC3A0] rounded-lg px-3 py-2.5 col-span-2 sm:col-span-1">
+                  <span className="font-mono font-semibold text-[#B65236] block">Step 6–7</span>
                   <span className="font-medium">Tuck Ends &amp; Pull Tight</span>
                 </div>
               </div>
@@ -206,16 +256,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="aspect-[4/3] rounded-xl overflow-hidden border border-[#B5D2AF] bg-[#E8F5E9]">
+              <div className="aspect-[4/3] rounded-xl overflow-hidden border-2 border-[#B5D2AF] bg-[#E8F5E9]">
                 <ResilientImage
-                  src={JANUR_IMAGES.ketupatWoven}
-                  alt="Traditional woven diamond ketupat rice pouches"
+                  src={JANUR_IMAGES.handsWeavingKetupat}
+                  alt="Artisan hands weaving fresh young coconut leaf strips into a diamond ketupat"
                   fallbackTitle="Ketupat Craft Studio"
                   className="w-full h-full object-cover"
                 />
               </div>
             </div>
           </div>
+
+          <KetupatDivider className="mt-12" />
         </div>
       </section>
 
@@ -242,12 +294,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {educationHighlights.map((sec) => (
+            {educationHighlights.map((sec, idx) => (
               <button
                 key={sec.id}
                 type="button"
                 onClick={() => onNavigate('explore', sec.id)}
-                className="text-left bg-[#FAFBF6] border border-[#B5D2AF] rounded-xl p-5 hover:border-[#0F764A] transition-colors flex flex-col justify-between cursor-pointer"
+                className={`text-left border rounded-xl p-5 hover:border-[#0F764A] transition-colors flex flex-col justify-between cursor-pointer ${
+                  FEATURE_TINTS[idx % FEATURE_TINTS.length]
+                }`}
               >
                 <div>
                   <div className="flex items-center justify-between text-xs text-[#3F5749] mb-2">
@@ -276,7 +330,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               className="text-left bg-[#143D28] text-white rounded-xl p-5 hover:bg-[#0D2B1B] transition-colors flex flex-col justify-between cursor-pointer"
             >
               <div>
-                <div className="flex items-center justify-between text-xs text-[#A9D37B] mb-2">
+                <div className="flex items-center justify-between text-xs text-[#E2B334] mb-2">
                   <span className="font-mono uppercase tracking-wider font-semibold">Easy Guides</span>
                   <Wrench className="w-4 h-4" />
                 </div>
@@ -287,7 +341,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   Follow easy pictures and short steps to weave a Ketupat, a Balinese flower crown, a leaf grasshopper, or a ceremonial keris!
                 </p>
               </div>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-[#A9D37B]">
+              <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-[#E2B334]">
                 <span>Open Craft Tutorials</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
@@ -297,10 +351,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 5. Cultural Map, Gallery & Quiz Invitation */}
-      <section className="py-14 sm:py-16 bg-[#FAFBF6]">
+      <section className="py-14 sm:py-16 bg-[#FAFBF6] anyaman-weave-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <p className="font-mono text-xs uppercase tracking-widest text-[#0F764A] font-semibold mb-1">
+            <p className="font-mono text-xs uppercase tracking-widest text-[#B65236] font-semibold mb-1">
               Keep Exploring
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219]">
@@ -317,7 +371,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => onNavigate('explore', 'cultural-map')}
               className="text-left bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl p-6 hover:border-[#0F764A] transition-colors cursor-pointer"
             >
-              <Compass className="w-6 h-6 text-[#0F764A] mb-3" strokeWidth={1.7} />
+              <div className="w-10 h-10 rounded-lg bg-[#FAFBF6] border border-[#B5D2AF] flex items-center justify-center mb-3">
+                <Compass className="w-5 h-5 text-[#0F764A]" strokeWidth={1.8} />
+              </div>
               <h3 className="font-serif text-2xl font-semibold text-[#132219]">
                 Indonesian Cultural Map
               </h3>
@@ -329,9 +385,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <button
               type="button"
               onClick={() => onNavigate('gallery')}
-              className="text-left bg-[#E5F0E3] border border-[#B5D2AF] rounded-xl p-6 hover:border-[#0F764A] transition-colors cursor-pointer"
+              className="text-left bg-[#FDF5DB]/85 border border-[#E8D28C] rounded-xl p-6 hover:border-[#DD7930] transition-colors cursor-pointer"
             >
-              <Images className="w-6 h-6 text-[#0F764A] mb-3" strokeWidth={1.7} />
+              <div className="w-10 h-10 rounded-lg bg-[#FAFBF6] border border-[#E8D28C] flex items-center justify-center mb-3">
+                <Images className="w-5 h-5 text-[#DD7930]" strokeWidth={1.8} />
+              </div>
               <h3 className="font-serif text-2xl font-semibold text-[#132219]">
                 Interactive Craft Gallery
               </h3>
@@ -343,9 +401,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <button
               type="button"
               onClick={() => onNavigate('explore', 'craft-quiz')}
-              className="text-left bg-[#CFE4CA]/75 border border-[#B5D2AF] rounded-xl p-6 hover:border-[#0F764A] transition-colors cursor-pointer"
+              className="text-left bg-[#FAEDE8]/90 border border-[#E4B7AA] rounded-xl p-6 hover:border-[#B65236] transition-colors cursor-pointer"
             >
-              <HelpCircle className="w-6 h-6 text-[#0F764A] mb-3" strokeWidth={1.7} />
+              <div className="w-10 h-10 rounded-lg bg-[#FAFBF6] border border-[#E4B7AA] flex items-center justify-center mb-3">
+                <HelpCircle className="w-5 h-5 text-[#B65236]" strokeWidth={1.8} />
+              </div>
               <h3 className="font-serif text-2xl font-semibold text-[#132219]">
                 Craft Knowledge Quiz
               </h3>

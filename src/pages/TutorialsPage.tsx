@@ -6,6 +6,7 @@ import { PageHeader } from '../components/PageHeader';
 import { ResilientImage } from '../components/ResilientImage';
 import { TutorialSchematicSVG } from '../components/EducationalDiagrams';
 import { StepIllustration } from '../components/StepIllustration';
+import { KetupatDiamondIcon, KetupatDivider } from '../components/BotanicalDecorations';
 
 interface TutorialsPageProps {
   initialTutorialId?: string;
@@ -40,7 +41,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
   ).length;
 
   return (
-    <div>
+    <div className="bg-[#FAFBF6]">
       <PageHeader
         kicker="Craft Tutorials · Beginner Guides"
         title="Learn to Make Janur Crafts"
@@ -62,7 +63,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
                 className={`px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                   active
                     ? 'bg-[#143D28] text-white border-[#143D28]'
-                    : 'bg-[#E8F5E9] text-[#132219] border-[#B5D2AF] hover:bg-[#CFE4CA]'
+                    : 'bg-[#E8F5E9] text-[#132219] border-[#B5D2AF] hover:bg-[#FDF5DB] hover:border-[#E2B334]'
                 }`}
               >
                 {tut.title}
@@ -74,7 +75,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
         {/* Tutorial Title & Overview */}
         <div className="mt-8 pb-6 border-b border-[#B5D2AF] flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <p className="text-xs text-[#0F764A] font-semibold mb-1">
+            <p className="text-xs text-[#B65236] font-semibold mb-1">
               <span>{activeTutorial.level}</span>
               <span aria-hidden="true"> · </span>
               <span>{activeTutorial.duration}</span>
@@ -84,7 +85,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
             <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219]">
               {activeTutorial.title}
             </h2>
-            <p className="text-sm font-serif italic text-[#3F5749] mt-0.5">
+            <p className="text-sm font-serif italic text-[#0F764A] mt-0.5">
               Indonesian name: {activeTutorial.indonesianTitle}
             </p>
             <p className="mt-2.5 text-sm sm:text-base text-[#132219] max-w-2xl leading-relaxed">
@@ -93,7 +94,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <span className="font-mono text-xs tabular-nums text-[#143D28] bg-[#E8F5E9] border border-[#B5D2AF] px-3 py-2 rounded-lg">
+            <span className="font-mono text-xs tabular-nums text-[#143D28] bg-[#FDF5DB] border border-[#E8D28C] px-3 py-2 rounded-lg">
               {completedCount} / {activeTutorial.steps.length} steps done
             </span>
             {activeTutorial.id === 'ketupat-bawang' && (
@@ -102,6 +103,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
                 onClick={() => onNavigate('studio')}
                 className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#0F764A] rounded-lg hover:bg-[#143D28] transition-colors cursor-pointer"
               >
+                <KetupatDiamondIcon className="w-3.5 h-3.5" />
                 <span>Try in Craft Studio</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
@@ -111,7 +113,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
 
         {/* Organized 5-Part Tutorial Grid */}
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: 1. What You Need, 2. Before You Start, 4. Visual Guide, 5. Finished Craft */}
+          {/* Left Column */}
           <div className="lg:col-span-5 space-y-6">
             {/* 1. What You Need */}
             <section className="bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl p-5 space-y-4">
@@ -145,7 +147,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
             </section>
 
             {/* 2. Before You Start */}
-            <section className="bg-[#FAFBF6] border border-[#B5D2AF] rounded-xl p-5 space-y-2.5">
+            <section className="bg-[#FDF5DB]/85 border border-[#E8D28C] rounded-xl p-5 space-y-2.5">
               <h3 className="font-serif text-2xl font-semibold text-[#132219]">
                 2. Before You Start
               </h3>
@@ -170,7 +172,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
             </section>
 
             {/* 5. Finished Craft */}
-            <section className="bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl overflow-hidden">
+            <section className="bg-[#FAEDE8]/90 border border-[#E4B7AA] rounded-xl overflow-hidden">
               <div className="aspect-[4/3] w-full bg-[#CFE4CA]">
                 <ResilientImage
                   src={activeTutorial.imageUrl}
@@ -190,7 +192,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
             </section>
           </div>
 
-          {/* Right Column: 3. Step-by-Step Guide with per-step illustrations */}
+          {/* Right Column: 3. Step-by-Step Guide */}
           <div className="lg:col-span-7 space-y-4">
             <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#132219]">
               3. Step-by-Step Guide
@@ -239,8 +241,8 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
                     </p>
 
                     {step.tip && (
-                      <p className="mt-2.5 text-xs text-[#132219] bg-[#E8F5E9] border border-[#B5D2AF] rounded-lg px-3 py-2">
-                        <strong className="text-[#0F764A]">Tip:</strong> {step.tip}
+                      <p className="mt-2.5 text-xs text-[#132219] bg-[#FDF0E4]/90 border border-[#EBC3A0] rounded-lg px-3 py-2">
+                        <strong className="text-[#B65236]">Tip:</strong> {step.tip}
                       </p>
                     )}
                   </div>
@@ -249,6 +251,8 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
             })}
           </div>
         </div>
+
+        <KetupatDivider className="mt-12" />
       </div>
     </div>
   );

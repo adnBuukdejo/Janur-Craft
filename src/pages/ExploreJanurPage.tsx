@@ -12,12 +12,20 @@ import {
 } from '../components/EducationalDiagrams';
 import { IndonesiaCulturalMap } from '../components/IndonesiaCulturalMap';
 import { CraftQuiz } from '../components/CraftQuiz';
+import { JanurLeafIcon, KetupatDivider } from '../components/BotanicalDecorations';
 
 interface ExploreJanurPageProps {
   scrollTarget?: string;
   selectedRegionId?: string;
   onNavigate: (page: PageId, anchorId?: string) => void;
 }
+
+const SECTION_ACCENTS = [
+  { card: 'bg-[#E8F5E9] border-[#B5D2AF]', label: 'text-[#0F764A]', note: 'bg-[#FDF5DB]/85 border-[#E8D28C]' },
+  { card: 'bg-[#FDF5DB]/80 border-[#E8D28C]', label: 'text-[#9C6F0A]', note: 'bg-[#E8F5E9] border-[#B5D2AF]' },
+  { card: 'bg-[#FDF0E4]/85 border-[#EBC3A0]', label: 'text-[#C26019]', note: 'bg-[#FAEDE8]/85 border-[#E4B7AA]' },
+  { card: 'bg-[#FAEDE8]/85 border-[#E4B7AA]', label: 'text-[#B65236]', note: 'bg-[#E5F0E3] border-[#B5D2AF]' },
+];
 
 export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
   scrollTarget,
@@ -43,7 +51,7 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
   };
 
   return (
-    <div>
+    <div className="bg-[#FAFBF6]">
       <PageHeader
         kicker="Learn About Janur · 13 Simple Topics"
         title="Explore the World of Janur"
@@ -68,14 +76,14 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
           <button
             type="button"
             onClick={() => jumpTo('cultural-map')}
-            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#CFE4CA] border border-[#0F764A] text-[#143D28] whitespace-nowrap shrink-0 cursor-pointer"
+            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#FDF5DB] border border-[#E8D28C] text-[#143D28] whitespace-nowrap shrink-0 cursor-pointer"
           >
             Cultural Map
           </button>
           <button
             type="button"
             onClick={() => jumpTo('craft-quiz')}
-            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#CFE4CA] border border-[#0F764A] text-[#143D28] whitespace-nowrap shrink-0 cursor-pointer"
+            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#FAEDE8] border border-[#E4B7AA] text-[#143D28] whitespace-nowrap shrink-0 cursor-pointer"
           >
             Knowledge Quiz
           </button>
@@ -86,7 +94,7 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Desktop Sticky Sidebar */}
           <aside className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-22 bg-[#E8F5E9] border border-[#B5D2AF] rounded-xl p-4 space-y-4">
+            <div className="sticky top-22 bg-gradient-to-b from-[#E8F5E9] to-[#E5F0E3] border border-[#B5D2AF] rounded-xl p-4 space-y-4">
               <div className="flex items-center gap-2 pb-2 border-b border-[#B5D2AF]">
                 <BookOpen className="w-4 h-4 text-[#0F764A]" />
                 <span className="font-mono text-xs uppercase tracking-wider text-[#143D28] font-semibold">
@@ -113,14 +121,14 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
                 <button
                   type="button"
                   onClick={() => jumpTo('cultural-map')}
-                  className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-[#FAFBF6] border border-[#B5D2AF] text-[#143D28] hover:bg-[#CFE4CA] transition-colors cursor-pointer"
+                  className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-[#FDF5DB] border border-[#E8D28C] text-[#143D28] hover:bg-[#F7E8B6] transition-colors cursor-pointer"
                 >
                   Indonesian Cultural Map
                 </button>
                 <button
                   type="button"
                   onClick={() => jumpTo('craft-quiz')}
-                  className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-[#FAFBF6] border border-[#B5D2AF] text-[#143D28] hover:bg-[#CFE4CA] transition-colors cursor-pointer"
+                  className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold bg-[#FAEDE8] border border-[#E4B7AA] text-[#B65236] hover:bg-[#F5DCD4] transition-colors cursor-pointer"
                 >
                   Craft Knowledge Quiz
                 </button>
@@ -129,173 +137,185 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
           </aside>
 
           {/* Main 13 Educational Sections */}
-          <div className="lg:col-span-9 space-y-14">
-            {EDUCATIONAL_SECTIONS.map((sec) => (
-              <article
-                key={sec.id}
-                id={sec.id}
-                className="scroll-mt-24 pb-12 border-b border-[#B5D2AF]"
-              >
-                <div className="flex flex-wrap items-center gap-2 text-xs text-[#3F5749] mb-2">
-                  <span className="font-mono tabular-nums text-[#0F764A] font-semibold">
-                    Topic {sec.number} of 13
-                  </span>
-                  <span aria-hidden="true">·</span>
-                  <span>{sec.category}</span>
-                  <span aria-hidden="true">·</span>
-                  <span>{sec.readTime}</span>
-                </div>
-
-                <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219] tracking-tight">
-                  {sec.title}
-                </h2>
-                <p className="mt-1.5 text-base font-serif italic text-[#3F5749]">
-                  {sec.subtitle}
-                </p>
-
-                <p className="mt-5 text-base text-[#132219] leading-relaxed max-w-prose">
-                  {sec.leadParagraph}
-                </p>
-
-                {sec.imageUrl && (
-                  <figure className="mt-6">
-                    <div className="aspect-[16/9] max-h-[400px] w-full rounded-xl overflow-hidden border border-[#B5D2AF] bg-[#CFE4CA]">
-                      <ResilientImage
-                        src={sec.imageUrl}
-                        alt={sec.imageCaption || sec.title}
-                        fallbackTitle={sec.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    {sec.imageCaption && (
-                      <figcaption className="mt-2 text-xs font-serif italic text-[#3F5749]">
-                        {sec.imageCaption}
-                      </figcaption>
-                    )}
-                  </figure>
-                )}
-
-                {sec.diagramType === 'anatomy' && (
-                  <div className="mt-6">
-                    <AnatomyDiagram />
+          <div className="lg:col-span-9 space-y-12">
+            {EDUCATIONAL_SECTIONS.map((sec, idx) => {
+              const accent = SECTION_ACCENTS[idx % SECTION_ACCENTS.length];
+              return (
+                <article
+                  key={sec.id}
+                  id={sec.id}
+                  className="scroll-mt-24 pb-10"
+                >
+                  <div className="flex flex-wrap items-center gap-2 text-xs text-[#3F5749] mb-2">
+                    <JanurLeafIcon className="w-4 h-4 shrink-0" />
+                    <span className={`font-mono tabular-nums font-semibold ${accent.label}`}>
+                      Topic {sec.number} of 13
+                    </span>
+                    <span aria-hidden="true">·</span>
+                    <span>{sec.category}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{sec.readTime}</span>
                   </div>
-                )}
-                {sec.diagramType === 'techniques' && (
-                  <div className="mt-6">
-                    <TechniquesDiagram />
-                  </div>
-                )}
-                {sec.diagramType === 'weave-interactive' && (
-                  <div className="mt-6">
-                    <InteractiveWeaveInspector onOpenStudio={() => onNavigate('studio')} />
-                  </div>
-                )}
-                {sec.diagramType === 'sustainability' && (
-                  <div className="mt-6">
-                    <SustainabilityCycleDiagram />
-                  </div>
-                )}
 
-                <div className="mt-6 space-y-5 max-w-prose">
-                  {sec.subsections.map((sub) => (
-                    <div key={sub.subheading}>
-                      <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#132219] mb-2">
-                        {sub.subheading}
-                      </h3>
-                      <div className="space-y-3">
-                        {sub.paragraphs.map((p, pIdx) => (
-                          <p
-                            key={pIdx}
-                            className="text-sm sm:text-[15px] text-[#132219]/90 leading-[1.75]"
-                          >
-                            {p}
-                          </p>
-                        ))}
+                  <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219] tracking-tight">
+                    {sec.title}
+                  </h2>
+                  <p className="mt-1.5 text-base font-serif italic text-[#3F5749]">
+                    {sec.subtitle}
+                  </p>
+
+                  <p className="mt-5 text-base text-[#132219] leading-relaxed max-w-prose">
+                    {sec.leadParagraph}
+                  </p>
+
+                  {sec.imageUrl && (
+                    <figure className="mt-6">
+                      <div className="aspect-[16/9] max-h-[400px] w-full rounded-xl overflow-hidden border border-[#B5D2AF] bg-[#CFE4CA]">
+                        <ResilientImage
+                          src={sec.imageUrl}
+                          alt={sec.imageCaption || sec.title}
+                          fallbackTitle={sec.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      {sub.practicalExample && (
-                        <div className="mt-3 p-4 rounded-lg bg-[#E8F5E9] border border-[#B5D2AF]">
-                          <p className="text-xs font-mono uppercase tracking-wider font-semibold text-[#0F764A] mb-1">
-                            Real-Life Example
-                          </p>
-                          <p className="text-xs sm:text-sm text-[#132219] leading-relaxed">
-                            {sub.practicalExample}
-                          </p>
-                        </div>
+                      {sec.imageCaption && (
+                        <figcaption className="mt-2 text-xs font-serif italic text-[#3F5749]">
+                          {sec.imageCaption}
+                        </figcaption>
                       )}
+                    </figure>
+                  )}
+
+                  {sec.diagramType === 'anatomy' && (
+                    <div className="mt-6">
+                      <AnatomyDiagram />
                     </div>
-                  ))}
-                </div>
+                  )}
+                  {sec.diagramType === 'techniques' && (
+                    <div className="mt-6">
+                      <TechniquesDiagram />
+                    </div>
+                  )}
+                  {sec.diagramType === 'weave-interactive' && (
+                    <div className="mt-6">
+                      <InteractiveWeaveInspector onOpenStudio={() => onNavigate('studio')} />
+                    </div>
+                  )}
+                  {sec.diagramType === 'sustainability' && (
+                    <div className="mt-6">
+                      <SustainabilityCycleDiagram />
+                    </div>
+                  )}
 
-                {sec.culturalNote && (
-                  <div className="mt-6 p-4 sm:p-5 rounded-xl bg-[#E5F0E3] border border-[#B5D2AF] max-w-prose">
-                    <p className="text-sm font-semibold text-[#143D28]">
-                      {sec.culturalNote.title}
-                    </p>
-                    <p className="text-xs sm:text-sm text-[#3F5749] mt-1 leading-relaxed">
-                      {sec.culturalNote.body}
-                    </p>
-                  </div>
-                )}
-
-                {sec.keyTerms.length > 0 && (
-                  <div className="mt-6">
-                    <p className="font-mono text-xs uppercase tracking-wider font-semibold text-[#0F764A] mb-2.5">
-                      Indonesian Words to Know
-                    </p>
-                    <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {sec.keyTerms.map((term) => (
-                        <div
-                          key={term.term}
-                          className="p-3.5 rounded-lg bg-[#E8F5E9]/85 border border-[#B5D2AF]"
-                        >
-                          <dt className="text-sm font-semibold text-[#132219]">
-                            {term.term}{' '}
-                            <span className="text-xs font-normal text-[#3F5749]">
-                              ({term.origin})
-                            </span>
-                          </dt>
-                          <dd className="text-xs text-[#3F5749] mt-1 leading-relaxed">
-                            {term.definition}
-                          </dd>
+                  <div className="mt-6 space-y-5 max-w-prose">
+                    {sec.subsections.map((sub) => (
+                      <div key={sub.subheading}>
+                        <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#132219] mb-2">
+                          {sub.subheading}
+                        </h3>
+                        <div className="space-y-3">
+                          {sub.paragraphs.map((p, pIdx) => (
+                            <p
+                              key={pIdx}
+                              className="text-sm sm:text-[15px] text-[#132219]/90 leading-[1.75]"
+                            >
+                              {p}
+                            </p>
+                          ))}
                         </div>
-                      ))}
-                    </dl>
+                        {sub.practicalExample && (
+                          <div className={`mt-3 p-4 rounded-lg border ${accent.note}`}>
+                            <p className={`text-xs font-mono uppercase tracking-wider font-semibold mb-1 ${accent.label}`}>
+                              Real-Life Example
+                            </p>
+                            <p className="text-xs sm:text-sm text-[#132219] leading-relaxed">
+                              {sub.practicalExample}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                )}
 
-                {sec.id === 'step-by-step-tutorials' && (
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <button
-                      type="button"
-                      onClick={() => onNavigate('tutorials')}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-white bg-[#143D28] rounded-lg hover:bg-[#0D2B1B] transition-colors cursor-pointer"
-                    >
-                      <span>Open Step-by-Step Tutorials</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => onNavigate('studio')}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-[#143D28] bg-[#CFE4CA] border border-[#0F764A]/30 rounded-lg hover:bg-[#BEDBB8] transition-colors cursor-pointer"
-                    >
-                      <span>Practice in Interactive Craft Studio</span>
-                    </button>
-                  </div>
-                )}
-              </article>
-            ))}
+                  {sec.culturalNote && (
+                    <div className={`mt-6 p-4 sm:p-5 rounded-xl border max-w-prose ${accent.card}`}>
+                      <p className="text-sm font-semibold text-[#143D28]">
+                        {sec.culturalNote.title}
+                      </p>
+                      <p className="text-xs sm:text-sm text-[#3F5749] mt-1 leading-relaxed">
+                        {sec.culturalNote.body}
+                      </p>
+                    </div>
+                  )}
+
+                  {sec.keyTerms.length > 0 && (
+                    <div className="mt-6">
+                      <p className="font-mono text-xs uppercase tracking-wider font-semibold text-[#0F764A] mb-2.5">
+                        Indonesian Words to Know
+                      </p>
+                      <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {sec.keyTerms.map((term, tIdx) => (
+                          <div
+                            key={term.term}
+                            className={`p-3.5 rounded-lg border ${
+                              tIdx % 2 === 0
+                                ? 'bg-[#E8F5E9]/85 border-[#B5D2AF]'
+                                : 'bg-[#FDF5DB]/70 border-[#E8D28C]'
+                            }`}
+                          >
+                            <dt className="text-sm font-semibold text-[#132219]">
+                              {term.term}{' '}
+                              <span className="text-xs font-normal text-[#3F5749]">
+                                ({term.origin})
+                              </span>
+                            </dt>
+                            <dd className="text-xs text-[#3F5749] mt-1 leading-relaxed">
+                              {term.definition}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </div>
+                  )}
+
+                  {sec.id === 'step-by-step-tutorials' && (
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <button
+                        type="button"
+                        onClick={() => onNavigate('tutorials')}
+                        className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-white bg-[#143D28] rounded-lg hover:bg-[#0D2B1B] transition-colors cursor-pointer"
+                      >
+                        <span>Open Step-by-Step Tutorials</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onNavigate('studio')}
+                        className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold text-[#143D28] bg-[#FDF5DB] border border-[#E2B334] rounded-lg hover:bg-[#F7E8B6] transition-colors cursor-pointer"
+                      >
+                        <span>Practice in Interactive Craft Studio</span>
+                      </button>
+                    </div>
+                  )}
+
+                  <KetupatDivider className="mt-10" />
+                </article>
+              );
+            })}
 
             {/* Indonesian Cultural Map */}
             <section id="cultural-map" className="scroll-mt-24 pt-2">
               <IndonesiaCulturalMap initialRegionId={selectedRegionId} />
             </section>
 
+            <KetupatDivider />
+
             {/* Craft Knowledge Quiz */}
             <section id="craft-quiz" className="scroll-mt-24 pt-2">
               <CraftQuiz />
             </section>
 
-            <div className="p-6 rounded-xl bg-[#E8F5E9] border border-[#B5D2AF] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="p-6 rounded-xl bg-gradient-to-r from-[#E8F5E9] to-[#FDF5DB]/75 border border-[#B5D2AF] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h3 className="font-serif text-xl font-semibold text-[#132219]">
                   Sources &amp; Cultural References

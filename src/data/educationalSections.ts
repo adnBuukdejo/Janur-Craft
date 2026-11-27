@@ -177,8 +177,8 @@ export const EDUCATIONAL_SECTIONS: EducationalSection[] = [
     category: 'Tutorials',
     leadParagraph:
       'The best way to learn janur is to try folding it yourself! Beginners usually start with a simple Ketupat Bawang diamond pouch.',
-    imageUrl: JANUR_IMAGES.ketupatWoven,
-    imageCaption: 'Finished Ketupat Bawang pouches with neat tucked ends.',
+    imageUrl: JANUR_IMAGES.handsWeavingKetupat,
+    imageCaption: 'Hands weaving fresh yellow-green janur strips into a neat Ketupat Bawang pouch.',
     subsections: [
       {
         subheading: 'Three Quick Beginner Tips',

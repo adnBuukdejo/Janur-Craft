@@ -5,6 +5,7 @@ import { JANUR_IMAGES } from '../data/images';
 import { PageId } from '../types/janur';
 import { PageHeader } from '../components/PageHeader';
 import { ResilientImage } from '../components/ResilientImage';
+import { AnyamanCornerAccent, KetupatDivider } from '../components/BotanicalDecorations';
 
 interface AboutPageProps {
   onNavigate: (page: PageId, anchorId?: string) => void;
@@ -12,7 +13,7 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   return (
-    <div>
+    <div className="bg-[#FAFBF6]">
       <PageHeader
         kicker="About This Project · Why JanurCraft Exists"
         title="About JanurCraft"
@@ -21,11 +22,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         onNavigateHome={() => onNavigate('home')}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 space-y-14">
         {/* Purpose & Story */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-6 space-y-4">
-            <p className="font-mono text-xs uppercase tracking-widest font-semibold text-[#0F764A]">
+            <p className="font-mono text-xs uppercase tracking-widest font-semibold text-[#B65236]">
               01. Why Share Janur With the World?
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219]">
@@ -40,7 +41,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="lg:col-span-6">
-            <div className="aspect-[4/3] rounded-xl overflow-hidden border border-[#B5D2AF] bg-[#CFE4CA]">
+            <div className="aspect-[4/3] rounded-xl overflow-hidden border-2 border-[#B5D2AF] bg-[#CFE4CA]">
               <ResilientImage
                 src={JANUR_IMAGES.modernDesign}
                 alt="Modern eco-friendly janur woven lamps and folded leaf table piece"
@@ -63,18 +64,18 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             </p>
           </div>
 
-          <div className="bg-[#E5F0E3] border border-[#B5D2AF] rounded-xl p-6 space-y-2">
-            <p className="font-mono text-xs font-semibold text-[#0F764A]">Goal 02</p>
+          <div className="bg-[#FDF5DB]/85 border border-[#E8D28C] rounded-xl p-6 space-y-2">
+            <p className="font-mono text-xs font-semibold text-[#9C6F0A]">Goal 02</p>
             <h3 className="font-serif text-2xl font-semibold text-[#132219]">
               Learn by Trying
             </h3>
             <p className="text-sm text-[#3F5749] leading-relaxed">
-              Weaving is much easier when you do it yourself! Our interactive Craft Studio and picture tutorials let you cut, fold, and weave step by step.
+              Weaving is much easier when you do it yourself! Our interactive Craft Studio and picture tutorials let you soften, cut, fold, and weave step by step.
             </p>
           </div>
 
-          <div className="bg-[#CFE4CA]/70 border border-[#B5D2AF] rounded-xl p-6 space-y-2">
-            <p className="font-mono text-xs font-semibold text-[#0F764A]">Goal 03</p>
+          <div className="bg-[#FAEDE8]/90 border border-[#E4B7AA] rounded-xl p-6 space-y-2">
+            <p className="font-mono text-xs font-semibold text-[#B65236]">Goal 03</p>
             <h3 className="font-serif text-2xl font-semibold text-[#132219]">
               Free for Everyone
             </h3>
@@ -84,8 +85,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </div>
         </section>
 
+        <KetupatDivider />
+
         {/* Sources and References */}
-        <section id="sources-references" className="scroll-mt-24 pt-10 border-t border-[#B5D2AF]">
+        <section id="sources-references" className="scroll-mt-24 pt-2">
           <div className="max-w-3xl mb-8">
             <p className="font-mono text-xs uppercase tracking-widest font-semibold text-[#0F764A] mb-1">
               Trusted Cultural Facts
@@ -99,13 +102,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {REFERENCE_SOURCES.map((ref) => (
+            {REFERENCE_SOURCES.map((ref, idx) => (
               <div
                 key={ref.id}
-                className="bg-[#E8F5E9]/85 border border-[#B5D2AF] rounded-xl p-5 flex flex-col justify-between space-y-3"
+                className={`border rounded-xl p-5 flex flex-col justify-between space-y-3 ${
+                  idx % 2 === 0
+                    ? 'bg-[#E8F5E9]/85 border-[#B5D2AF]'
+                    : 'bg-[#FDF5DB]/60 border-[#E8D28C]'
+                }`}
               >
                 <div>
-                  <p className="font-mono text-xs font-semibold text-[#0F764A] mb-1">{ref.category}</p>
+                  <p className="font-mono text-xs font-semibold text-[#B65236] mb-1">{ref.category}</p>
                   <h3 className="font-serif text-xl font-semibold text-[#132219]">
                     {ref.title}
                   </h3>
@@ -133,8 +140,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </section>
 
         {/* Closing CTA */}
-        <section className="p-8 rounded-xl bg-[#CFE4CA] border border-[#B5D2AF] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
+        <section className="relative overflow-hidden p-8 rounded-xl bg-gradient-to-r from-[#CFE4CA] via-[#E8F5E9] to-[#FDF5DB] border border-[#B5D2AF] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <AnyamanCornerAccent className="hidden md:block absolute right-0 top-0 h-full w-48 opacity-65" />
+          <div className="relative">
             <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-[#132219]">
               Ready to Make Your Own Ketupat?
             </h2>
@@ -142,7 +150,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               Read the 13 learning topics or jump straight into the Interactive Craft Studio!
             </p>
           </div>
-          <div className="flex flex-wrap gap-3 shrink-0">
+          <div className="relative flex flex-wrap gap-3 shrink-0">
             <button
               type="button"
               onClick={() => onNavigate('explore')}
