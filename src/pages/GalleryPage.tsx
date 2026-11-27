@@ -75,7 +75,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
   };
 
   return (
-    <div className="bg-[#FAFBF6]">
+    <div className="bg-[#F6F1E3] anyaman-weave-bg">
       <PageHeader
         kicker="Craft Gallery · Photo Collection"
         title="Interactive Craft Gallery"

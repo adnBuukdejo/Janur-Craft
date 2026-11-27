@@ -7,6 +7,7 @@ import { PageId } from '../types/janur';
 import { ResilientImage } from '../components/ResilientImage';
 import {
   AnyamanCornerAccent,
+  CoconutFrondCornerLeft,
   JanurLeafIcon,
   KetupatDiamondIcon,
   KetupatDivider,
@@ -37,7 +38,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div>
       {/* 1. Hero Section */}
-      <section className="relative overflow-hidden border-b border-[#B5D2AF] bg-gradient-to-br from-[#FAFBF6] via-[#E8F5E9]/85 to-[#FDF5DB]/70 botanical-paper-grid">
+      <section className="relative overflow-hidden border-b border-[#B5D2AF] bg-gradient-to-br from-[#F6F1E3] via-[#E8F5E9]/85 to-[#FDF5DB]/80 botanical-paper-grid">
+        <CoconutFrondCornerLeft className="hidden lg:block absolute left-0 bottom-0 w-44 h-36 opacity-75" />
         <AnyamanCornerAccent className="hidden lg:block absolute right-0 top-0 w-72 h-56 opacity-75" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
@@ -116,14 +118,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className="bg-[#FAFBF6]/85 border border-[#EBC3A0] rounded-lg p-3.5 flex items-start gap-3">
+            <div className="bg-[#FAFBF6]/90 border border-[#EBC3A0] rounded-lg p-3.5 flex items-start gap-3">
               <div className="p-2 rounded-lg bg-[#FDF0E4] shrink-0">
                 <Wrench className="w-4 h-4 text-[#DD7930]" />
               </div>
               <div>
-                <p className="font-mono text-xs font-semibold text-[#C26019] tabular-nums">7 Craft Steps</p>
+                <p className="font-mono text-xs font-semibold text-[#C26019] tabular-nums">9 Crafts</p>
                 <p className="text-sm font-medium text-[#132219] mt-0.5">
-                  Hands-On Ketupat Studio
+                  Hands-On 2D Craft Studio
                 </p>
               </div>
             </div>
@@ -213,33 +215,33 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 3. Preview of Interactive Craft Studio */}
-      <section className="py-14 sm:py-16 border-b border-[#B5D2AF] bg-[#FAFBF6]">
+      <section className="py-14 sm:py-16 border-b border-[#B5D2AF] bg-[#EFE8D8] leaf-stripe-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-[#E5F0E3] via-[#E8F5E9] to-[#FDF5DB]/85 border border-[#B5D2AF] rounded-xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="bg-gradient-to-br from-[#FAFBF6] via-[#E8F5E9] to-[#FDF5DB]/90 border border-[#B5D2AF] rounded-xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
               <p className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#B65236] font-semibold">
                 <KetupatDiamondIcon className="w-4 h-4" />
-                <span>Interactive Craft Studio · 7 Hands-On Steps</span>
+                <span>Interactive Craft Studio · All 9 Gallery Crafts</span>
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[#132219]">
-                Make Your Own Ketupat Step by Step
+                Make All 9 Janur Crafts Step by Step
               </h2>
               <p className="text-sm sm:text-base text-[#132219]/85 leading-relaxed max-w-2xl">
-                Try crafting at our interactive table! Soften a coconut leaf with water, cut out the middle stick, bend 3 connected loops, weave over and under, tuck the corners, and pull tight into a diamond ketupat.
+                Try crafting at our interactive table! Choose from 9 Indonesian crafts—including diamond Ketupat, Canang Sari, Penjor, Kembar Mayang, woven lamps, and leaf grasshoppers—in Learn Mode or Free Practice Mode.
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs text-[#132219]">
                 <div className="bg-[#FAFBF6] border border-[#B5D2AF] rounded-lg px-3 py-2.5">
-                  <span className="font-mono font-semibold text-[#0F764A] block">Step 1–2</span>
-                  <span className="font-medium">Soften Leaf &amp; Cut Strips</span>
+                  <span className="font-mono font-semibold text-[#0F764A] block">Easy Crafts</span>
+                  <span className="font-medium">Canang Sari &amp; Menyeset</span>
                 </div>
                 <div className="bg-[#FDF5DB]/90 border border-[#E8D28C] rounded-lg px-3 py-2.5">
-                  <span className="font-mono font-semibold text-[#9C6F0A] block">Step 3–5</span>
-                  <span className="font-medium">Fold 3 Loops &amp; Weave</span>
+                  <span className="font-mono font-semibold text-[#9C6F0A] block">Medium Crafts</span>
+                  <span className="font-medium">Ketupat, Lamp &amp; Toys</span>
                 </div>
                 <div className="bg-[#FDF0E4]/90 border border-[#EBC3A0] rounded-lg px-3 py-2.5 col-span-2 sm:col-span-1">
-                  <span className="font-mono font-semibold text-[#B65236] block">Step 6–7</span>
-                  <span className="font-medium">Tuck Ends &amp; Pull Tight</span>
+                  <span className="font-mono font-semibold text-[#B65236] block">Hard Crafts</span>
+                  <span className="font-medium">Penjor &amp; Kembar Mayang</span>
                 </div>
               </div>
 
@@ -249,7 +251,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   onClick={() => onNavigate('studio')}
                   className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-[#0F764A] rounded-lg hover:bg-[#143D28] transition-colors cursor-pointer"
                 >
-                  <span>Start Making a Ketupat</span>
+                  <span>Open Craft Studio</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -351,7 +353,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 5. Cultural Map, Gallery & Quiz Invitation */}
-      <section className="py-14 sm:py-16 bg-[#FAFBF6] anyaman-weave-bg">
+      <section className="py-14 sm:py-16 bg-[#F6F1E3] anyaman-weave-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <p className="font-mono text-xs uppercase tracking-widest text-[#B65236] font-semibold mb-1">

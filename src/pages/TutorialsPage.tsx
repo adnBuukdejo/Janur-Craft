@@ -41,7 +41,7 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
   ).length;
 
   return (
-    <div className="bg-[#FAFBF6]">
+    <div className="bg-[#F6F1E3] leaf-stripe-bg">
       <PageHeader
         kicker="Craft Tutorials · Beginner Guides"
         title="Learn to Make Janur Crafts"
@@ -97,17 +97,15 @@ export const TutorialsPage: React.FC<TutorialsPageProps> = ({
             <span className="font-mono text-xs tabular-nums text-[#143D28] bg-[#FDF5DB] border border-[#E8D28C] px-3 py-2 rounded-lg">
               {completedCount} / {activeTutorial.steps.length} steps done
             </span>
-            {activeTutorial.id === 'ketupat-bawang' && (
-              <button
-                type="button"
-                onClick={() => onNavigate('studio')}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#0F764A] rounded-lg hover:bg-[#143D28] transition-colors cursor-pointer"
-              >
-                <KetupatDiamondIcon className="w-3.5 h-3.5" />
-                <span>Try in Craft Studio</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={() => onNavigate('studio')}
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#0F764A] rounded-lg hover:bg-[#143D28] transition-colors cursor-pointer"
+            >
+              <KetupatDiamondIcon className="w-3.5 h-3.5" />
+              <span>Try in Craft Studio</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
 

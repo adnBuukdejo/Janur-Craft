@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
-import { AnyamanCornerAccent, WovenAccentBar } from './BotanicalDecorations';
+import { AnyamanCornerAccent, CoconutFrondCornerLeft, WovenAccentBar } from './BotanicalDecorations';
 
 interface PageHeaderProps {
   kicker: string;
@@ -18,7 +18,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   onNavigateHome,
 }) => {
   return (
-    <section className="relative overflow-hidden border-b border-[#B5D2AF] bg-gradient-to-r from-[#E8F5E9] via-[#E5F0E3] to-[#FDF5DB]/65">
+    <section className="relative overflow-hidden border-b border-[#B5D2AF] bg-gradient-to-r from-[#E8F5E9] via-[#F6F1E3] to-[#FDF5DB]/85 leaf-stripe-bg">
+      <CoconutFrondCornerLeft className="hidden lg:block absolute left-0 bottom-0 h-28 w-36 opacity-70" />
       <AnyamanCornerAccent className="hidden md:block absolute right-0 top-0 h-full w-64 opacity-85" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-9 sm:py-11">
         <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-[#3F5749] mb-3.5">

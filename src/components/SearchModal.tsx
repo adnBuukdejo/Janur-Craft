@@ -49,12 +49,12 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   const allRecords = useMemo<SearchRecord[]>(() => {
     const list: SearchRecord[] = [
       {
-        id: 'studio-ketupat',
-        title: 'Interactive Craft Studio (Make a Ketupat)',
-        subtitle: 'Hands-on table: cut the coconut leaf, fold loops, weave over & under, and pull tight',
+        id: 'studio-crafts',
+        title: 'Interactive Craft Studio (9 Hands-On Crafts)',
+        subtitle: 'Make Ketupat, Canang Sari, Menyeset, Penjor, Kembar Mayang, Janur Lamp, Lepet & Grasshopper',
         kind: 'Craft Studio',
         page: 'studio',
-        searchBlob: 'craft studio ketupat weaving drag drop cut scissors fold rotate over under',
+        searchBlob: 'craft studio ketupat canang sari penjor kembar mayang lepet lamp belalang grasshopper menyeset weaving drag drop cut scissors fold over under',
       },
       {
         id: 'cultural-map',

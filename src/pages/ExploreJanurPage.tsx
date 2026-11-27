@@ -51,7 +51,7 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
   };
 
   return (
-    <div className="bg-[#FAFBF6]">
+    <div className="bg-[#F6F1E3]">
       <PageHeader
         kicker="Learn About Janur · 13 Simple Topics"
         title="Explore the World of Janur"
@@ -61,7 +61,7 @@ export const ExploreJanurPage: React.FC<ExploreJanurPageProps> = ({
       />
 
       {/* Mobile & Tablet Quick Jump Strip */}
-      <div className="lg:hidden border-b border-[#B5D2AF] bg-[#FAFBF6] px-4 py-3 overflow-x-auto">
+      <div className="lg:hidden border-b border-[#B5D2AF] bg-[#EFE8D8] px-4 py-3 overflow-x-auto">
         <div className="flex items-center gap-2">
           {EDUCATIONAL_SECTIONS.map((sec) => (
             <button

@@ -13,7 +13,7 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   return (
-    <div className="bg-[#FAFBF6]">
+    <div className="bg-[#F6F1E3]">
       <PageHeader
         kicker="About This Project · Why JanurCraft Exists"
         title="About JanurCraft"
@@ -144,10 +144,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           <AnyamanCornerAccent className="hidden md:block absolute right-0 top-0 h-full w-48 opacity-65" />
           <div className="relative">
             <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-[#132219]">
-              Ready to Make Your Own Ketupat?
+              Ready to Make Indonesian Janur Crafts?
             </h2>
             <p className="text-sm text-[#3F5749] mt-1">
-              Read the 13 learning topics or jump straight into the Interactive Craft Studio!
+              Read the 13 learning topics or jump straight into all 9 crafts in the Interactive Craft Studio!
             </p>
           </div>
           <div className="relative flex flex-wrap gap-3 shrink-0">

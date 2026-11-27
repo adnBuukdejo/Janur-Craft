@@ -6,11 +6,14 @@
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
   --color-ivory: #FAFBF6;
+  --color-cream: #F6F1E3;
+  --color-beige: #EFE8D8;
   --color-offwhite: #F5F8F2;
   --color-mint: #E8F5E9;
   --color-sage-tint: #E5F0E3;
   --color-sage-soft: #CFE4CA;
   --color-sage-border: #B5D2AF;
+  --color-leaf-light: #A4CF7A;
   --color-leaf: #3B8E47;
   --color-emerald: #0F764A;
   --color-forest: #143D28;
@@ -22,6 +25,7 @@
   --color-orange-soft: #DD7930;
   --color-orange-tint: #FDF0E4;
   --color-orange-border: #EBC3A0;
+  --color-brown-earth: #8C6239;
   --color-terracotta: #B65236;
   --color-terracotta-tint: #FAEDE8;
   --color-terracotta-border: #E4B7AA;
@@ -33,16 +37,25 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #FAFBF6;
+    background-color: #F6F1E3;
     color: #132219;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, .font-display {
+  h1, h2, .font-display {
     font-family: var(--font-serif);
     text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  h3, h4, .font-quote {
+    font-family: var(--font-serif);
+  }
+
+  button, input, select {
+    font-family: var(--font-sans);
   }
 
   button:focus-visible,
@@ -59,19 +72,29 @@
 }
 
 .botanical-paper-grid {
-  background-image: radial-gradient(rgba(15, 118, 74, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(15, 118, 74, 0.085) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 /* Subtle Indonesian woven anyaman diamond pattern */
 .anyaman-weave-bg {
   background-image:
-    linear-gradient(45deg, rgba(15, 118, 74, 0.045) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(226, 179, 52, 0.05) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, rgba(15, 118, 74, 0.045) 75%),
-    linear-gradient(-45deg, transparent 75%, rgba(182, 82, 54, 0.035) 75%);
+    linear-gradient(45deg, rgba(15, 118, 74, 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(226, 179, 52, 0.06) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(15, 118, 74, 0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(140, 98, 57, 0.04) 75%);
   background-size: 36px 36px;
   background-position: 0 0, 0 18px, 18px -18px, -18px 0;
+}
+
+.leaf-stripe-bg {
+  background-image: repeating-linear-gradient(
+    -35deg,
+    rgba(59, 142, 71, 0.04),
+    rgba(59, 142, 71, 0.04) 12px,
+    rgba(253, 245, 219, 0.06) 12px,
+    rgba(253, 245, 219, 0.06) 24px
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {

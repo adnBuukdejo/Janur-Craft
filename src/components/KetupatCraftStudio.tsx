@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
+  AlertTriangle,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
@@ -12,6 +13,8 @@ import {
   Undo2,
 } from 'lucide-react';
 import { JanurLeafIcon, KetupatDiamondIcon } from './BotanicalDecorations';
+import { STUDIO_CRAFTS, StudioMode } from '../data/studioCrafts';
+import { FinishedCraftShowcase } from './studio/StudioVisuals';
 
 type CrossingState = 'over' | 'under';
 
@@ -20,7 +23,7 @@ interface Point {
   y: number;
 }
 
-interface StudioSnapshot {
+export interface StudioSnapshot {
   stage: number; // 0..6
   leafOnMat: boolean;
   hydration: number; // 0..100
@@ -298,10 +301,28 @@ const StageVisualDemo: React.FC<{ stage: number }> = ({ stage }) => (
   </div>
 );
 
-export const KetupatCraftStudio: React.FC = () => {
-  const [state, setState] = useState<StudioSnapshot>(INITIAL_STATE);
+export interface KetupatCraftStudioProps {
+  mode?: StudioMode;
+  savedState?: StudioSnapshot;
+  onStateChange?: (snap: StudioSnapshot) => void;
+  onProgressChange?: (pct: number) => void;
+  onChooseAnother?: () => void;
+}
+
+const KETUPAT_CRAFT_META = STUDIO_CRAFTS[0];
+
+export const KetupatCraftStudio: React.FC<KetupatCraftStudioProps> = ({
+  mode = 'learn',
+  savedState,
+  onStateChange,
+  onProgressChange,
+  onChooseAnother,
+}) => {
+  const [state, setState] = useState<StudioSnapshot>(() => savedState || INITIAL_STATE);
   const [history, setHistory] = useState<StudioSnapshot[]>([]);
   const [showHint, setShowHint] = useState(false);
+  const [confirmResetOpen, setConfirmResetOpen] = useState(false);
+  const [showFinishedCard, setShowFinishedCard] = useState(false);
   const [selectedTool, setSelectedTool] = useState<'none' | 'scissors' | 'water'>('none');
   const [paletteDrag, setPaletteDrag] = useState<PaletteItemId | null>(null);
   const [paletteDragPos, setPaletteDragPos] = useState<Point>({ x: 0, y: 0 });
@@ -391,6 +412,20 @@ export const KetupatCraftStudio: React.FC = () => {
   const overallProgress = Math.round(
     ([0, 1, 2, 3, 4, 5, 6].filter((i) => isStageComplete(state, i)).length / 7) * 100
   );
+
+  useEffect(() => {
+    onProgressChange?.(overallProgress);
+  }, [overallProgress, onProgressChange]);
+
+  useEffect(() => {
+    onStateChange?.(state);
+  }, [state, onStateChange]);
+
+  useEffect(() => {
+    if (state.tightness >= 100 && overallProgress === 100) {
+      setShowFinishedCard(true);
+    }
+  }, [state.tightness, overallProgress]);
 
   const applyPaletteDrop = useCallback(
     (itemId: PaletteItemId) => {
@@ -729,15 +764,25 @@ export const KetupatCraftStudio: React.FC = () => {
     setFeedbackMsg('Undid your last move.');
   };
 
-  const handleReset = () => {
+  const performReset = () => {
     setState(INITIAL_STATE);
     setHistory([]);
     setShowHint(false);
+    setConfirmResetOpen(false);
+    setShowFinishedCard(false);
     setSelectedTool('none');
     setWipeClothActive(false);
     setWipeClothX(140);
     setScissorsActiveOnLeaf(false);
     setFeedbackMsg('Table cleared! Drag the Young Coconut Leaf onto the Craft Mat to begin.');
+  };
+
+  const handleReset = () => {
+    if (overallProgress >= 100) {
+      setConfirmResetOpen(true);
+    } else {
+      performReset();
+    }
   };
 
   const goToStage = (targetIdx: number) => {
@@ -796,8 +841,93 @@ export const KetupatCraftStudio: React.FC = () => {
     state.crossings[r].every((val, c) => val === TARGET_PATTERN[r][c])
   );
 
+  if (showFinishedCard && state.tightness >= 100) {
+    return (
+      <div className="space-y-4">
+        <FinishedCraftShowcase
+          craft={KETUPAT_CRAFT_META}
+          onTryAgain={() => setConfirmResetOpen(true)}
+          onChooseAnother={() => onChooseAnother?.()}
+        />
+
+        {confirmResetOpen && (
+          <div className="bg-[#FDF5DB] border-2 border-[#DD7930] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-start gap-2.5">
+              <AlertTriangle className="w-5 h-5 text-[#B65236] shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-semibold text-[#132219]">
+                  Start Ketupat Bawang over from Step 1?
+                </p>
+                <p className="text-xs text-[#3F5749]">
+                  Your finished Ketupat will be cleared so you can make it again.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => setConfirmResetOpen(false)}
+                className="px-4 py-2 text-xs font-medium bg-[#FAFBF6] border border-[#B5D2AF] text-[#132219] rounded-lg hover:bg-[#E8F5E9] cursor-pointer"
+              >
+                Keep Finished Ketupat
+              </button>
+              <button
+                type="button"
+                onClick={performReset}
+                className="px-4 py-2 text-xs font-semibold bg-[#B65236] text-white rounded-lg hover:bg-[#933E27] cursor-pointer"
+              >
+                Yes, Reset Craft
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="text-center">
+          <button
+            type="button"
+            onClick={() => setShowFinishedCard(false)}
+            className="text-xs font-semibold text-[#0F764A] hover:underline cursor-pointer"
+          >
+            Back to Craft Mat View
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-5">
+      {confirmResetOpen && (
+        <div className="bg-[#FDF5DB] border-2 border-[#DD7930] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-start gap-2.5">
+            <AlertTriangle className="w-5 h-5 text-[#B65236] shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-semibold text-[#132219]">
+                Reset completed Ketupat?
+              </p>
+              <p className="text-xs text-[#3F5749]">
+                You already finished all 7 steps! Resetting will clear the mat and start from Step 1.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={() => setConfirmResetOpen(false)}
+              className="px-4 py-2 text-xs font-medium bg-[#FAFBF6] border border-[#B5D2AF] text-[#132219] rounded-lg hover:bg-[#E8F5E9] cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={performReset}
+              className="px-4 py-2 text-xs font-semibold bg-[#B65236] text-white rounded-lg hover:bg-[#933E27] cursor-pointer"
+            >
+              Yes, Reset
+            </button>
+          </div>
+        </div>
+      )}
       {/* Top 7-Stage Progress Indicator */}
       <div className="bg-gradient-to-r from-[#E8F5E9] via-[#FAFBF6] to-[#FDF5DB]/65 border border-[#B5D2AF] rounded-xl p-4 space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
@@ -2042,36 +2172,40 @@ export const KetupatCraftStudio: React.FC = () => {
           </div>
 
           {/* Clear Visual Demonstration */}
-          <StageVisualDemo stage={state.stage} />
+          {mode === 'learn' && <StageVisualDemo stage={state.stage} />}
 
           {/* Short & Simple Instruction */}
           <p className="text-sm text-[#132219] leading-relaxed font-medium">
-            {stageInfo.instruction}
+            {mode === 'learn'
+              ? stageInfo.instruction
+              : KETUPAT_CRAFT_META.steps[state.stage]?.freeInstruction || stageInfo.goalText}
           </p>
 
           {/* Before / After / Why Breakdown */}
-          <div className="space-y-2 text-xs">
-            <div className="p-2.5 rounded-lg bg-[#FAFBF6] border border-[#B5D2AF]">
-              <span className="font-semibold text-[#143D28]">Before: </span>
-              <span className="text-[#3F5749]">{stageInfo.beforeText}</span>
+          {mode === 'learn' && (
+            <div className="space-y-2 text-xs">
+              <div className="p-2.5 rounded-lg bg-[#FAFBF6] border border-[#B5D2AF]">
+                <span className="font-semibold text-[#143D28]">Before: </span>
+                <span className="text-[#3F5749]">{stageInfo.beforeText}</span>
+              </div>
+              <div
+                className={`p-2.5 rounded-lg border ${
+                  currentComplete
+                    ? 'bg-[#CFE4CA] border-[#0F764A] text-[#143D28]'
+                    : 'bg-[#FAFBF6] border-[#B5D2AF] text-[#3F5749]'
+                }`}
+              >
+                <span className="font-semibold text-[#143D28]">
+                  {currentComplete ? 'Done — After: ' : 'After: '}
+                </span>
+                <span>{stageInfo.afterText}</span>
+              </div>
+              <div className="p-2.5 rounded-lg bg-[#FAEDE8] border border-[#E4B7AA] text-[#132219]">
+                <span className="font-semibold text-[#B65236]">Why needed: </span>
+                <span>{stageInfo.whyText}</span>
+              </div>
             </div>
-            <div
-              className={`p-2.5 rounded-lg border ${
-                currentComplete
-                  ? 'bg-[#CFE4CA] border-[#0F764A] text-[#143D28]'
-                  : 'bg-[#FAFBF6] border-[#B5D2AF] text-[#3F5749]'
-              }`}
-            >
-              <span className="font-semibold text-[#143D28]">
-                {currentComplete ? 'Done — After: ' : 'After: '}
-              </span>
-              <span>{stageInfo.afterText}</span>
-            </div>
-            <div className="p-2.5 rounded-lg bg-[#FAEDE8] border border-[#E4B7AA] text-[#132219]">
-              <span className="font-semibold text-[#B65236]">Why needed: </span>
-              <span>{stageInfo.whyText}</span>
-            </div>
-          </div>
+          )}
 
           {showHint && (
             <div className="p-3 rounded-lg bg-[#FDF5DB] border border-[#E2B334] text-xs text-[#5B4112] leading-relaxed">
